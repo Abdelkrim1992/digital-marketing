@@ -3,9 +3,16 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\backend\BackendController;
 use App\Http\Controllers\backend\SettingController;
-use App\Http\Controllers\frontend\FrontendController;
 use App\Http\Controllers\backend\SliderController;
 use App\Http\Controllers\backend\PageController;
+
+
+use App\Http\Controllers\frontend\FrontendController;
+use App\Http\Controllers\frontend\AboutController;
+use App\Http\Controllers\frontend\ContactController;
+use App\Http\Controllers\frontend\ServiceController;
+
+
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LogoutController;
 
@@ -15,6 +22,9 @@ use App\Http\Controllers\LogoutController;
 /****** frontend *****/
 
 Route::get('/',[FrontendController::class,'index'])->name('frontend.index');
+Route::get('/about-us',[AboutController::class,'index'])->name('frontend.about');
+Route::get('/contact-us',[ContactController::class,'index'])->name('frontend.contact');
+Route::get('/services',[ServiceController::class,'index'])->name('frontend.services');
 
 
 /****** backend *****/

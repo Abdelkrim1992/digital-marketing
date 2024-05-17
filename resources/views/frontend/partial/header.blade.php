@@ -1,43 +1,68 @@
-  <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top d-flex align-items-center">
-    <div class="container d-flex align-items-center">
-
-    <a href="index.html" class="logo me-auto"><img src="{{asset('frontend/img/clients/'.$setting->logo)}}" alt="" class="img-fluid"></a>
-      <!-- Uncomment below if you prefer to use an image logo -->
-     
-
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a href="{{url('/')}}" >Home</a></li>
-          <li><a href="{{url('/')}}" >About Us</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="portfolio.html">Projects</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="contact.html">Contact Us</a></li>
-          @if (Route::has('login'))
-             @auth
-                @if(Auth::user()->usertype=='admin')
-
-                  <li><a href="{{ route('admin.dashboard') }}" class="getstarted">My Dashboard</a></li>
-
-                @else(Auth::user()->usertype=='user')
-                
-                  <li><a href="{{ route('dashboard') }}" class="getstarted">My Dashboard</a></li> 
-
-                @endif
-             @else
-
-                <li><a href="{{route('login')}}" class="getstarted">Get Started</a></li>
-                
-             @endif
-          @endif
-          
-          
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-
+    <!-- Top header area start here -->
+    <div class="header-top d-none d-lg-block">
+      <div class="container">
+        <div class="header-top-wrp">
+          <ul class="info">
+            <li>
+              <i class="fa-solid fa-paper-plane"></i>
+              <a href="#0">{{$setting->email}}</a>
+            </li>
+            <li class="bor-left ms-4 ps-4">
+              <i class="fa-solid fa-location-dot"></i>
+              <a href="#0">{{$setting->address}}</a>
+            </li>
+          </ul>
+          <ul class="link-info">
+            <li class="bor-right">
+              <a href="{{$setting->facebook}}"><i class="fa-brands fa-facebook-f"></i></a>
+            </li>
+            <li class="bor-right">
+              <a href="{{$setting->instagram}}"><i class="fa-brands fa-instagram"></i></a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
-  </header><!-- End Header -->
+    <!-- Top header area end here -->
 
-  
+    <!-- Header area start here -->
+    <header class="container-fluid bg-white sticky-top">
+      <div class="container">
+        <div class="header__main">
+          <a href="{{url('/')}}" class="logo logo-light">
+            <img src="{{asset('frontend/images/logo/logo.svg')}}" alt="logo" />
+          </a>
+          <div class="main-menu text-white">
+            <nav>
+              <ul>
+                <li><a href="{{url('/')}}">Home </a></li>
+                <li><a href="{{route('frontend.about')}}">About Us</a></li>
+                <li><a href="{{route('frontend.services')}}">Services </a></li>
+                <li><a href="{{route('frontend.contact')}}">Contact Us</a></li>
+              </ul>
+            </nav>
+          </div>
+              @if (Route::has('login'))
+                            @auth
+                                @if(Auth::user()->usertype=='admin')
+
+                                   <a href="{{ route('admin.dashboard') }}" class="btn-menu d-none d-lg-inline-block">My Dashboard<i class="fa-regular fa-circle-arrow-right ml-10"></i></a>
+
+                                @else(Auth::user()->usertype=='user')
+                
+                                   <a href="{{ route('dashboard') }}" class="btn-menu d-none d-lg-inline-block">My Dashboard<i class="fa-regular fa-circle-arrow-right ml-10"></i></a>
+
+                                @endif
+                            @else
+
+                                   <a href="{{ route('login') }}" class="btn-menu d-none d-lg-inline-block">Get Started<i class="fa-regular fa-circle-arrow-right ml-10"></i></a>
+                
+                            @endif
+              @endif    
+          <div class="bars d-block d-lg-none">
+            <i id="openButton" class="fa-solid fa-bars"></i>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- Header area end here -->

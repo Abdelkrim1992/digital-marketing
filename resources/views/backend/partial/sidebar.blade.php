@@ -35,7 +35,7 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{route('page.index')}}">
-                <span class="icon-bg"><i class="mdi mdi-chart-bar menu-icon"></i></span>
+                <span class="icon-bg"><i class="mdi mdi-contacts menu-icon"></i></span>
                 <span class="menu-title">Pages</span>
               </a>
             </li>
