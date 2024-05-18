@@ -23,29 +23,27 @@
               <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Slider Section Informations</h4>
-                    <form class="forms-sample" method="POST" action="{{route('slider.store')}}" enctype="multipart/form-data"> @csrf
+                    <h4 class="card-title">Talk Informations</h4>
+                    <form class="forms-sample" method="POST" action="{{route('talk.update')}}" enctype="multipart/form-data"> @csrf
                       <div class="form-group ">
-                        <label for="HeadingText" >Heading Text</label>
-                        <input type="text" class="form-control" id="HeadingText_id" name="heading"  >
+                        <label for="title" >Talk Section Title</label>
+                        <input type="text" class="form-control" id="title_id" name="title" value="{{$talk->title}}" >
                       </div>
                       <div class="form-group">
-                        <label for="SmallText">Small Text</label>
-                        <input type="text" class="form-control" id="SmallText_id" name="small_text"  >
+                        <label for="big_title">Next Title</label>
+                        <input type="text" class="form-control" id="big_title_id" name="big_title" value="{{$talk->big_title}}" >
                       </div>
                       <div class="form-group">
-                        <label for="SmallText">Button Text</label>
-                        <input type="text" class="form-control" id="ButtonText_id" name="button_text"  >
+                        <label for="main_text">Main Text</label>
+                        <textarea type="text" class="form-control" id="main_text_id" name="main_text" >{{$talk->main_text}}</textarea>
                       </div>
                       <div class="form-group">
-                        <label>Slider Image</label>
-                        <input type="file" name="image" class="file-upload-default">
-                        <div class="input-group col-xs-12">
-                          <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
-                          <span class="input-group-append">
-                            <button class="file-upload-browse btn btn-primary" type="button">Upload Slider</button>
-                          </span>
-                        </div>
+                        <label for="button_text">Button Text</label>
+                        <input type="text" class="form-control" id="button_text_id" name="button_text" value="{{$talk->button_text}}" >
+                      </div>
+                      <div class="form-group">
+                        <label for="form_title">Form Text</label>
+                        <input type="text" class="form-control" id="form_title_id" name="form_title" value="{{$talk->form_title}}" >
                       </div>
                       <button type="submit" class="btn btn-primary mr-2">Save</button>
                       <button class="btn btn-light">Cancel</button>

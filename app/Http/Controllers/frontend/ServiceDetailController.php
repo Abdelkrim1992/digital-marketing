@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Setting;
 
-class AboutController extends Controller
+class ServiceDetailController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class AboutController extends Controller
     public function index()
     {
         $setting= Setting::findOrFail(1);
-        return view('frontend.about.about_us',compact('setting'));
+        return view('frontend.service.service_details',compact('setting'));
     }
 
     /**

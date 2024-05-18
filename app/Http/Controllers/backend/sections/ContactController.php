@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\frontend;
+namespace App\Http\Controllers\backend\sections;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Setting;
+use App\Models\Section\Contact;
 
 class ContactController extends Controller
 {
@@ -15,8 +15,8 @@ class ContactController extends Controller
      */
     public function index()
     {
-        $setting= Setting::findOrFail(1);
-        return view('frontend.contact.contact_us',compact('setting'));
+        $contact= Contact::whereId(1)->first();
+        return view('backend.contact.index', compact('contact'));
     }
 
     /**
@@ -69,9 +69,16 @@ class ContactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $contact= Contact::findOrFail(1);
+        $contact->title= $request->title;
+        $contact->big_title= $request->big_title;
+        $contact->main_text= $request->main_text;
+        $contact->button_text= $request->button_text;
+
+        $contact->save();
+        return redirect()->back();
     }
 
     /**

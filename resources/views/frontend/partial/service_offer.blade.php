@@ -36,14 +36,14 @@
                 data-wow-delay="00ms"
                 data-wow-duration="1000ms"
               >
-                <a class="offer-title" href="service-details.html"
+                <a class="offer-title" href="{{route('frontend.service_details')}}"
                   >Analytics and Data Insights</a
                 >
                 <i class="fa-light offer-icon fa-arrow-right"></i>
                 <div class="offer__image-wrp">
                   <a
                     class="offer__image d-block image"
-                    href="service-details.html"
+                    href="{{route('frontend.service_details')}}"
                   >
                     <img
                       src="{{asset('frontend/images/offer/offer-image1.png')}}"
@@ -60,14 +60,14 @@
                 data-wow-delay="100ms"
                 data-wow-duration="1000ms"
               >
-                <a class="offer-title" href="service-details.html"
+                <a class="offer-title" href="{{route('frontend.service_details')}}"
                   >Content Marketing</a
                 >
                 <i class="fa-light offer-icon fa-arrow-right"></i>
                 <div class="offer__image-wrp">
                   <a
                     class="offer__image d-block image"
-                    href="service-details.html"
+                    href="{{route('frontend.service_details')}}"
                   >
                     <img
                       src="{{asset('frontend/images/offer/offer-image2.png')}}"
@@ -84,14 +84,14 @@
                 data-wow-delay="200ms"
                 data-wow-duration="1000ms"
               >
-                <a class="offer-title" href="service-details.html"
+                <a class="offer-title" href="{{route('frontend.service_details')}}"
                   >Search Engine Marketing.</a
                 >
                 <i class="fa-light offer-icon fa-arrow-right"></i>
                 <div class="offer__image-wrp">
                   <a
                     class="offer__image d-block image"
-                    href="service-details.html"
+                    href="{{route('frontend.service_details')}}"
                   >
                     <img
                       src="{{asset('frontend/images/offer/offer-image3.png')}}"
@@ -108,14 +108,14 @@
                 data-wow-delay="300ms"
                 data-wow-duration="1000ms"
               >
-                <a class="offer-title" href="service-details.html"
+                <a class="offer-title" href="{{route('frontend.service_details')}}"
                   >Social Media Marketing</a
                 >
                 <i class="fa-light offer-icon fa-arrow-right"></i>
                 <div class="offer__image-wrp">
                   <a
                     class="offer__image d-block image"
-                    href="service-details.html"
+                    href="{{route('frontend.service_details')}}"
                   >
                     <img
                       src="{{asset('frontend/images/offer/offer-image4.png')}}"
@@ -132,14 +132,14 @@
                 data-wow-delay="400ms"
                 data-wow-duration="1000ms"
               >
-                <a class="offer-title" href="service-details.html"
+                <a class="offer-title" href="{{route('frontend.service_details')}}"
                   >Pay-Per-Click Advertising</a
                 >
                 <i class="fa-light offer-icon fa-arrow-right"></i>
                 <div class="offer__image-wrp">
                   <a
                     class="offer__image d-block image"
-                    href="service-details.html"
+                    href="{{route('frontend.service_details')}}"
                   >
                     <img
                       src="{{asset('frontend/images/offer/offer-image5.png')}}"

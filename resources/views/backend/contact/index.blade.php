@@ -23,29 +23,19 @@
               <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Slider Section Informations</h4>
-                    <form class="forms-sample" method="POST" action="{{route('slider.store')}}" enctype="multipart/form-data"> @csrf
+                    <h4 class="card-title">Contact Us Informations</h4>
+                    <form class="forms-sample" method="POST" action="{{route('contact.update')}}" enctype="multipart/form-data"> @csrf
                       <div class="form-group ">
-                        <label for="HeadingText" >Heading Text</label>
-                        <input type="text" class="form-control" id="HeadingText_id" name="heading"  >
+                        <label for="title" >Contact Section Title</label>
+                        <input type="text" class="form-control" id="title_id" name="title" value="{{$contact->title}}" >
                       </div>
                       <div class="form-group">
-                        <label for="SmallText">Small Text</label>
-                        <input type="text" class="form-control" id="SmallText_id" name="small_text"  >
+                        <label for="big_title">Next Title</label>
+                        <input type="text" class="form-control" id="big_title_id" name="big_title" value="{{$contact->big_title}}" >
                       </div>
                       <div class="form-group">
-                        <label for="SmallText">Button Text</label>
-                        <input type="text" class="form-control" id="ButtonText_id" name="button_text"  >
-                      </div>
-                      <div class="form-group">
-                        <label>Slider Image</label>
-                        <input type="file" name="image" class="file-upload-default">
-                        <div class="input-group col-xs-12">
-                          <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
-                          <span class="input-group-append">
-                            <button class="file-upload-browse btn btn-primary" type="button">Upload Slider</button>
-                          </span>
-                        </div>
+                        <label for="main_text">Main Text</label>
+                        <textarea type="text" class="form-control" id="main_text_id" name="main_text" >{{$about->main_text}}</textarea>
                       </div>
                       <button type="submit" class="btn btn-primary mr-2">Save</button>
                       <button class="btn btn-light">Cancel</button>

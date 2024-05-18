@@ -1,7 +1,5 @@
       <!-- Footer area start here -->
-      <footer
-      class="footer-area footer-bg bg-image"
-      data-background="{{asset('frontend/images/bg/footer-bg.png')}}"
+      <footer class="footer-area footer-bg bg-image" "
     >
       <div class="footer__main-wrp">
         <div class="container">

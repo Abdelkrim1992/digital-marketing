@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\backend;
+namespace App\Http\Controllers\backend\sections;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Page;
+use App\Models\Section\Team;
 
-class PageController extends Controller
+class TeamController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class PageController extends Controller
      */
     public function index()
     {
-        $allData = Page::all();
-        return view('backend.page.index',compact('allData'));
+        $allData = About::all();
+        return view('backend.about.index',compact('allData'));
     }
 
     /**
@@ -26,7 +26,7 @@ class PageController extends Controller
      */
     public function create()
     {
-        return view('backend.page.create');
+        return view('backend.about.create');
     }
 
     /**
@@ -37,12 +37,13 @@ class PageController extends Controller
      */
     public function store(Request $request)
     {
-        $Data= new Page();
+        $Data= new About();
         $Data->title= $request->title;
-        $Data->type= $request->type;
-        $Data->description= $request->description; 
+        $Data->big_title= $request->title;
+        $Data->main_text= $request->main_text;
+        $Data->button_text= $request->button_text;
         $Data->save();
-        return redirect()->route('page.index');
+        return redirect()->route('about.index');
     }
 
     /**
@@ -54,9 +55,9 @@ class PageController extends Controller
     public function delete($id)
     {
         {
-            $deleteData = Page::find($id);
+            $deleteData = About::find($id);
             $deleteData->delete();
-            return redirect()->route('page.index');
+            return redirect()->route('about.index');
         }
     }
 
@@ -68,8 +69,8 @@ class PageController extends Controller
      */
     public function edit($id)
     {
-        $editData= Page::findOrFail($id);
-        return view('backend.page.edit',compact('editData'));
+        $editData= About::findOrFail($id);
+        return view('backend.about.edit',compact('editData'));
     }
 
     /**
@@ -81,12 +82,13 @@ class PageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $page= Page::findOrFail($id);;
+        $page= About::findOrFail($id);;
         $page->title= $request->title;
-        $page->type= $request->type;
-        $page->description= $request->description;
+        $page->big_title= $request->big_title;
+        $page->main_text= $request->main_text;
+        $page->button_text= $request->button_text;
         $page->save();
-        return redirect()->route('page.index');
+        return redirect()->route('about.index');
     }
 
     /**
@@ -96,18 +98,4 @@ class PageController extends Controller
      * @return \Illuminate\Http\Response
      */
     
-
-    public function upload(Request $request)
-    {
-        if($request->hasFile('upload')){
-            $originName= $request->file('upload')->getClientOriginalExtension();
-            $file_name= pathinfo($originName,PATHINFO_FILENAME);
-            $extension= $request->file('upload')->getClientOriginalExtension();
-            $file_name= $file_name.'_'.time().'.'.extension;
-            $destination_path= public_path().'/frontend/img/page';
-            $request->file('upload')->move($destination_path,$file_name);
-
-            return response()->json(['file_name'=>$file_name, 'upload'=>1, 'url'=>$url]);
-        }
-    }
 }

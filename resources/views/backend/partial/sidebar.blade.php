@@ -10,33 +10,26 @@
             <li class="nav-item">
               <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                 <span class="icon-bg"><i class="mdi mdi-crosshairs-gps menu-icon"></i></span>
-                <span class="menu-title">UI Elements</span>
+                <span class="menu-title">Site Sections</span>
                 <i class="menu-arrow"></i>
               </a>
               <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Buttons</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Dropdowns</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Typography</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{route('slider.index')}}">Slider Section</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{route('about.index')}}">About Section</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{url('/')}}">Service Offer Section</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{route('process.index')}}">Process Section</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{route('team.index')}}">Team Section</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{route('testimonial.index')}}">Testimonial Section</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{route('talk.index')}}">Talk Section</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{url('/')}}">Contact Form Section</a></li>
                 </ul>
               </div>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{route('slider.index')}}">
-                <span class="icon-bg"><i class="mdi mdi-contacts menu-icon"></i></span>
-                <span class="menu-title">Sliders</span>
-              </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{route('setting.index')}}">
                 <span class="icon-bg"><i class="mdi mdi-format-list-bulleted menu-icon"></i></span>
                 <span class="menu-title">Site Informations</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{route('page.index')}}">
-                <span class="icon-bg"><i class="mdi mdi-contacts menu-icon"></i></span>
-                <span class="menu-title">Pages</span>
               </a>
             </li>
             <li class="nav-item">

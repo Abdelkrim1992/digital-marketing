@@ -29,16 +29,16 @@
     <header class="container-fluid bg-white sticky-top">
       <div class="container">
         <div class="header__main">
-          <a href="{{url('/')}}" class="logo logo-light">
-            <img src="{{asset('frontend/images/logo/logo.svg')}}" alt="logo" />
+          <a href="{{url('/')}}" class="logo logo-light" >
+            <img src="{{asset('frontend/img/clients/'.$setting->logo)}}" alt="logo" />
           </a>
           <div class="main-menu text-white">
             <nav>
               <ul>
                 <li><a href="{{url('/')}}">Home </a></li>
-                <li><a href="{{route('frontend.about')}}">About Us</a></li>
+                <li><a href="{{route('frontend.about_us')}}">About Us</a></li>
                 <li><a href="{{route('frontend.services')}}">Services </a></li>
-                <li><a href="{{route('frontend.contact')}}">Contact Us</a></li>
+                <li><a href="{{route('frontend.contact_us')}}">Contact Us</a></li>
               </ul>
             </nav>
           </div>

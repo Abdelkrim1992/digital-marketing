@@ -1,29 +1,18 @@
-      <!-- Process area start here -->
+<?php $process= App\Models\Section\Process::find(1); ?>
+    <!-- Process area start here -->
       <section class="process-area pt-140 pb-140">
         <div class="container">
           <div class="section-header__wrp mb-90">
             <div class="section-header">
-              <h5
-                class="wow fadeInUp"
-                data-wow-delay="00ms"
-                data-wow-duration="1000ms"
-              >
+              <h5 class="wow fadeInUp" data-wow-delay="00ms" data-wow-duration="1000ms" >
                 how do we work
               </h5>
-              <h2
-                class="wow fadeInUp"
-                data-wow-delay="200ms"
-                data-wow-duration="1000ms"
-              >
+              <h2 class="wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1000ms" >
                 Our work
                 <span>process</span>
               </h2>
             </div>
-            <p
-              class="wow fadeInUp"
-              data-wow-delay="400ms"
-              data-wow-duration="1000ms"
-            >
+            <p class="wow fadeInUp" data-wow-delay="400ms" data-wow-duration="1000ms" >
               Discover a spectrum of cutting-edge digital marketing services
               <br />
               tailored to elevate your online presence, drive engagement.
@@ -72,4 +61,4 @@
           </div>
         </div>
       </section>
-      <!-- Process area end here -->
+    <!-- Process area end here -->
