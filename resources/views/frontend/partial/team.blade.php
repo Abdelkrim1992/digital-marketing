@@ -1,3 +1,4 @@
+<?php $team= App\Models\Section\Team::find(1); ?>
       <!-- Team area start here -->
       <section class="team-area pb-140">
         <div class="container">
@@ -7,24 +8,21 @@
               data-wow-delay="00ms"
               data-wow-duration="1000ms"
             >
-              Exceptional Team
+              {{$team->main_title}}
             </h5>
             <h2
               class="wow fadeInUp"
               data-wow-delay="200ms"
               data-wow-duration="1000ms"
             >
-              Meet with our
-              <span>team</span>
+              {{$team->big_title}}
             </h2>
             <p
               class="wow fadeInUp"
               data-wow-delay="400ms"
               data-wow-duration="1000ms"
             >
-              Discover the driving force behind Marketi. Working collaboratively
-              to deliver <br />
-              innovative digital marketing solutions that elevate your brand.
+              {{$team->main_text}}
             </p>
           </div>
           <div class="swiper team__slider">

@@ -40,7 +40,7 @@
 
       @include('frontend.partial.about')
 
-      @include('frontend.partial.service_offer')
+      @include('frontend.partial.services')
       
       @include('frontend.partial.process')
 

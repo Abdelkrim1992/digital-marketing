@@ -77,8 +77,6 @@
       <!-- page-body-wrapper ends -->
     </div>
     <!-- container-scroller -->
-    
     @include('backend.scripts.js_scripts')
-
   </body>
 </html>

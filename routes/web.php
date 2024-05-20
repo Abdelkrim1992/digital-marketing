@@ -8,13 +8,13 @@ use App\Http\Controllers\backend\BackendController;
 use App\Http\Controllers\backend\SettingController;
 
 use App\Http\Controllers\backend\sections\SliderController;
-use App\Http\Controllers\backend\sections\AboutController;
-use App\Http\Controllers\backend\sections\ContactController;
-use App\Http\Controllers\backend\sections\ProcessController;
-use App\Http\Controllers\backend\sections\ServiceOfferController;
-use App\Http\Controllers\backend\sections\TalkController;
+use App\Http\Controllers\backend\sections\OtherSectionsController;
+use App\Http\Controllers\backend\sections\other_sections\AboutController;
+use App\Http\Controllers\backend\sections\other_sections\ContactController;
+use App\Http\Controllers\backend\sections\other_sections\ProcessController;
+use App\Http\Controllers\backend\sections\other_sections\TalkController;
 use App\Http\Controllers\backend\sections\TeamController;
-use App\Http\Controllers\backend\sections\TestimonailController;
+use App\Http\Controllers\backend\sections\TestimonialController;
 
 
 /****** frontend *****/
@@ -59,29 +59,15 @@ Route::get('/sections/sections/slider/edit/{id}',[SliderController::class,'edit'
 Route::POST('/sections/slider/update/{id}',[SliderController::class,'update'])->name('slider.update');
 Route::get('/sections/slider/{id}',[SliderController::class,'delete'])->name('slider.delete');
 
-    /****** about *****/
+    /****** other section *****/
 
-Route::get('/sections/about',[AboutController::class,'index'])->name('about.index');
-Route::POST('/sections/about/update',[AboutController::class,'update'])->name('about.update');
+Route::get('/sections/other-sections',[OtherSectionsController::class,'index'])->name('other_sections.index');
+Route::POST('/sections/other-sections/update',[OtherSectionsController::class,'update'])->name('other_sections.update');
 
-    /****** contact *****/
+  /****** other section *****/
 
-Route::get('/sections/contact',[ContactController::class,'index'])->name('contact.index');
-Route::POST('/sections/contact/update',[ContactController::class,'update'])->name('contact.update');
-
-    /****** process *****/
-
-Route::get('/sections/process',[ProcessController::class,'index'])->name('process.index');
-Route::POST('/sections/process/update',[ProcessController::class,'update'])->name('process.update');
-
-    /****** service offer *****/
-
-
-
-    /****** talk *****/
-
-Route::get('/sections/talk',[TalkController::class,'index'])->name('talk.index');
-Route::POST('/sections/talk/update',[TalkController::class,'update'])->name('talk.update');
+  Route::get('/sections/other-sections/about/edit',[AboutController::class,'edit'])->name('about.edit');
+  Route::POST('/sections/other-sections/about/update',[AboutController::class,'update'])->name('about.update');
 
     /****** team *****/
 
@@ -94,12 +80,12 @@ Route::get('/sections/team/{id}',[TeamController::class,'delete'])->name('team.d
 
     /****** testimonial *****/
 
-Route::get('/sections/testimonial',[TestimonailController::class,'index'])->name('testimonial.index');
-Route::get('/sections/testimonial/create',[TestimonailController::class,'create'])->name('testimonial.create');
-Route::POST('/sections/testimonial/index',[TestimonailController::class,'store'])->name('testimonial.store');
-Route::get('/sections/testimonial/edit/{id}',[TestimonailController::class,'edit'])->name('testimonial.edit');
-Route::POST('/sections/testimonial/update/{id}',[TestimonailController::class,'update'])->name('testimonial.update');
-Route::get('/sections/testimonial/{id}',[TestimonailController::class,'delete'])->name('testimonial.delete');
+Route::get('/sections/testimonial',[TestimonialController::class,'index'])->name('testimonial.index');
+Route::get('/sections/testimonial/create',[TestimonialController::class,'create'])->name('testimonial.create');
+Route::POST('/sections/testimonial/index',[TestimonialController::class,'store'])->name('testimonial.store');
+Route::get('/sections/testimonial/edit/{id}',[TestimonialController::class,'edit'])->name('testimonial.edit');
+Route::POST('/sections/testimonial/update/{id}',[TestimonialController::class,'update'])->name('testimonial.update');
+Route::get('/sections/testimonial/{id}',[TestimonialController::class,'delete'])->name('testimonial.delete');
 
 
 /****** for user *****/

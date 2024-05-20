@@ -1,16 +1,15 @@
-    <!-- plugins:js -->
-    <script src="{{asset('backend/vendors/js/vendor.bundle.base.js')}}"></script>
-    <!-- endinject -->
-    <!-- Plugin js for this page -->
-    <script src="{{asset('backend/vendors/chart.js/Chart.min.js')}}"></script>
-    <script src="{{asset('backend/vendors/jquery-circle-progress/js/circle-progress.min.js')}}"></script>
-    <!-- End plugin js for this page -->
-    <!-- inject:js -->
-    <script src="{{asset('backend/js/off-canvas.js')}}"></script>
-    <script src="{{asset('backend/js/hoverable-collapse.js')}}"></script>
-    <script src="{{asset('backend/js/misc.js')}}"></script>
-    <!-- endinject -->
-    <script src="{{asset('backend/js/file-upload.js')}}"></script>
-    <!-- Custom js for this page -->
-    <script src="{{asset('backend/js/dashboard.js')}}"></script>
-    <!-- End custom js for this page -->
+<script src="{{asset('backend/js/jquery-3.6.0.min.js')}}"></script>
+
+<script src="{{asset('backend/js/feather.min.js')}}"></script>
+
+<script src="{{asset('backend/js/jquery.slimscroll.min.js')}}"></script>
+
+<script src="{{asset('backend/js/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('backend/js/dataTables.bootstrap4.min.js')}}"></script>
+
+<script src="{{asset('backend/js/bootstrap.bundle.min.js')}}"></script>
+
+<script src="{{asset('backend/plugins/apexchart/apexcharts.min.js')}}"></script>
+<script src="{{asset('backend/plugins/apexchart/chart-data.js')}}"></script>
+
+<script src="{{asset('backend/js/script.js')}}"></script>

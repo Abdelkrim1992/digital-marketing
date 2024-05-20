@@ -1,3 +1,4 @@
+<?php $testimonial= App\Models\Section\Testimonial::find(1); ?>
       <!-- Testimonial area start here -->
       <section class="testimonial-area">
         <div class="container">
@@ -10,25 +11,21 @@
                     data-wow-delay="00ms"
                     data-wow-duration="1000ms"
                   >
-                    Clients Testimonial
+                    {{$testimonial->main_title}}
                   </h5>
                   <h2
                     class="wow fadeInUp"
                     data-wow-delay="200ms"
                     data-wow-duration="1000ms"
                   >
-                    Client’s <span>speeches</span> <br />
-                    about marketi
+                    {{$testimonial->big_title}} <span>{{$setting->site_name}}</span>
                   </h2>
                   <p
                     class="wow fadeInUp"
                     data-wow-delay="400ms"
                     data-wow-duration="1000ms"
                   >
-                    Our clients share their experiences with Marketi, expressing
-                    how our digital marketing expertise has not only met but
-                    exceeded their expectations, fostering success and growth
-                    for their businesses.
+                    {{$testimonial->main_text}}
                   </p>
                 </div>
                 <a
@@ -36,18 +33,11 @@
                   class="btn-one mt-30 wow fadeInUp"
                   data-wow-delay="600ms"
                   data-wow-duration="1000ms"
-                  >Try it Now<i
+                  >{{$testimonial->button_text}}<i
                     class="fa-regular fa-circle-arrow-right ml-10"
                   ></i
                 ></a>
-                <div
-                  class="testimonial-user d-flex gap-2 flex-wrap pt-30 bor-top mt-30 wow fadeInDown"
-                  data-wow-delay="300ms"
-                  data-wow-duration="1000ms"
-                >
-                  <img src="{{asset('frontend/images/testimonial/user.png')}}" alt="" />
-                  <p>Satisfied clients of Marketi</p>
-                </div>
+                
               </div>
             </div>
             <div
