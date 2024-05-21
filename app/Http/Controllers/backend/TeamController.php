@@ -1,12 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\backend\sections;
+namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Section\Team;
-use Illuminate\Support\Str;
-
+use App\Models\Team;
 
 class TeamController extends Controller
 {
@@ -43,8 +41,8 @@ class TeamController extends Controller
         $Data->member_image= $request->member_image;
         $Data->member_name= $request->member_name;
         $Data->member_speciality= $request->member_speciality;
-        $Data->member_facebook= $request->member_facebook;
-        $Data->member_instagram= $request->member_instagram;
+        $Data->facebook= $request->facebook;
+        $Data->instagram= $request->instagram;
 
         if($request->hasFile('member_image')){
             $file= $request->file('member_image');
@@ -97,8 +95,8 @@ class TeamController extends Controller
         $team->member_image= $request->member_image;
         $team->member_name= $request->member_name;
         $team->member_speciality= $request->member_speciality;
-        $Data->member_facebook= $request->member_facebook;
-        $Data->member_instagram= $request->member_instagram;
+        $team->facebook= $request->facebook;
+        $team->instagram= $request->instagram;
 
         if($request->hasFile('member_image')){
             $file= $request->file('member_image');

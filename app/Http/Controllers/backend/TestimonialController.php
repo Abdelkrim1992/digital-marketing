@@ -1,12 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\backend\sections;
+namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Section\Testimonial;
-use Illuminate\Support\Str;
-
+use App\Models\Testimonial;
 
 class TestimonialController extends Controller
 {
@@ -40,10 +38,10 @@ class TestimonialController extends Controller
     public function store(Request $request)
     {
         $Data= new Testimonial();
-        $Data->main_text= $request->main_text;
-        $Data->client_name= $request->client_name;
-        $Data->client_service= $request->client_service;
         $Data->client_image= $request->client_image;
+        $Data->client_name= $request->client_name;
+        $Data->main_text= $request->main_text;
+        $Data->client_service= $request->client_service;
 
         if($request->hasFile('client_image')){
             $file= $request->file('client_image');
@@ -53,7 +51,7 @@ class TestimonialController extends Controller
             $destination_path= public_path().'/frontend/img/testimonial';
             $request->file('client_image')->move($destination_path,$file_name);
 
-            $Data->client_image = $file_name;
+            $Data->member_image = $file_name;
         }
 
         $Data->save();
@@ -93,10 +91,10 @@ class TestimonialController extends Controller
     public function update(Request $request, $id)
     {
         $testimonial= Testimonial::find($id);
-        $testimonial->main_text = $request->main_text;
-        $testimonial->client_name = $request->client_name;
-        $testimonial->client_service = $request->client_service;
         $testimonial->client_image= $request->client_image;
+        $testimonial->client_name= $request->client_name;
+        $testimonial->main_text= $request->main_text;
+        $testimonial->client_service= $request->client_service;
 
         if($request->hasFile('client_image')){
             $file= $request->file('client_image');

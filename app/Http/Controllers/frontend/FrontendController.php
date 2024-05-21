@@ -5,7 +5,6 @@ namespace App\Http\Controllers\frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Setting;
-use App\Models\Slider;
 
 class FrontendController extends Controller
 {
@@ -17,8 +16,7 @@ class FrontendController extends Controller
     public function index()
     {
         $setting= Setting::findOrFail(1);
-        $slider= Slider::all();
-        return view('frontend.layouts.master',compact('setting','slider'));
+        return view('frontend.layouts.master',compact('setting'));
     }
 
     /**

@@ -111,53 +111,6 @@
             </div>
           </div>
         </div>
-
-        <div class="card mb-0">
-          <div class="card-body">
-            <h4 class="card-title">Expired Products</h4>
-            <div class="table-responsive dataview">
-              <table class="table datatable ">
-                <thead>
-                  <tr>
-                    <th>SNo</th>
-                    <th>Product Code</th>
-                    <th>Product Name</th>
-                    <th>Brand Name</th>
-                    <th>Category Name</th>
-                    <th>Expiry Date</th>
-                  </tr>
-                </thead>
-              <tbody>
-                <tr>
-                    <td>1</td>
-                    <td><a href="javascript:void(0);">IT0001</a></td>
-                    <td class="productimgname">
-                      <a class="product-img" href="productlist.html">
-                        <img src="{{asset('backend/img/product/product2.jpg')}}" alt="product">
-                      </a>
-                      <a href="productlist.html">Orange</a>
-                    </td>
-                    <td>N/D</td>
-                    <td>Fruits</td>
-                    <td>12-12-2022</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td><a href="javascript:void(0);">IT0001</a></td>
-                    <td class="productimgname">
-                      <a class="product-img" href="productlist.html">
-                        <img src="{{asset('backend/img/product/product2.jpg')}}" alt="product">
-                      </a>
-                      <a href="productlist.html">Orange</a>
-                    </td>
-                    <td>N/D</td>
-                    <td>Fruits</td>
-                    <td>12-12-2022</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
       </div>
     </div>
   </div>

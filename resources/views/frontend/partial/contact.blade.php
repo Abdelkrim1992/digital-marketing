@@ -1,4 +1,4 @@
-<?php $contact= App\Models\Section\Contact::find(1); ?>
+
     <!-- Contact area start here -->
         <section class="contact-area pt-120 pb-120">
             <div class="container">

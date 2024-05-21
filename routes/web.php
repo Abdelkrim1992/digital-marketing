@@ -6,15 +6,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\backend\BackendController;
 use App\Http\Controllers\backend\SettingController;
-
-use App\Http\Controllers\backend\sections\SliderController;
-use App\Http\Controllers\backend\sections\OtherSectionsController;
-use App\Http\Controllers\backend\sections\other_sections\AboutController;
-use App\Http\Controllers\backend\sections\other_sections\ContactController;
-use App\Http\Controllers\backend\sections\other_sections\ProcessController;
-use App\Http\Controllers\backend\sections\other_sections\TalkController;
-use App\Http\Controllers\backend\sections\TeamController;
-use App\Http\Controllers\backend\sections\TestimonialController;
+use App\Http\Controllers\backend\TeamController;
+use App\Http\Controllers\backend\TestimonialController;
 
 
 /****** frontend *****/
@@ -50,42 +43,23 @@ Route::get('/dashboard',[BackendController::class,'index'])->name('backend.index
 Route::get('/setting',[SettingController::class,'index'])->name('setting.index');
 Route::POST('/setting/update',[SettingController::class,'update'])->name('setting.update');
 
-    /****** slider *****/
+   /****** team *****/
 
-Route::get('/sections/slider',[SliderController::class,'index'])->name('slider.index');
-Route::get('/sections/slider/create',[SliderController::class,'create'])->name('slider.create');
-Route::POST('/sections/slider/index',[SliderController::class,'store'])->name('slider.store');
-Route::get('/sections/sections/slider/edit/{id}',[SliderController::class,'edit'])->name('slider.edit');
-Route::POST('/sections/slider/update/{id}',[SliderController::class,'update'])->name('slider.update');
-Route::get('/sections/slider/{id}',[SliderController::class,'delete'])->name('slider.delete');
-
-    /****** other section *****/
-
-Route::get('/sections/other-sections',[OtherSectionsController::class,'index'])->name('other_sections.index');
-Route::POST('/sections/other-sections/update',[OtherSectionsController::class,'update'])->name('other_sections.update');
-
-  /****** other section *****/
-
-  Route::get('/sections/other-sections/about/edit',[AboutController::class,'edit'])->name('about.edit');
-  Route::POST('/sections/other-sections/about/update',[AboutController::class,'update'])->name('about.update');
-
-    /****** team *****/
-
-Route::get('/sections/team',[TeamController::class,'index'])->name('team.index');
-Route::get('/sections/team/create',[TeamController::class,'create'])->name('team.create');
-Route::POST('/sections/team/index',[TeamController::class,'store'])->name('team.store');
-Route::get('/sections/team/edit/{id}',[TeamController::class,'edit'])->name('team.edit');
-Route::POST('/sections/team/update/{id}',[TeamController::class,'update'])->name('team.update');
-Route::get('/sections/team/{id}',[TeamController::class,'delete'])->name('team.delete');
+Route::get('/team/index',[TeamController::class,'index'])->name('team.index');
+Route::get('/team/create',[TeamController::class,'create'])->name('team.create');
+Route::POST('/team/index',[TeamController::class,'store'])->name('team.store');
+Route::get('/team/edit/{id}',[TeamController::class,'edit'])->name('team.edit');
+Route::POST('/team/update/{id}',[TeamController::class,'update'])->name('team.update');
+Route::get('/team/{id}',[TeamController::class,'delete'])->name('team.delete');
 
     /****** testimonial *****/
 
-Route::get('/sections/testimonial',[TestimonialController::class,'index'])->name('testimonial.index');
-Route::get('/sections/testimonial/create',[TestimonialController::class,'create'])->name('testimonial.create');
-Route::POST('/sections/testimonial/index',[TestimonialController::class,'store'])->name('testimonial.store');
-Route::get('/sections/testimonial/edit/{id}',[TestimonialController::class,'edit'])->name('testimonial.edit');
-Route::POST('/sections/testimonial/update/{id}',[TestimonialController::class,'update'])->name('testimonial.update');
-Route::get('/sections/testimonial/{id}',[TestimonialController::class,'delete'])->name('testimonial.delete');
+Route::get('/testimonial/index',[TestimonialController::class,'index'])->name('testimonial.index');
+Route::get('/testimonial/create',[TestimonialController::class,'create'])->name('testimonial.create');
+Route::POST('/testimonial/index',[TestimonialController::class,'store'])->name('testimonial.store');
+Route::get('/testimonial/edit/{id}',[TestimonialController::class,'edit'])->name('testimonial.edit');
+Route::POST('/testimonial/update/{id}',[TestimonialController::class,'update'])->name('testimonial.update');
+Route::get('/testimonial/{id}',[TestimonialController::class,'delete'])->name('testimonial.delete');
 
 
 /****** for user *****/

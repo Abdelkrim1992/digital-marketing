@@ -1,81 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
+<head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Connect Plus</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <meta name="description" content="POS - Bootstrap Admin Template">
+    <meta name="keywords" content="admin, estimates, bootstrap, business, corporate, creative, invoice, html5, responsive, Projects">
+    <meta name="author" content="Dreamguys - Bootstrap Admin Template">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Dreams Pos admin template</title>
 
     @include('backend.scripts.css_scripts')
 
-  </head>
-  <body>
-    <div class="container-scroller">
-      <!-- partial:../../partials/_navbar.html -->
-      @include('backend.partial.header')
-      <!-- partial -->
-      <div class="container-fluid page-body-wrapper">
-        <!-- partial:../../partials/_sidebar.html -->
-        @include('backend.partial.sidebar')
-        <!-- partial -->
-        <div class="main-panel">
-          <div class="content-wrapper">
-              <div class="col-12 grid-margin stretch-card">
-                <div class="card">
-                  <div class="card-body">
-                    <h4 class="card-title">Slider Informations</h4>
-                    <form class="forms-sample" method="POST" action="{{route('team.update',$editData->id)}}" enctype="multipart/form-data"> @csrf
-                      <div class="form-group ">
-                        <label for="HeadingText" >Member Name</label>
-                        <input type="text" class="form-control" id="HeadingText_id" name="member_name" value="{{$editData->member_name}}" >
-                      </div>
-                      <div class="form-group">
-                        <label for="SmallText">Member Speciality</label>
-                        <input type="text" class="form-control" id="SmallText_id" name="member_speciality" value="{{$editData->member_speciality}}" >
-                      </div>
-                      <div class="form-group">
-                        <label for="SmallText">Facebook of the member</label>
-                        <input type="text" class="form-control" id="ButtonText_id" name="member_facebook" value="{{$editData->member_facebook}}" >
-                      </div>
-                      <div class="form-group">
-                        <label for="SmallText">Instagram of the member</label>
-                        <input type="text" class="form-control" id="ButtonText_id" name="member_instagram" value="{{$editData->member_instagram}}" >
-                      </div>
-                      <div class="form-group">
-                        <label for="SmallText">Current Image</label>
-                        <div class="col-sm-8 mt-2">
-                          <img src="{{'/frontend/img/team/'.$editData->member_image}}" width="100 px">
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label>Member Image</label>
-                        <input type="file" name="member_image" class="file-upload-default">
-                        <div class="input-group col-xs-12">
-                          <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
-                          <span class="input-group-append">
-                            <button class="file-upload-browse btn btn-primary" type="button">Upload Slider</button>
-                          </span>
-                        </div>
-                      </div>
-                      <button type="submit" class="btn btn-primary mr-2">Save</button>
-                      <button class="btn btn-light">Cancel</button>
-                    </form>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- content-wrapper ends -->
-          <!-- partial:../../partials/_footer.html -->
-          @include('backend.partial.footer')
-          <!-- partial -->
-        </div>
-        <!-- main-panel ends -->
-      </div>
-      <!-- page-body-wrapper ends -->
+</head>
+<body>
+    <div id="global-loader">
+        <div class="whirly-loader"></div>
     </div>
-    <!-- container-scroller -->
-    
-    @include('backend.scripts.js_scripts')
+    <div class="main-wrapper">
 
-  </body>
+        @include('backend.partial.header')
+        @include('backend.partial.sidebar')
+
+        <div class="page-wrapper">
+            <div class="content">
+                <div class="page-header">
+                    <div class="page-title">
+                        <h4>Edit Team Member</h4>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                      <form method="POST" action="{{route('team.update',$editData->id)}}" enctype="multipart/form-data"> @csrf
+                        <div class="row" >
+                            <div class="col-lg-3 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label>Member Name <span class="manitory">*</span></label>
+                                    <input type="text" placeholder="Enter Member Name" name="member_name" value="{{$editData->member_name}}">
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label>Member Speciality <span class="manitory">*</span></label>
+                                    <input type="text" placeholder="Enter Member Speciality" name="member_speciality" value="{{$editData->member_speciality}}">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-sm-12">
+                                <div class="form-group">
+                                    <label>Instagram<span class="manitory">*</span></label>
+                                    <input type="text" placeholder="Enter Instagram" name="instagram" value="{{$editData->instagram}}">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-sm-12">
+                                <div class="form-group">
+                                    <label>Facebook<span class="manitory">*</span></label>
+                                    <input type="text" placeholder="Enter Facebook" name="facebook" value="{{$editData->facebook}}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                              <label for="SmallText">Current Member Photo</label>
+                              <div class="col-sm-8 mt-2">
+                                <img src="{{'/frontend/img/team/'.$editData->member_image}}" width="100 px">
+                              </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label>Member Photo</label>
+                                    <div class="image-upload">
+                                        <input type="file">
+                                        <div class="image-uploads" name="member_image">
+                                            <img src="{{asset('backend/img/icons/upload.svg')}}" alt="member_image">
+                                            <h4>Drag and drop a file to upload</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <button type="submit" class="btn btn-submit me-2">Submit</button>
+                                    <button href="{{route('team.index')}}" class="btn btn-cancel">Cancel</button>
+                                </div>
+                            </div>    
+                        </div>
+                      </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @include('backend.scripts.js_scripts')
+</body>
 </html>
