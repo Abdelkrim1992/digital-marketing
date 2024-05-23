@@ -16,3 +16,12 @@
     <link rel="stylesheet" href="{{asset('frontend/css/nice-select.css')}}" />
     <!-- Style css -->
     <link rel="stylesheet" href="{{asset('frontend/css/style.css')}}" />
+
+    <style>
+      .profile-image {
+        width: 90px;  /* Set the desired width */
+        height: 90px; /* Set the desired height */
+        border-radius: 50%;  /* Make the image circular */
+        object-fit: cover;  /* Ensure the image covers the entire area */
+      }
+    </style>

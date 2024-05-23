@@ -1,15 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-    <meta name="description" content="POS - Bootstrap Admin Template">
-    <meta name="keywords" content="admin, estimates, bootstrap, business, corporate, creative, invoice, html5, responsive, Projects">
-    <meta name="author" content="Dreamguys - Bootstrap Admin Template">
-    <meta name="robots" content="noindex, nofollow">
-    <title>Dreams Pos admin template</title>
-
     @include('backend.scripts.css_scripts')
+    
+    <title>Team Management</title>
 
 </head>
 <body>
@@ -41,10 +35,10 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Memeber Photo</th>
+                                        <th>Member Photo</th>
                                         <th>Member Name</th>
                                         <th>Member Speciality</th>
-                                        <th>Action</th>
+                                        <th>Edit Or Delete</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -52,15 +46,15 @@
                                     <tr>
                                         <td>{{$key+1}}</td>
                                         <td>
-                                          <img src="{{asset('backend/img/icons/'.$row->member_image)}}" alt="img">
+                                          <img src="{{asset('frontend/img/team/'.$row->member_image)}}" class="profile-image" alt="member_image">
                                         </td>
                                         <td>{{$row->member_name}}</td>
-                                        <td>{{$row->member_scpeciality}}</td>
+                                        <td>{{$row->member_speciality}}</td>
                                         <td>
                                             <a class="me-3" href="{{route('team.edit',$row->id)}}">
                                                 <img src="{{asset('backend/img/icons/edit.svg')}}" alt="img">
                                             </a>
-                                            <a class="confirm-text" href="{{route('team.delete')}}">
+                                            <a class="confirm-text" href="{{route('team.delete',$row->id)}}">
                                                 <img src="{{asset('backend/img/icons/delete.svg')}}" alt="img">
                                             </a>
                                         </td>

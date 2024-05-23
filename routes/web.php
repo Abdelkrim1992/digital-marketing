@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\backend\BackendController;
 use App\Http\Controllers\backend\SettingController;
+use App\Http\Controllers\backend\ServiceManagementController;
 use App\Http\Controllers\backend\TeamController;
 use App\Http\Controllers\backend\TestimonialController;
 
@@ -40,31 +41,40 @@ Route::get('/dashboard',[BackendController::class,'index'])->name('backend.index
 
    /****** setting *****/
 
-Route::get('/setting',[SettingController::class,'index'])->name('setting.index');
-Route::POST('/setting/update',[SettingController::class,'update'])->name('setting.update');
+Route::get('/admin/setting',[SettingController::class,'index'])->name('setting.index');
+Route::POST('/admin/setting/update',[SettingController::class,'update'])->name('setting.update');
 
+   /****** service *****/
+
+   Route::get('/admin/service/index',[ServiceManagementController::class,'index'])->name('service.index');
+   Route::get('/admin/service/create',[ServiceManagementController::class,'create'])->name('service.create');
+   Route::POST('/admin/service/index',[ServiceManagementController::class,'store'])->name('service.store');
+   Route::get('/admin/service/edit/{id}',[ServiceManagementController::class,'edit'])->name('service.edit');
+   Route::POST('/admin/service/update/{id}',[ServiceManagementController::class,'update'])->name('service.update');
+   Route::get('/admin/service/{id}',[ServiceManagementController::class,'delete'])->name('service.delete');
+   
    /****** team *****/
 
-Route::get('/team/index',[TeamController::class,'index'])->name('team.index');
-Route::get('/team/create',[TeamController::class,'create'])->name('team.create');
-Route::POST('/team/index',[TeamController::class,'store'])->name('team.store');
-Route::get('/team/edit/{id}',[TeamController::class,'edit'])->name('team.edit');
-Route::POST('/team/update/{id}',[TeamController::class,'update'])->name('team.update');
-Route::get('/team/{id}',[TeamController::class,'delete'])->name('team.delete');
+Route::get('/admin/team/index',[TeamController::class,'index'])->name('team.index');
+Route::get('/admin/team/create',[TeamController::class,'create'])->name('team.create');
+Route::POST('/admin/team/index',[TeamController::class,'store'])->name('team.store');
+Route::get('/admin/team/edit/{id}',[TeamController::class,'edit'])->name('team.edit');
+Route::POST('/admin/team/update/{id}',[TeamController::class,'update'])->name('team.update');
+Route::get('/admin/team/{id}',[TeamController::class,'delete'])->name('team.delete');
 
     /****** testimonial *****/
 
-Route::get('/testimonial/index',[TestimonialController::class,'index'])->name('testimonial.index');
-Route::get('/testimonial/create',[TestimonialController::class,'create'])->name('testimonial.create');
-Route::POST('/testimonial/index',[TestimonialController::class,'store'])->name('testimonial.store');
-Route::get('/testimonial/edit/{id}',[TestimonialController::class,'edit'])->name('testimonial.edit');
-Route::POST('/testimonial/update/{id}',[TestimonialController::class,'update'])->name('testimonial.update');
-Route::get('/testimonial/{id}',[TestimonialController::class,'delete'])->name('testimonial.delete');
+Route::get('/admin/testimonial/index',[TestimonialController::class,'index'])->name('testimonial.index');
+Route::get('/admin/testimonial/create',[TestimonialController::class,'create'])->name('testimonial.create');
+Route::POST('/admin/testimonial/index',[TestimonialController::class,'store'])->name('testimonial.store');
+Route::get('/admin/testimonial/edit/{id}',[TestimonialController::class,'edit'])->name('testimonial.edit');
+Route::POST('/admin/testimonial/update/{id}',[TestimonialController::class,'update'])->name('testimonial.update');
+Route::get('/admin/testimonial/{id}',[TestimonialController::class,'delete'])->name('testimonial.delete');
 
 
 /****** for user *****/
 
-Route::get('/dashboard',[HomeController::class,'index'])->name('dashboard');
+Route::get('/admin/dashboard',[HomeController::class,'index'])->name('dashboard');
 
 /****** for admin *****/
 

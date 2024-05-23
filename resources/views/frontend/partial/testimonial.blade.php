@@ -1,6 +1,5 @@
-<?php $testimonial= App\Models\Section\Testimonial::find(1); ?>
       <!-- Testimonial area start here -->
-      <section class="testimonial-area">
+      <section class="testimonial-area mb-5">
         <div class="container">
           <div class="row g-4">
             <div class="col-lg-6">
@@ -11,21 +10,25 @@
                     data-wow-delay="00ms"
                     data-wow-duration="1000ms"
                   >
-                    {{$testimonial->main_title}}
+                    Clients Testimonial
                   </h5>
                   <h2
                     class="wow fadeInUp"
                     data-wow-delay="200ms"
                     data-wow-duration="1000ms"
                   >
-                    {{$testimonial->big_title}} <span>{{$setting->site_name}}</span>
+                    Client’s <span>speeches</span> <br />
+                    about marketi
                   </h2>
                   <p
                     class="wow fadeInUp"
                     data-wow-delay="400ms"
                     data-wow-duration="1000ms"
                   >
-                    {{$testimonial->main_text}}
+                    Our clients share their experiences with Marketi, expressing
+                    how our digital marketing expertise has not only met but
+                    exceeded their expectations, fostering success and growth
+                    for their businesses.
                   </p>
                 </div>
                 <a
@@ -33,38 +36,31 @@
                   class="btn-one mt-30 wow fadeInUp"
                   data-wow-delay="600ms"
                   data-wow-duration="1000ms"
-                  >{{$testimonial->button_text}}<i
+                  >Try it Now<i
                     class="fa-regular fa-circle-arrow-right ml-10"
                   ></i
                 ></a>
-                
               </div>
             </div>
-            <div
-              class="col-lg-6 wow fadeInLeft"
-              data-wow-delay="300ms"
-              data-wow-duration="1000ms"
-            >
-              <div class="swiper testimonial__slider">
-                <div class="swiper-wrapper">
-                  <div class="swiper-slide">
-                    <div class="testimonial__right-item">
+            <div class="col-lg-6 wow fadeInLeft " data-wow-delay="300ms"data-wow-duration="1000ms">
+            
+              <div class="swiper testimonial__slider ">
+                <div class="swiper-wrapper  ">
+                  <div class="swiper-slide ">
+                  @foreach($testimonial as $key=>$row)  
+                    <div class="testimonial__right-item @if($key+1==1) @endif">
                       <p>
-                        "Working with Marketi has been a right and good
-                        investment for our business. And Their targeted
-                        campaigns and data-driven approach have not only
-                        increased our ROI but also provide valuable insights for
-                        future growth."
+                        "{{$row->main_text}}"
                       </p>
                       <div class="testimonial-info">
                         <div class="d-flex align-items-center gap-4">
                           <img
-                            src="{{asset('frontend/images/testimonial/testimonial-image1.png')}}"
-                            alt="image"
+                            src="{{asset('frontend/img/testimonial/'.$row->client_image)}}"
+                            alt="client_image" class="profile-image"
                           />
                           <div class="testimonial-admin">
-                            <h4>Kawser Ahmed</h4>
-                            <span>Chief Executive Officer</span>
+                            <h4>{{$row->client_name}}</h4>
+                            <span>{{$row->client_service}}</span>
                           </div>
                         </div>
                         <div class="star d-flex gap-2">
@@ -76,100 +72,13 @@
                         </div>
                       </div>
                     </div>
+                  @endforeach  
                   </div>
-                  <div class="swiper-slide">
-                    <div class="testimonial__right-item">
-                      <p>
-                        "Working with Marketi has been a right and good
-                        investment for our business. And Their targeted
-                        campaigns and data-driven approach have not only
-                        increased our ROI but also provide valuable insights for
-                        future growth."
-                      </p>
-                      <div class="testimonial-info">
-                        <div class="d-flex align-items-center gap-4">
-                          <img
-                            src="{{asset('frontend/images/testimonial/testimonial-image2.png')}}"
-                            alt="image"
-                          />
-                          <div class="testimonial-admin">
-                            <h4>Suborna Tarchera</h4>
-                            <span>Web Designer</span>
-                          </div>
-                        </div>
-                        <div class="star d-flex gap-2">
-                          <i class="fa-solid fa-star"></i>
-                          <i class="fa-solid fa-star"></i>
-                          <i class="fa-solid fa-star"></i>
-                          <i class="fa-solid fa-star"></i>
-                          <i class="fa-solid fa-star"></i>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="swiper-slide">
-                    <div class="testimonial__right-item">
-                      <p>
-                        "Working with Marketi has been a right and good
-                        investment for our business. And Their targeted
-                        campaigns and data-driven approach have not only
-                        increased our ROI but also provide valuable insights for
-                        future growth."
-                      </p>
-                      <div class="testimonial-info">
-                        <div class="d-flex align-items-center gap-4">
-                          <img
-                            src="{{asset('frontend/images/testimonial/testimonial-image3.png')}}"
-                            alt="image"
-                          />
-                          <div class="testimonial-admin">
-                            <h4>Alex Pranto</h4>
-                            <span>Software Engineer</span>
-                          </div>
-                        </div>
-                        <div class="star d-flex gap-2">
-                          <i class="fa-solid fa-star"></i>
-                          <i class="fa-solid fa-star"></i>
-                          <i class="fa-solid fa-star"></i>
-                          <i class="fa-solid fa-star"></i>
-                          <i class="fa-solid fa-star"></i>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="swiper-slide">
-                    <div class="testimonial__right-item">
-                      <p>
-                        "Working with Marketi has been a right and good
-                        investment for our business. And Their targeted
-                        campaigns and data-driven approach have not only
-                        increased our ROI but also provide valuable insights for
-                        future growth."
-                      </p>
-                      <div class="testimonial-info">
-                        <div class="d-flex align-items-center gap-4">
-                          <img
-                            src="{{asset('frontend/images/testimonial/testimonial-image4.png')}}"
-                            alt="image"
-                          />
-                          <div class="testimonial-admin">
-                            <h4>Mahmod Arif</h4>
-                            <span>Product Manager</span>
-                          </div>
-                        </div>
-                        <div class="star d-flex gap-2">
-                          <i class="fa-solid fa-star"></i>
-                          <i class="fa-solid fa-star"></i>
-                          <i class="fa-solid fa-star"></i>
-                          <i class="fa-solid fa-star"></i>
-                          <i class="fa-solid fa-star"></i>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  
                 </div>
-              </div>
-              <div class="swiper__info mt-4">
+                
+            </div>
+            <div class="swiper__info mt-4">
                 <button class="testimonial__arry-prev">
                   <i class="fa-regular fa-arrow-left-long"></i>
                 </button>

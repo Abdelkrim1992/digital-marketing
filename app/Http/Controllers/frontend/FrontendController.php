@@ -5,6 +5,8 @@ namespace App\Http\Controllers\frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Setting;
+use App\Models\Team;
+use App\Models\Testimonial;
 
 class FrontendController extends Controller
 {
@@ -16,7 +18,9 @@ class FrontendController extends Controller
     public function index()
     {
         $setting= Setting::findOrFail(1);
-        return view('frontend.layouts.master',compact('setting'));
+        $team= Team::all();
+        $testimonial= Testimonial::all();
+        return view('frontend.layouts.master',compact('setting','team','testimonial'));
     }
 
     /**

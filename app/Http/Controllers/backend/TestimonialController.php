@@ -4,6 +4,7 @@ namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use App\Models\Testimonial;
 
 class TestimonialController extends Controller
@@ -51,7 +52,7 @@ class TestimonialController extends Controller
             $destination_path= public_path().'/frontend/img/testimonial';
             $request->file('client_image')->move($destination_path,$file_name);
 
-            $Data->member_image = $file_name;
+            $Data->client_image = $file_name;
         }
 
         $Data->save();
@@ -77,7 +78,7 @@ class TestimonialController extends Controller
      */
     public function edit($id)
     {
-        $editData= Testimonial::find($id);
+        $editData= Testimonial::findOrFail($id);
         return view('backend.testimonial.edit',compact('editData'));
     }
 
@@ -90,7 +91,7 @@ class TestimonialController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $testimonial= Testimonial::find($id);
+        $testimonial= Testimonial::findOrFail($id);
         $testimonial->client_image= $request->client_image;
         $testimonial->client_name= $request->client_name;
         $testimonial->main_text= $request->main_text;
@@ -119,7 +120,7 @@ class TestimonialController extends Controller
      */
     public function delete($id)
     {
-        $deleteData = Testimonial::find($id);
+        $deleteData = Testimonial::findOrFail($id);
         $deleteData->delete();
         return redirect()->route('testimonial.index');
     }

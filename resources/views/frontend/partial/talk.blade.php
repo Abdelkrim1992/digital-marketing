@@ -1,7 +1,7 @@
       <!-- Talk area start here -->
       <section
-        class="talk-area pt-140 pb-140 primary-bg bg-image"
-        data-background="{{asset('frontend/images/bg/talk-bg.png')}}">
+        class="talk-area pt-140 pb-140 primary-bg bg-image mt-5"
+        data-background="{{asset('frontend/images/bg/talk-bg.png')}}" >
         <div class="container">
           <div class="row g-4">
             <div class="col-lg-7">

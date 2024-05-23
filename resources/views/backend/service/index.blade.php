@@ -19,11 +19,11 @@
             <div class="content">
                 <div class="page-header">
                     <div class="page-title">
-                        <h4>Testimonial List</h4>
-                        <h6>Manage your testimonials</h6>
+                        <h4>Service List</h4>
+                        <h6>Manage your services</h6>
                     </div>
                     <div class="page-btn">
-                        <a href="{{route('testimonial.create')}}" class="btn btn-added">
+                        <a href="{{route('service.create')}}" class="btn btn-added">
                             <img src="{{asset('backend/img/icons/plus.svg')}}" alt="img" class="me-1">Add New Service
                         </a>
                     </div>
@@ -35,11 +35,9 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Client Photo</th>
-                                        <th>Client Name</th>
-                                        <th>Client Service</th>
-                                        <th>Client Comment</th>
-                                        <th>Edit Or Delete</th>
+                                        <th>Service Icon</th>
+                                        <th>Service Title</th>
+                                        <th>Service Description</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -47,16 +45,16 @@
                                     <tr>
                                         <td>{{$key+1}}</td>
                                         <td>
-                                        <img src="{{asset('frontend/img/testimonial/'.$row->client_image)}}" alt="client_image" class="profile-image">
+                                        <img src="{{asset('frontend/img/service/'.$row->service_icon)}}" alt="service_icon" class="profile-image">
                                         </td>
-                                        <td>{{$row->client_name}}</td>
-                                        <td>{{$row->client_service}}</td>
+                                        <td>{{$row->service_title}}</td>
+                                        <td>{{$row->service_description}}</td>
                                         <td>{{$row->main_text}}</td>
                                         <td>
-                                            <a class="me-3" href="{{route('testimonial.edit',$row->id)}}">
+                                            <a class="me-3" href="{{route('service.edit',$row->id)}}">
                                                 <img src="{{asset('backend/img/icons/edit.svg')}}" alt="img">
                                             </a>
-                                            <a class="confirm-text" href="{{route('testimonial.delete',$row->id)}}">
+                                            <a class="confirm-text" href="{{route('service.delete',$row->id)}}">
                                                 <img src="{{asset('backend/img/icons/delete.svg')}}" alt="img">
                                             </a>
                                         </td>

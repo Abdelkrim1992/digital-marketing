@@ -87,7 +87,7 @@ class SettingController extends Controller
             $file_extension= $file->getClientOriginalExtension();
             $random_no= str::random(12);
             $file_name= $random_no.'.'.$file_extension;
-            $destination_path= public_path().'/frontend/img/clients';
+            $destination_path= public_path().'/frontend/img/logo';
             $request->file('logo')->move($destination_path,$file_name);
 
             $setting->logo = $file_name;

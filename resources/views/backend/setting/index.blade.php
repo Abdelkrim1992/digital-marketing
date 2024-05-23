@@ -1,14 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-    <meta name="description" content="POS - Bootstrap Admin Template">
-    <meta name="keywords" content="admin, estimates, bootstrap, business, corporate, creative, invoice, html5, responsive, Projects">
-    <meta name="author" content="Dreamguys - Bootstrap Admin Template">
-    <meta name="robots" content="noindex, nofollow">
-    <title>Dreams Pos admin template</title>
     @include('backend.scripts.css_scripts')
+    
+    <title>General Settings</title>
 </head>
 <body>
     <div id="global-loader">
@@ -68,9 +63,9 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label>Logo Image</label>
-                                    <div class="image-upload">
-                                        <input type="file">
-                                        <div class="image-uploads" name="logo">
+                                    <div class="image-upload" name="logo" alt="logo" file="logo" >
+                                        <input type="file" name="logo" >
+                                        <div class="image-uploads" name="logo" alt="logo" file="logo" >
                                             <img src="{{asset('backend/img/icons/upload.svg')}}" alt="img">
                                             <h4>Drag and drop a file to upload</h4>
                                         </div>

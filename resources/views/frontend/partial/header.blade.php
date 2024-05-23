@@ -30,7 +30,7 @@
       <div class="container">
         <div class="header__main">
           <a href="{{url('/')}}" class="logo logo-light" >
-            <img src="{{asset('frontend/img/clients/'.$setting->logo)}}" alt="logo" />
+            <img src="{{asset('frontend/img/logo/'.$setting->logo)}}" alt="logo" />
           </a>
           <div class="main-menu text-white">
             <nav>

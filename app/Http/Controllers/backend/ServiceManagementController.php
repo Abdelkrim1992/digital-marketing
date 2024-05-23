@@ -5,9 +5,10 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use App\Models\Team;
+use App\Models\Service;
 
-class TeamController extends Controller
+
+class ServiceManagementController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +17,8 @@ class TeamController extends Controller
      */
     public function index()
     {
-        $allData = Team::all();
-        return view('backend.team.index',compact('allData'));
+        $allData = Service::all();
+        return view('backend.service.index',compact('allData'));
     }
 
     /**
@@ -27,7 +28,7 @@ class TeamController extends Controller
      */
     public function create()
     {
-        return view('backend.team.create');
+        return view('backend.service.create');
     }
 
     /**
@@ -38,26 +39,25 @@ class TeamController extends Controller
      */
     public function store(Request $request)
     {
-        $Data= new Team();
-        $Data->member_image= $request->member_image;
-        $Data->member_name= $request->member_name;
-        $Data->member_speciality= $request->member_speciality;
-        $Data->facebook= $request->facebook;
-        $Data->instagram= $request->instagram;
+        $Data= new Service();
+        $Data->service_heading= $request->service_heading;
+        $Data->service_description= $request->service_description;
+        $Data->button_text= $request->button_text;
+        $Data->service_icon= $request->service_icon;
 
-        if($request->hasFile('member_image')){
-            $file= $request->file('member_image');
+        if($request->hasFile('service_icon')){
+            $file= $request->file('service_icon');
             $file_extension= $file->getClientOriginalExtension();
             $random_no= str::random(12);
             $file_name= $random_no.'.'.$file_extension;
-            $destination_path= public_path().'/frontend/img/team';
-            $request->file('member_image')->move($destination_path,$file_name);
+            $destination_path= public_path().'/frontend/img/service';
+            $request->file('service_icon')->move($destination_path,$file_name);
 
-            $Data->member_image = $file_name;
+            $Data->service_icon = $file_name;
         }
 
         $Data->save();
-        return redirect()->route('team.index');
+        return redirect()->route('service.index');
     }
 
     /**
@@ -79,8 +79,8 @@ class TeamController extends Controller
      */
     public function edit($id)
     {
-        $editData= Team::findOrFail($id);
-        return view('backend.team.edit',compact('editData'));
+        $editData= Service::findOrFail($id);
+        return view('backend.service.edit',compact('editData'));
     }
 
     /**
@@ -92,25 +92,24 @@ class TeamController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $team= Team::findOrFail($id);
-        $team->member_name= $request->member_name;
-        $team->member_speciality= $request->member_speciality;
-        $team->facebook= $request->facebook;
-        $team->instagram= $request->instagram;
-        $team->member_image= $request->member_image;
+        $service= Service::findOrFail($id);
+        $service->service_heading= $request->service_heading;
+        $service->service_description= $request->service_description;
+        $service->button_text= $request->button_text;
+        $service->service_icon= $request->service_icon;
 
-        if($request->hasFile('member_image')){
-            $file= $request->file('member_image');
+        if($request->hasFile('service_icon')){
+            $file= $request->file('service_icon');
             $file_extension= $file->getClientOriginalExtension();
             $random_no= str::random(12);
             $file_name= $random_no.'.'.$file_extension;
-            $destination_path= public_path().'/frontend/img/team';
-            $request->file('member_image')->move($destination_path,$file_name);
+            $destination_path= public_path().'/frontend/img/service';
+            $request->file('service_icon')->move($destination_path,$file_name);
 
-            $team->member_image = $file_name;
+            $service->service_icon = $file_name;
         }
-        $team->save();
-        return redirect()->route('team.index');
+        $service->save();
+        return redirect()->route('service.index');
 
     }
 
@@ -122,8 +121,8 @@ class TeamController extends Controller
      */
     public function delete($id)
     {
-        $deleteData = Team::findOrFail($id);
+        $deleteData = Service::findOrFail($id);
         $deleteData->delete();
-        return redirect()->route('team.index');
+        return redirect()->route('service.index');
     }
 }

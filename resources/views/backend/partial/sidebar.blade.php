@@ -8,8 +8,8 @@
                 <li class="submenu" >
                     <a href="javascript:void(0);"><img src="{{asset('backend/img/icons/product.svg')}}" alt="img"><span> Service Management</span> <span class="menu-arrow"></span></a>
                     <ul>
-                        <li><a href="productlist.html">Service List</a></li>
-                        <li><a href="addproduct.html">Add Service</a></li>
+                        <li><a href="{{route('service.index')}}">Service List</a></li>
+                        <li><a href="{{route('service.create')}}">Add Service</a></li>
                     </ul>
                 </li>
                 <li class="submenu">

@@ -2,15 +2,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-    <meta name="description" content="POS - Bootstrap Admin Template">
-    <meta name="keywords" content="admin, estimates, bootstrap, business, corporate, creative, invoice, html5, responsive, Projects">
-    <meta name="author" content="Dreamguys - Bootstrap Admin Template">
-    <meta name="robots" content="noindex, nofollow">
-    <title>Dreams Pos admin template</title>
-
     @include('backend.scripts.css_scripts')
+    
+    <title>Team Management</title>
 
 </head>
 <body>
@@ -36,33 +30,33 @@
                             <div class="col-lg-3 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label>Member Name <span class="manitory">*</span></label>
-                                    <input type="text" placeholder="Enter Member Name" name="member_name" >
+                                    <input type="text" placeholder="Enter Member Name" id="member_name" name="member_name" >
                                 </div>
                             </div>
                             <div class="col-lg-3 col-sm-6 col-12">
                                 <div class="form-group">
-                                    <label>Speciality <span class="manitory">*</span></label>
-                                    <input type="text" placeholder="Enter Member Speciality" name="member_speciality" >
+                                    <label>Member Speciality <span class="manitory">*</span></label>
+                                    <input type="text" placeholder="Enter Member Speciality" id="member_speciality" name="member_speciality" >
                                 </div>
                             </div>
                             <div class="col-lg-6 col-sm-12">
                                 <div class="form-group">
                                     <label>Instagram<span class="manitory">*</span></label>
-                                    <input type="text" placeholder="Enter Instagram" name="instagram" >
+                                    <input type="text" placeholder="Enter Instagram" id="instagram" name="instagram" >
                                 </div>
                             </div>
                             <div class="col-lg-6 col-sm-12">
                                 <div class="form-group">
                                     <label>Facebook<span class="manitory">*</span></label>
-                                    <input type="text" placeholder="Enter Facebook" name="facebook" >
+                                    <input type="text" placeholder="Enter Facebook" id="facebook" name="facebook" >
                                 </div>
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label>Member Photo</label>
-                                    <div class="image-upload">
-                                        <input type="file">
-                                        <div class="image-uploads" name="member_image">
+                                    <div for="member_image" class="image-upload" id="member_image" name="member_image">
+                                        <input type="file" name="member_image">
+                                        <div for="member_image" class="image-uploads" name="member_image">
                                             <img src="{{asset('backend/img/icons/upload.svg')}}" alt="img">
                                             <h4>Drag and drop a file to upload</h4>
                                         </div>
