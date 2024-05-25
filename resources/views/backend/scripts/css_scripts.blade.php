@@ -20,6 +20,8 @@
 <link rel="stylesheet" href="{{asset('backend/plugins/fontawesome/css/all.min.css')}}">
 
 <link rel="stylesheet" href="{{asset('backend/css/style.css')}}">
+<!-- Include Summernote CSS -->
+<link rel="stylesheet" href="{{asset('backend/plugins/summernote/summernote-bs4.min.css')}}">
 
 <style>
       .profile-image {
@@ -28,4 +30,11 @@
         border-radius: 50%;  /* Make the image circular */
         object-fit: cover;  /* Ensure the image covers the entire area */
       }
+</style>
+<style>
+ .short-description-column,
+ .short-description-column td {
+    width: 25%; /* Adjust the width as needed */
+ }
+
 </style>

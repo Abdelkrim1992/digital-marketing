@@ -25,3 +25,17 @@
         object-fit: cover;  /* Ensure the image covers the entire area */
       }
     </style>
+    <style>
+      .profile-service-image {
+        width: 50px;  /* Set the desired width */
+        height: 50px; /* Set the desired height */
+        border-radius: 50%;  /* Make the image circular */
+        object-fit: cover;  /* Ensure the image covers the entire area */
+      }
+    </style>
+    <style>
+        .product-description img {
+          border-radius: 15px;
+          max-width: 100%;
+        }
+    </style>

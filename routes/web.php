@@ -32,7 +32,7 @@ Route::get('/',[FrontendController::class,'index'])->name('frontend.index');
 Route::get('/about-us',[AboutUsController::class,'index'])->name('frontend.about_us');
 Route::get('/contact-us',[ContactUsController::class,'index'])->name('frontend.contact_us');
 Route::get('/services',[ServiceController::class,'index'])->name('frontend.services');
-Route::get('/service/details',[ServiceDetailController::class,'index'])->name('frontend.service_details');
+Route::get('/service-details/{id}',[ServiceDetailController::class,'index'])->name('frontend.service_details');
 
 
 /****** backend *****/

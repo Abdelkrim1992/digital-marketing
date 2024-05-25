@@ -53,7 +53,7 @@
 
         @include('frontend.partial.process')
 
-        @include('frontend.partial.service')
+        @include('frontend.partial.services')
 
         @include('frontend.partial.talk')
     </main>

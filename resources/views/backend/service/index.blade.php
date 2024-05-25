@@ -3,7 +3,7 @@
 <head>
     @include('backend.scripts.css_scripts')
     
-    <title>Testimonial Management</title>
+    <title>Service Management</title>
 
 </head>
 <body>
@@ -19,7 +19,7 @@
             <div class="content">
                 <div class="page-header">
                     <div class="page-title">
-                        <h4>Service List</h4>
+                        <h4>Services List</h4>
                         <h6>Manage your services</h6>
                     </div>
                     <div class="page-btn">
@@ -31,13 +31,14 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table datanew">
+                            <table class="table datanew ">
                                 <thead>
                                     <tr>
                                         <th>#</th>
                                         <th>Service Icon</th>
                                         <th>Service Title</th>
-                                        <th>Service Description</th>
+                                        <th >Short Description</th> <!-- Adjusted width to match the Service Title column -->
+                                        <th>Edit Or Delete</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -45,11 +46,10 @@
                                     <tr>
                                         <td>{{$key+1}}</td>
                                         <td>
-                                        <img src="{{asset('frontend/img/service/'.$row->service_icon)}}" alt="service_icon" class="profile-image">
+                                          <img src="{{asset('frontend/img/service/'.$row->service_icon)}}" class="profile-image" alt="member_image">
                                         </td>
                                         <td>{{$row->service_title}}</td>
-                                        <td>{{$row->service_description}}</td>
-                                        <td>{{$row->main_text}}</td>
+                                        <td >{{$row->short_description}}</td> <!-- Adjusted width to match the Service Title column -->
                                         <td>
                                             <a class="me-3" href="{{route('service.edit',$row->id)}}">
                                                 <img src="{{asset('backend/img/icons/edit.svg')}}" alt="img">

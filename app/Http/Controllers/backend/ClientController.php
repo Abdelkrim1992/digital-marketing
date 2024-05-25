@@ -5,10 +5,9 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use App\Models\Service;
+use App\Models\Client;
 
-
-class ServiceManagementController extends Controller
+class ClientController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +16,8 @@ class ServiceManagementController extends Controller
      */
     public function index()
     {
-        $allData = Service::all();
-        return view('backend.service.index',compact('allData'));
+        $allData = Client::all();
+        return view('backend.client.index',compact('allData'));
     }
 
     /**
@@ -28,7 +27,7 @@ class ServiceManagementController extends Controller
      */
     public function create()
     {
-        return view('backend.service.create');
+        return view('backend.client.create');
     }
 
     /**
@@ -39,26 +38,26 @@ class ServiceManagementController extends Controller
      */
     public function store(Request $request)
     {
-        $Data= new Service();
-        $Data->service_title= $request->service_title;
-        $Data->service_description= $request->service_description;
-        $Data->button_text= $request->button_text;
-        $Data->service_icon= $request->service_icon;
-        $Data->short_description= $request->short_description;
+        $Data= new Client();
+        $Data->member_image= $request->member_image;
+        $Data->member_name= $request->member_name;
+        $Data->member_speciality= $request->member_speciality;
+        $Data->facebook= $request->facebook;
+        $Data->instagram= $request->instagram;
 
-        if($request->hasFile('service_icon')){
-            $file= $request->file('service_icon');
+        if($request->hasFile('member_image')){
+            $file= $request->file('member_image');
             $file_extension= $file->getClientOriginalExtension();
             $random_no= str::random(12);
             $file_name= $random_no.'.'.$file_extension;
-            $destination_path= public_path().'/frontend/img/service';
-            $request->file('service_icon')->move($destination_path,$file_name);
+            $destination_path= public_path().'/frontend/img/team';
+            $request->file('member_image')->move($destination_path,$file_name);
 
-            $Data->service_icon = $file_name;
+            $Data->member_image = $file_name;
         }
 
         $Data->save();
-        return redirect()->route('service.index');
+        return redirect()->route('client.index');
     }
 
     /**
@@ -80,8 +79,8 @@ class ServiceManagementController extends Controller
      */
     public function edit($id)
     {
-        $editData= Service::findOrFail($id);
-        return view('backend.service.edit',compact('editData'));
+        $editData= Client::findOrFail($id);
+        return view('backend.client.edit',compact('editData'));
     }
 
     /**
@@ -93,25 +92,25 @@ class ServiceManagementController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $service= Service::findOrFail($id);
-        $service->service_title= $request->service_title;
-        $service->service_description= $request->service_description;
-        $service->button_text= $request->button_text;
-        $service->service_icon= $request->service_icon;
-        $service->short_description= $request->short_description;
+        $team= Client::findOrFail($id);
+        $team->member_name= $request->member_name;
+        $team->member_speciality= $request->member_speciality;
+        $team->facebook= $request->facebook;
+        $team->instagram= $request->instagram;
+        $team->member_image= $request->member_image;
 
-        if($request->hasFile('service_icon')){
-            $file= $request->file('service_icon');
+        if($request->hasFile('member_image')){
+            $file= $request->file('member_image');
             $file_extension= $file->getClientOriginalExtension();
             $random_no= str::random(12);
             $file_name= $random_no.'.'.$file_extension;
-            $destination_path= public_path().'/frontend/img/service';
-            $request->file('service_icon')->move($destination_path,$file_name);
+            $destination_path= public_path().'/frontend/img/team';
+            $request->file('member_image')->move($destination_path,$file_name);
 
-            $service->service_icon = $file_name;
+            $team->member_image = $file_name;
         }
-        $service->save();
-        return redirect()->route('service.index');
+        $team->save();
+        return redirect()->route('client.index');
 
     }
 
@@ -123,8 +122,8 @@ class ServiceManagementController extends Controller
      */
     public function delete($id)
     {
-        $deleteData = Service::findOrFail($id);
+        $deleteData = Clent::findOrFail($id);
         $deleteData->delete();
-        return redirect()->route('service.index');
+        return redirect()->route('client.index');
     }
 }

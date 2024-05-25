@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Setting;
 use App\Models\Team;
 use App\Models\Testimonial;
+use App\Models\Service;
 
 class FrontendController extends Controller
 {
@@ -20,7 +21,8 @@ class FrontendController extends Controller
         $setting= Setting::findOrFail(1);
         $team= Team::all();
         $testimonial= Testimonial::all();
-        return view('frontend.layouts.master',compact('setting','team','testimonial'));
+        $service= Service::all();
+        return view('frontend.layouts.master',compact('setting','team','testimonial','service'));
     }
 
     /**

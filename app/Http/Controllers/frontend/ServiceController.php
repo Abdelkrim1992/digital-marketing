@@ -5,6 +5,7 @@ namespace App\Http\Controllers\frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Setting;
+use App\Models\Service;
 
 class ServiceController extends Controller
 {
@@ -16,7 +17,8 @@ class ServiceController extends Controller
     public function index()
     {
         $setting= Setting::findOrFail(1);
-        return view('frontend.service.services',compact('setting'));
+        $service= Service::all();
+        return view('frontend.service.services',compact('setting','service'));
     }
 
     /**

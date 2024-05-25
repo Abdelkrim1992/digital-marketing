@@ -5,6 +5,7 @@ namespace App\Http\Controllers\frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Setting;
+use App\Models\Service;
 
 class ServiceDetailController extends Controller
 {
@@ -13,10 +14,12 @@ class ServiceDetailController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
         $setting= Setting::findOrFail(1);
-        return view('frontend.service.service_details',compact('setting'));
+        $service= Service::find($id);
+        $services = Service::all();
+        return view('frontend.service.service_details',compact('setting','service','services'));
     }
 
     /**

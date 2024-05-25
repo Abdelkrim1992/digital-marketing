@@ -14,3 +14,4 @@
 <script src="{{asset('backend/js/file-upload.js')}}"></script>
 
 <script src="{{asset('backend/js/script.js')}}"></script>
+<script src="{{asset('backend/plugins/summernote/summernote-bs4.min.js')}}"></script>

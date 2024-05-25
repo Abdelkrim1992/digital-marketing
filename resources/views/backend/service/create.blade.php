@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     @include('backend.scripts.css_scripts')
     
-    <title>Services Management</title>
+    <title>Service Management</title>
 
 </head>
 <body>
@@ -19,23 +20,31 @@
             <div class="content">
                 <div class="page-header">
                     <div class="page-title">
-                        <h4>Add Service</h4>
+                        <h4>Add Service Member</h4>
                     </div>
                 </div>
                 <div class="card">
-                    <div class="card-body" >
-                        <form method="POST" action="{{route('testimonial.store')}}" enctype="multipart/form-data"> @csrf
-                        <div class="row" >
-                            <div class="col-lg-6 col-sm-12">
-                                <div class="form-group">
-                                    <label>Service Title<span class="manitory">*</span></label>
-                                    <input type="text" name="service_heading" >
+                    <div class="card-body">
+                      <form method="POST" action="{{route('service.store')}}" enctype="multipart/form-data"> @csrf
+                        <div class="row" > 
+                                <div class="form-group col-lg-6 col-sm-12">
+                                    <label>Service Title <span class="manitory">*</span></label>
+                                    <input type="text" id="service_title" name="service_title" >
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                    <label>Description<span class="manitory">*</span></label>
-                                    <textarea type="text" name="service_description" ></textarea>
-                            </div>
+                                <div class="form-group">
+                                    <label>Short Description <span class="manitory">*</span></label>
+                                    <textarea type="text" id="short_description" name="short_description" ></textarea>
+                                </div>
+                                <div class="card-body">
+                                        <div class="col-sm-12">
+                                            <label>Full Description <span class="manitory">*</span></label>
+                                            <textarea id="summernote" name="service_description" ></textarea>
+                                        </div>
+                                </div>
+                                <div class="form-group col-lg-6 col-sm-12">
+                                    <label>Button Text<span class="manitory">*</span></label>
+                                    <input type="text"  id="button_text" name="button_text" >
+                                </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label>Service Icon</label>
@@ -53,14 +62,33 @@
                                     <button type="submit" class="btn btn-submit me-2">Submit</button>
                                     <button href="{{route('dashboard')}}" class="btn btn-cancel">Cancel</button>
                                 </div>
-                            </div> 
+                            </div>  
                         </div>
-                        </form>
+                      </form> 
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        $(document).ready(function() {
+            $('#summernote').summernote({
+                height: 300,
+                callbacks: {
+                    onImageUpload: function(files) {
+                        // Handle image upload (e.g., upload to the server and get the URL)
+                        console.log('Image upload:', files);
+                    }
+                }
+            });
+
+            $('#saveContent').on('click', function() {
+                var content = $('#summernote').val();
+                // Save content to the database (via AJAX or form submission)
+                console.log('Content:', content);
+            });
+        });
+    </script>
 
     @include('backend.scripts.js_scripts')
 </body>

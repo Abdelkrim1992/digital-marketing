@@ -39,8 +39,7 @@
             <div
               class="col-lg-5 wow fadeInLeft"
               data-wow-delay="200ms"
-              data-wow-duration="1000ms"
-            >
+              data-wow-duration="1000ms">
               <div class="contact__form">
                 <h3 class="text-capitalize mb-30 text-center">
                   get a free consultation with marketing our Expert
