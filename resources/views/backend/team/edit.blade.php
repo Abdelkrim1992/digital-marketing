@@ -52,7 +52,7 @@
                             </div>
                             <div class="form-group">
                               <label for="SmallText">Current Member Photo</label>
-                              <div class="col-sm-8 mt-2" id="member_image" name="member_image">
+                              <div class="col-sm-8 mt-2" name="current_member_image" >
                                 <img src="{{asset('frontend/img/team/'.$editData->member_image)}}" width="100 px">
                               </div>
                             </div>

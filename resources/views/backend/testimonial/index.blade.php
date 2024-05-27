@@ -19,12 +19,12 @@
             <div class="content">
                 <div class="page-header">
                     <div class="page-title">
-                        <h4>Testimonial List</h4>
-                        <h6>Manage your testimonials</h6>
+                        <h4>Client Testimonial List</h4>
+                        <h6>Manage your clients testimonials</h6>
                     </div>
                     <div class="page-btn">
                         <a href="{{route('testimonial.create')}}" class="btn btn-added">
-                            <img src="{{asset('backend/img/icons/plus.svg')}}" alt="img" class="me-1">Add New Service
+                            <img src="{{asset('backend/img/icons/plus.svg')}}" alt="img" class="me-1">Add New Testimonial
                         </a>
                     </div>
                 </div>

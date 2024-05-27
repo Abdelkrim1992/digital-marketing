@@ -60,6 +60,12 @@
                                     <input type="text" placeholder="Enter Facebook" name="facebook" value="{{$setting->facebook}}">
                                 </div>
                             </div>
+                            <div class="form-group">
+                              <label for="SmallText">Current Logo</label>
+                              <div class="col-sm-8 mt-2"  name="logo" file="logo" >
+                                <img src="{{asset('frontend/img/logo/'.$setting->logo)}}" width="100 px">
+                              </div>
+                            </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label>Logo Image</label>

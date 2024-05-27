@@ -19,12 +19,12 @@
             <div class="content">
                 <div class="page-header">
                     <div class="page-title">
-                        <h4>Services List</h4>
-                        <h6>Manage your services</h6>
+                        <h4>Team Member List</h4>
+                        <h6>Manage your team members</h6>
                     </div>
                     <div class="page-btn">
                         <a href="{{route('team.create')}}" class="btn btn-added">
-                            <img src="{{asset('backend/img/icons/plus.svg')}}" alt="img" class="me-1">Add New Service
+                            <img src="{{asset('backend/img/icons/plus.svg')}}" alt="img" class="me-1">Add New Member
                         </a>
                     </div>
                 </div>

@@ -31,8 +31,11 @@ CSS TABLE OF CONTENTS
     4.04 --> footer
 
 ------------------------------------------------------------------*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:200;300;400;500;600;700;900&display=swap');
+
+
+
 @import "clash-grotesk.css";
-@import "SFProDisplay.css";
 :root {
   --primary-color: #1b5b4a;
   --primary-two: #124e52;
@@ -63,7 +66,7 @@ CSS TABLE OF CONTENTS
 body {
   margin: 0;
   padding: 0;
-  font-family: 'SF Pro Display', sans-serif; 
+  font-family: 'Poppins', sans-serif; 
   color: var(--paragraph);
   background-color: var(--white);
   line-height: 32px;

@@ -8,6 +8,6 @@ Alpine.plugin(focus);
 
 Alpine.start();
 
-require('ckeditor');
+
 
 

@@ -31,9 +31,9 @@
 
     <div class="swiper team__slider">
       <div class="swiper-wrapper">
-        @foreach($team as $row)
+        @foreach($team as $key=>$row)
         <div class="swiper-slide">
-          <div class="team__item">
+          <div class="team__item @if($key+1==1) active @endif">
             <div class="team__image image">
               <img src="{{asset('frontend/img/team/'.$row->member_image)}}" alt="member_image" />
               <div class="team-info">
@@ -49,6 +49,7 @@
         </div>
         @endforeach
       </div>
+    </div>  
 
       <div class="swiper__info mt-5">
         <button class="team__arry-prev">

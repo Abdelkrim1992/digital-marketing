@@ -9,7 +9,6 @@
 =======
 <?php $setting = App\Models\Setting::findOrFail(1); ?>
 
-
 <div class="header">
     <div class="header-left active">
         <a href="{{route('dashboard')}}" class="logo">
