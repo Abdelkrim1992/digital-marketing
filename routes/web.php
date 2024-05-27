@@ -80,8 +80,14 @@ Route::get('/admin/dashboard',[HomeController::class,'index'])->name('dashboard'
 
 Route::get('/home',[HomeController::class,'index'])->name('admin.dashboard');
 
+<<<<<<< HEAD
 /****** for logout *****/
 
 Route::get('/logout',[LogoutController::class,'logout'])->name('logout');
+=======
+/****** for admin *****/
+
+Route::POST('/logout',[LogoutController::class,'logout'])->name('logout');
+>>>>>>> 3f7dcd2 (5 commit)
 
 

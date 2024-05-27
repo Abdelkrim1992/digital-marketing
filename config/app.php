@@ -121,10 +121,16 @@ return [
     |
     */
 
+<<<<<<< HEAD
     'key' => env('APP_KEY'),
 
     'cipher' => 'AES-256-CBC',
 
+=======
+    'key' => env('APP_KEY', 'base64:K+Txj0IeLDJ1CHDHpwoeYaGPBcy4hv6NiBNXjAABbds='),
+
+    'cipher' => 'AES-256-CBC',
+>>>>>>> 3f7dcd2 (5 commit)
     /*
     |--------------------------------------------------------------------------
     | Maintenance Mode Driver

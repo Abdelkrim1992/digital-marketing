@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="header">
     <div class="header-left active">
         <a href="index.html" class="logo">
@@ -5,6 +6,18 @@
         </a>
         <a href="index.html" class="logo-small">
             <img src="{{ asset('backend/img/logo-small.png') }}" alt="Small Logo">
+=======
+<?php $setting = App\Models\Setting::findOrFail(1); ?>
+
+
+<div class="header">
+    <div class="header-left active">
+        <a href="{{route('dashboard')}}" class="logo">
+            <img src="{{asset('frontend/img/logo/'.$setting->logo)}}" alt="logo">
+        </a>
+        <a href="index.html" class="logo-small">
+            <img src="{{asset('frontend/img/logo/'.$setting->logo)}}" alt="">
+>>>>>>> 3f7dcd2 (5 commit)
         </a>
         <a id="toggle_btn" href="javascript:void(0);"></a>
     </div>
@@ -18,6 +31,7 @@
     </a>
 
     <ul class="nav user-menu">
+<<<<<<< HEAD
         <!-- Search functionality -->
         <li class="nav-item">
             <div class="top-nav-search">
@@ -123,6 +137,12 @@
             <a href="javascript:void(0);" class="dropdown-toggle nav-link userset" data-bs-toggle="dropdown">
                 <span class="user-img">
                     <img src="{{ asset('backend/img/profiles/avatar-1.jpg') }}" alt="User">
+=======
+        <li class="nav-item dropdown has-arrow main-drop">
+            <a href="javascript:void(0);" class="dropdown-toggle nav-link userset" data-bs-toggle="dropdown">
+                <span class="user-img">
+                    <img src="{{asset('backend/img/profiles/avator1.jpg')}}" alt="">
+>>>>>>> 3f7dcd2 (5 commit)
                     <span class="status online"></span>
                 </span>
             </a>
@@ -130,7 +150,11 @@
                 <div class="profilename">
                     <div class="profileset">
                         <span class="user-img">
+<<<<<<< HEAD
                             <img src="{{ asset('backend/img/profiles/avatar-1.jpg') }}" alt="User">
+=======
+                            <img src="{{asset('backend/img/profiles/avator1.jpg')}}" alt="">
+>>>>>>> 3f7dcd2 (5 commit)
                             <span class="status online"></span>
                         </span>
                         <div class="profilesets">
@@ -138,6 +162,7 @@
                             <h5>Admin</h5>
                         </div>
                     </div>
+<<<<<<< HEAD
                     <hr class="m-0">
                     <a class="dropdown-item" href="profile.html">
                         <i class="me-2" data-feather="user"></i> My Profile
@@ -148,8 +173,33 @@
                     <hr class="m-0">
                     <a class="dropdown-item logout pb-0" href="{{route('logout')}}">
                         <img src="{{ asset('backend/img/icons/log-out.svg') }}" class="me-2" alt="Logout">Logout
+=======
+                    <a class="dropdown-item" href="{{route('setting.index')}}">
+                        <i class="me-2" data-feather="settings"></i> Settings
+                    </a>
+                    <hr class="m-0">
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf
+                    </form>
+                    <a class="dropdown-item logout pb-0" href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        <img src="{{asset('backend/img/icons/log-out.svg')}}" class="me-2" alt="img"> Logout
+>>>>>>> 3f7dcd2 (5 commit)
                     </a>
                 </div>
             </div>
         </li>
     </ul>
+<<<<<<< HEAD
+=======
+
+    <div class="dropdown mobile-user-menu">
+        <a href="javascript:void(0);" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa fa-ellipsis-v"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right">
+            <a class="dropdown-item" href="profile.html">My Profile</a>
+            <a class="dropdown-item" href="{{route('setting.index')}}">Settings</a>
+            <a class="dropdown-item" href="{{route('logout')}}">Logout</a>
+        </div>
+    </div>
+</div>
+>>>>>>> 3f7dcd2 (5 commit)

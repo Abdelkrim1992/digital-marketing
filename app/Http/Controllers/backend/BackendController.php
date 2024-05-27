@@ -4,6 +4,10 @@ namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+<<<<<<< HEAD
+=======
+use App\Models\Setting;
+>>>>>>> 3f7dcd2 (5 commit)
 
 class BackendController extends Controller
 {
@@ -14,7 +18,12 @@ class BackendController extends Controller
      */
     public function index()
     {
+<<<<<<< HEAD
         return view('backend.layouts.master');
+=======
+        $setting= Setting::findOrFail(1);
+        return view('backend.layouts.master',compact('setting'));
+>>>>>>> 3f7dcd2 (5 commit)
     }
 
     /**
