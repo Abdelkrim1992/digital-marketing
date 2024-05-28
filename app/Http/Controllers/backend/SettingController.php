@@ -61,7 +61,8 @@ class SettingController extends Controller
      */
     public function edit($id)
     {
-        //
+        $editData= User::findOrFail($id);
+        return view('backend.admin_user.edit',compact('editData'));
     }
 
     /**

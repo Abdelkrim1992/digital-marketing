@@ -4,9 +4,10 @@ namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Setting;
+use Illuminate\Support\Str;
+use App\Models\User;
 
-class BackendController extends Controller
+class AdminUserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +16,8 @@ class BackendController extends Controller
      */
     public function index()
     {
-        $setting= Setting::findOrFail(1);
-        return view('backend.layouts.master',compact('setting'));
+        $allData= User::all();
+        return view('backend.user.index',compact('allData'));
     }
 
     /**
@@ -59,7 +60,8 @@ class BackendController extends Controller
      */
     public function edit($id)
     {
-        //
+        $editData= User::findOrFail($id);
+        return view('backend.user.edit',compact('editData'));
     }
 
     /**
@@ -71,7 +73,25 @@ class BackendController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user= User::find($id);
+        $user->name=$request->name;
+        $user->email=$request->email;
+        $user->phone=$request->phone;
+        $user->password=$request->password;
+        $user->image=$request->image;
+
+        if($request->hasFile('image')){
+            $file= $request->file('image');
+            $file_extension= $file->getClientOriginalExtension();
+            $random_no= str::random(12);
+            $file_name= $random_no.'.'.$file_extension;
+            $destination_path= public_path().'/backend/img/user';
+            $request->file('image')->move($destination_path,$file_name);
+
+            $user->image = $file_name;
+        }
+        $user->save();
+        return redirect()->route('user.index');
     }
 
     /**
@@ -80,8 +100,10 @@ class BackendController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
-        //
+        $deleteData = User::findOrFail($id);
+        $deleteData->delete();
+        return redirect()->route('user.index');
     }
 }

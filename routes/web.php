@@ -9,6 +9,7 @@ use App\Http\Controllers\backend\SettingController;
 use App\Http\Controllers\backend\ServiceManagementController;
 use App\Http\Controllers\backend\TeamController;
 use App\Http\Controllers\backend\TestimonialController;
+use App\Http\Controllers\backend\AdminUserController;
 
 
 /****** frontend *****/
@@ -72,7 +73,15 @@ Route::POST('/admin/testimonial/update/{id}',[TestimonialController::class,'upda
 Route::get('/admin/testimonial/{id}',[TestimonialController::class,'delete'])->name('testimonial.delete');
 
 
-/****** for user *****/
+/****** admin user *****/
+
+Route::get('/admin/user/index',[AdminUserController::class,'index'])->name('user.index');
+Route::get('/admin/user/edit/{id}',[AdminUserController::class,'edit'])->name('user.edit');
+Route::POST('/admin/user/update/{id}',[AdminUserController::class,'update'])->name('user.update');
+Route::get('/admin/user/{id}',[AdminUserController::class,'delete'])->name('user.delete');
+   
+   
+/****** for dashboard *****/
 
 Route::get('/admin/dashboard',[HomeController::class,'index'])->name('dashboard');
 
@@ -80,14 +89,7 @@ Route::get('/admin/dashboard',[HomeController::class,'index'])->name('dashboard'
 
 Route::get('/home',[HomeController::class,'index'])->name('admin.dashboard');
 
-<<<<<<< HEAD
 /****** for logout *****/
 
 Route::get('/logout',[LogoutController::class,'logout'])->name('logout');
-=======
-/****** for admin *****/
-
-Route::POST('/logout',[LogoutController::class,'logout'])->name('logout');
->>>>>>> 3f7dcd2 (5 commit)
-
 

@@ -51,8 +51,7 @@
                 <li class="submenu">
                     <a href="javascript:void(0);"><img src="{{asset('backend/img/icons/users1.svg')}}" alt="img"><span> Users</span> <span class="menu-arrow"></span></a>
                     <ul>
-                        <li><a href="newuser.html">Admin Users </a></li>
-                        <li><a href="userlists.html">Admin List</a></li>
+                        <li><a href="{{ route('user.index') }}">Admin Users List</a></li>
                     </ul>
                 </li>
             </ul>
