@@ -23,6 +23,7 @@ return new class extends Migration
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
             $table->string('image')->nullable();
+            $table->string('role')->nullable();
             $table->timestamps();
         });
     }

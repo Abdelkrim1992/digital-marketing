@@ -3,7 +3,7 @@
 <head>
     @include('backend.scripts.css_scripts')
     
-    <title>Admin User Management</title>
+    <title>User Management</title>
 
 </head>
 <body>
@@ -19,8 +19,13 @@
             <div class="content">
                 <div class="page-header">
                     <div class="page-title">
-                        <h4>Admin User List</h4>
-                        <h6>Manage your admin users</h6>
+                        <h4>User List</h4>
+                        <h6>Manage your users</h6>
+                    </div>
+                    <div class="page-btn">
+                        <a href="{{route('user.create')}}" class="btn btn-added">
+                            <img src="{{asset('backend/img/icons/plus.svg')}}" alt="img" class="me-1">Add New User
+                        </a>
                     </div>
                 </div>
                 <div class="card">
@@ -30,10 +35,11 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Admin Photo</th>
-                                        <th>Admin Name</th>
-                                        <th>Admin Email</th>
-                                        <th>Admin Phone</th>
+                                        <th>User Photo</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>Address</th>
                                         <th>Edit Or Delete</th>
                                     </tr>
                                 </thead>
@@ -42,11 +48,12 @@
                                     <tr>
                                         <td>{{$key+1}}</td>
                                         <td>
-                                          <img src="{{asset('backend/img/user/'.$row->image)}}" class="profile-image" alt="member_image">
+                                          <img src="{{asset('backend/img/user/'.$row->image)}}" class="profile-image" alt="image">
                                         </td>
                                         <td>{{$row->name}}</td>
                                         <td>{{$row->email}}</td>
                                         <td>{{$row->phone}}</td>
+                                        <td>{{$row->address}}</td>
                                         <td>
                                             <a class="me-3" href="{{route('user.edit',$row->id)}}">
                                                 <img src="{{asset('backend/img/icons/edit.svg')}}" alt="img">

@@ -45,6 +45,7 @@ class ServiceManagementController extends Controller
         $Data->button_text= $request->button_text;
         $Data->service_icon= $request->service_icon;
         $Data->short_description= $request->short_description;
+        $Data->service_hover= $request->service_hover;
 
         if($request->hasFile('service_icon')){
             $file= $request->file('service_icon');
@@ -55,6 +56,17 @@ class ServiceManagementController extends Controller
             $request->file('service_icon')->move($destination_path,$file_name);
 
             $Data->service_icon = $file_name;
+        }
+
+        if($request->hasFile('service_hover')){
+            $file= $request->file('service_hover');
+            $file_extension= $file->getClientOriginalExtension();
+            $random_no= str::random(12);
+            $file_name= $random_no.'.'.$file_extension;
+            $destination_path= public_path().'/frontend/img/service';
+            $request->file('service_hover')->move($destination_path,$file_name);
+
+            $Data->service_hover = $file_name;
         }
 
         $Data->save();
@@ -98,6 +110,7 @@ class ServiceManagementController extends Controller
         $service->service_description= $request->service_description;
         $service->button_text= $request->button_text;
         $service->service_icon= $request->service_icon;
+        $service->service_hover= $request->service_hover;
         $service->short_description= $request->short_description;
 
         if($request->hasFile('service_icon')){
@@ -110,6 +123,18 @@ class ServiceManagementController extends Controller
 
             $service->service_icon = $file_name;
         }
+
+        if($request->hasFile('service_hover')){
+            $file= $request->file('service_hover');
+            $file_extension= $file->getClientOriginalExtension();
+            $random_no= str::random(12);
+            $file_name= $random_no.'.'.$file_extension;
+            $destination_path= public_path().'/frontend/img/service';
+            $request->file('service_hover')->move($destination_path,$file_name);
+
+            $service->service_hover = $file_name;
+        }
+
         $service->save();
         return redirect()->route('service.index');
 

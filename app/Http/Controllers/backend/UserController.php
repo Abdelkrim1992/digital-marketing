@@ -5,9 +5,10 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 
-class AdminUserController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +17,7 @@ class AdminUserController extends Controller
      */
     public function index()
     {
-        $allData= User::all();
+        $allData = User::all();
         return view('backend.user.index',compact('allData'));
     }
 
@@ -27,7 +28,7 @@ class AdminUserController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.user.create');
     }
 
     /**
@@ -38,7 +39,28 @@ class AdminUserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $Data= new User();
+        $Data->name= $request->name;
+        $Data->email= $request->email;
+        $Data->phone= $request->phone;
+        $Data->address= $request->address;
+        $Data->image= $request->user_image;
+        $Data->role= $request->role;
+        $Data->password= Hash::make($request->password);
+
+        if($request->hasFile('image')){
+            $file= $request->file('image');
+            $file_extension= $file->getClientOriginalExtension();
+            $random_no= str::random(12);
+            $file_name= $random_no.'.'.$file_extension;
+            $destination_path= public_path().'/backend/img/user';
+            $request->file('image')->move($destination_path,$file_name);
+
+            $Data->image = $file_name;
+        }
+
+        $Data->save();
+        return redirect()->route('user.index');
     }
 
     /**
@@ -73,12 +95,14 @@ class AdminUserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user= User::find($id);
-        $user->name=$request->name;
-        $user->email=$request->email;
-        $user->phone=$request->phone;
-        $user->password=$request->password;
-        $user->image=$request->image;
+        $user= User::findOrFail($id);
+        $user->name= $request->name;
+        $user->email= $request->email;
+        $user->phone= $request->phone;
+        $user->address= $request->address;
+        $user->image= $request->image;
+        $user->password= Hash::make($request->password);
+        $user->role= $request->role;
 
         if($request->hasFile('image')){
             $file= $request->file('image');
@@ -92,6 +116,7 @@ class AdminUserController extends Controller
         }
         $user->save();
         return redirect()->route('user.index');
+
     }
 
     /**

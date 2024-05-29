@@ -19,6 +19,7 @@ return new class extends Migration
             $table->longText('service_description')->nullable();
             $table->longText('short_description')->nullable();
             $table->string('service_icon')->nullable();
+            $table->string('service_hover')->nullable();
             $table->string('button_text')->nullable();
             $table->timestamps();
         });

@@ -1,76 +1,109 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-    <meta name="description" content="POS - Bootstrap Admin Template">
-    <meta name="keywords" content="admin, estimates, bootstrap, business, corporate, creative, invoice, html5, responsive, Projects">
-    <meta name="author" content="Dreamguys - Bootstrap Admin Template">
-    <meta name="robots" content="noindex, nofollow">
-    <title>Dreams Pos admin template</title>
+<?php
 
-    @include('backend.scripts.css_scripts')
+namespace App\Http\Controllers\backend;
 
-</head>
-<body>
-    <div id="global-loader">
-        <div class="whirly-loader"></div>
-    </div>
-    <div class="main-wrapper">
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use App\Models\User;
 
-        @include('backend.partial.header')
-        @include('backend.partial.sidebar')
+class AdminUserController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $allData= User::all();
+        return view('backend.user.index',compact('allData'));
+    }
 
-        <div class="page-wrapper">
-            <div class="content">
-                <div class="page-header">
-                    <div class="page-title">
-                        <h4>Services List</h4>
-                        <h6>Manage your services</h6>
-                    </div>
-                    <div class="page-btn">
-                        <a href="{{route('team.create')}}" class="btn btn-added">
-                            <img src="{{asset('backend/img/icons/plus.svg')}}" alt="img" class="me-1">Add New Service
-                        </a>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table datanew">
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Memeber Photo</th>
-                                        <th>Member Name</th>
-                                        <th>Member Speciality</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                  @foreach($allData as $key=>$row)
-                                    <tr>
-                                        <td>{{$key+1}}</td>
-                                        <td>
-                                          <img src="{{asset('backend/img/icons/'.$row->mamber_image)}}" alt="img">
-                                        </td>
-                                        <td>{{$row->member_name}}</td>
-                                        <td>{{$row->member_scpeciality}}</td>
-                                        <td>
-                                            <a href="{{route('slider.edit',$row->id)}}" class="btn btn-info">Edit</a><a href="{{route('slider.delete',$row->id)}}" class="btn btn-info">Delete</a>
-                                        </td>
-                                    </tr>
-                                  @endforeach 
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
 
-    @include('backend.scripts.js_scripts')
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
 
-</body>
-</html>
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $editData= User::findOrFail($id);
+        return view('backend.user.edit',compact('editData'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $user= User::find($id);
+        $user->name=$request->name;
+        $user->email=$request->email;
+        $user->phone=$request->phone;
+        $user->password=$request->password;
+        $user->image=$request->image;
+
+        if($request->hasFile('image')){
+            $file= $request->file('image');
+            $file_extension= $file->getClientOriginalExtension();
+            $random_no= str::random(12);
+            $file_name= $random_no.'.'.$file_extension;
+            $destination_path= public_path().'/backend/img/user';
+            $request->file('image')->move($destination_path,$file_name);
+
+            $user->image = $file_name;
+        }
+        $user->save();
+        return redirect()->route('user.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function delete($id)
+    {
+        $deleteData = User::findOrFail($id);
+        $deleteData->delete();
+        return redirect()->route('user.index');
+    }
+}

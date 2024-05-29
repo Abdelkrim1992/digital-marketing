@@ -1,6 +1,5 @@
 <?php $setting = App\Models\Setting::find(1); ?>
 
-
 <div class="header">
     <div class="header-left active">
         <a href="{{route('dashboard')}}" class="logo">
@@ -9,7 +8,6 @@
         <a href="index.html" class="logo-small">
             <img src="{{asset('frontend/img/logo/'.$setting->logo)}}" alt="">
         </a>
-        <a id="toggle_btn" href="javascript:void(0);"></a>
     </div>
 
     <a id="mobile_btn" class="mobile_btn" href="#sidebar">
@@ -31,14 +29,16 @@
             <div class="dropdown-menu menu-drop-user">
                 <div class="profilename">
                     <div class="profileset">
+                    @if(isset($user))
                         <span class="user-img">
                             <img src="{{asset('backend/img/user/'.$user->image)}}" alt="">
                             <span class="status online"></span>
                         </span>
                         <div class="profilesets">
-                            <h6>{{($user->name)}}</h6>
+                            <h6>{{ $user->name }}</h6>
                             <h5>Admin</h5>
                         </div>
+                    @endif    
                     </div>
                     <a class="dropdown-item" href="{{route('setting.index')}}">
                         <i class="me-2" data-feather="settings"></i> Settings

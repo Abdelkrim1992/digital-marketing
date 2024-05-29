@@ -55,8 +55,7 @@
                     <div class="d-flex align-items-center gap-4">
                       <img
                         src="{{asset('frontend/img/testimonial/'.$row->client_image)}}"
-                        alt="client_image" class="profile-image"
-                      />
+                        alt="client_image" class="profile-image" />
                       <div class="testimonial-admin">
                         <h4>{{$row->client_name}}</h4>
                         <span>{{$row->client_service}}</span>

@@ -5,10 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marketi - Service Details</title>
-
     @include('frontend.scripts.css_scripts')
 </head>
-
 <body>
     <!-- Preloader area start -->
     <div id="loading" class="preloader">
@@ -23,7 +21,6 @@
     <!-- Preloader area end -->
 
     @include('frontend.partial.header')
-
     @include('frontend.partial.sidebar')
 
     <main>
@@ -34,9 +31,7 @@
                     <h5 class="wow fadeInUp" data-wow-delay="00ms" data-wow-duration="1000ms">
                         <a href="index.html">Home</a> / <span>Services Details</span>
                     </h5>
-                    <h2 class="text-white wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1000ms">
-                        Services Details
-                    </h2>
+                    <h2 class="text-white wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1000ms">Services Details</h2>
                     <p class="para-light-color mt-20 wow fadeInUp" data-wow-delay="400ms" data-wow-duration="1000ms">
                         We will help a client's problems to develop the products they have with high quality Change the appearance.
                     </p>
@@ -54,44 +49,21 @@
                             <div class="item mb-40">
                                 <ul>
                                     @foreach($services as $row)
-                                    <li>
-                                        <img src="{{ asset('frontend/img/service/'.$row->service_icon) }}" alt="service_icon" class="profile-service-image">
-                                        <h6><a href="{{ route('frontend.service_details', $row->id) }}" class="primary-two-color">{{ $row->service_title }}</a></h6>
-                                    </li>
+                                        <li>
+                                            <img src="{{ asset('frontend/img/service/'.$row->service_icon) }}" alt="service_icon" class="profile-service-image">
+                                            <h6>
+                                                <a href="{{ route('frontend.service_details', $row->id) }}" class="primary-two-color">{{ $row->service_title }}</a>
+                                            </h6>
+                                        </li>
                                     @endforeach
                                 </ul>
                             </div>
-<div class="wow fadeInLeft" data-wow-delay="200ms" data-wow-duration="1000ms">
-    <div class="contact__form">
-        <h3 class="text-capitalize mb-30 text-center">
-            Book The Service You Want Now
-        </h3>
-        <form action="#">
-            <input type="text" placeholder="Company Name" />
-            <div class="row g-3">
-                <div class="col-6">
-                    <input type="text" placeholder="First Name*" required />
-                </div>
-                <div class="col-6">
-                    <input type="text" placeholder="Last Name*" required />
-                </div>
-            </div>
-            <div class="row g-3">
-                <div class="col-6">
-                    <input type="email" placeholder="Email Address*" required />
-                </div>
-                <div class="col-6">
-                    <input type="tel" placeholder="Phone Number*" required />
-                </div>
-            </div>
-            <textarea name="message" id="message" placeholder="Message"></textarea>
-            <button class="btn-one transition">
-                Submit<i class="fa-regular fa-circle-arrow-right ml-10"></i>
-            </button>
-        </form>
-    </div>
-</div>
-
+                            
+                            <div class="item mb-40">
+                                <h3 class="text-capitalize mb-30 text-center">Book The Service You Want Now</h3>
+                                <label>Full Name </label>
+                                <input type="text" name="name" >
+                            </div>
                         </div>
                     </div>
                     <div class="col-lg-8">

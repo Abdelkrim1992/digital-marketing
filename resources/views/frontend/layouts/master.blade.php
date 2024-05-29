@@ -41,6 +41,8 @@
       @include('frontend.partial.about')
 
       @include('frontend.partial.services')
+
+      @include('frontend.partial.offer')
       
       @include('frontend.partial.process')
 

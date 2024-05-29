@@ -9,7 +9,7 @@ use App\Http\Controllers\backend\SettingController;
 use App\Http\Controllers\backend\ServiceManagementController;
 use App\Http\Controllers\backend\TeamController;
 use App\Http\Controllers\backend\TestimonialController;
-use App\Http\Controllers\backend\AdminUserController;
+use App\Http\Controllers\backend\UserController;
 
 
 /****** frontend *****/
@@ -37,24 +37,33 @@ Route::get('/service-details/{id}',[ServiceDetailController::class,'index'])->na
 
 
 /****** backend *****/
+Route::middleware(['auth', 'verified'])->group(function () {
 
 Route::get('/dashboard',[BackendController::class,'index'])->name('backend.index');
 
+});
    /****** setting *****/
+Route::middleware(['auth', 'verified'])->group(function () {
 
 Route::get('/admin/setting',[SettingController::class,'index'])->name('setting.index');
 Route::POST('/admin/setting/update',[SettingController::class,'update'])->name('setting.update');
 
-   /****** service *****/
+});
 
-   Route::get('/admin/service/index',[ServiceManagementController::class,'index'])->name('service.index');
-   Route::get('/admin/service/create',[ServiceManagementController::class,'create'])->name('service.create');
-   Route::POST('/admin/service/index',[ServiceManagementController::class,'store'])->name('service.store');
-   Route::get('/admin/service/edit/{id}',[ServiceManagementController::class,'edit'])->name('service.edit');
-   Route::POST('/admin/service/update/{id}',[ServiceManagementController::class,'update'])->name('service.update');
-   Route::get('/admin/service/{id}',[ServiceManagementController::class,'delete'])->name('service.delete');
-   
+   /****** service *****/
+Route::middleware(['auth', 'verified'])->group(function () {
+
+Route::get('/admin/service/index',[ServiceManagementController::class,'index'])->name('service.index');
+Route::get('/admin/service/create',[ServiceManagementController::class,'create'])->name('service.create');
+Route::POST('/admin/service/index',[ServiceManagementController::class,'store'])->name('service.store');
+Route::get('/admin/service/edit/{id}',[ServiceManagementController::class,'edit'])->name('service.edit');
+Route::POST('/admin/service/update/{id}',[ServiceManagementController::class,'update'])->name('service.update');
+Route::get('/admin/service/{id}',[ServiceManagementController::class,'delete'])->name('service.delete');
+
+});
+
    /****** team *****/
+Route::middleware(['auth', 'verified'])->group(function () {
 
 Route::get('/admin/team/index',[TeamController::class,'index'])->name('team.index');
 Route::get('/admin/team/create',[TeamController::class,'create'])->name('team.create');
@@ -63,7 +72,10 @@ Route::get('/admin/team/edit/{id}',[TeamController::class,'edit'])->name('team.e
 Route::POST('/admin/team/update/{id}',[TeamController::class,'update'])->name('team.update');
 Route::get('/admin/team/{id}',[TeamController::class,'delete'])->name('team.delete');
 
+});
+
     /****** testimonial *****/
+Route::middleware(['auth', 'verified'])->group(function () {
 
 Route::get('/admin/testimonial/index',[TestimonialController::class,'index'])->name('testimonial.index');
 Route::get('/admin/testimonial/create',[TestimonialController::class,'create'])->name('testimonial.create');
@@ -72,18 +84,26 @@ Route::get('/admin/testimonial/edit/{id}',[TestimonialController::class,'edit'])
 Route::POST('/admin/testimonial/update/{id}',[TestimonialController::class,'update'])->name('testimonial.update');
 Route::get('/admin/testimonial/{id}',[TestimonialController::class,'delete'])->name('testimonial.delete');
 
+});
 
-/****** admin user *****/
+/****** team *****/
+Route::middleware(['auth', 'verified'])->group(function () {
 
-Route::get('/admin/user/index',[AdminUserController::class,'index'])->name('user.index');
-Route::get('/admin/user/edit/{id}',[AdminUserController::class,'edit'])->name('user.edit');
-Route::POST('/admin/user/update/{id}',[AdminUserController::class,'update'])->name('user.update');
-Route::get('/admin/user/{id}',[AdminUserController::class,'delete'])->name('user.delete');
-   
-   
+Route::get('/admin/user/index',[UserController::class,'index'])->name('user.index');
+Route::get('/admin/user/create',[UserController::class,'create'])->name('user.create');
+Route::POST('/admin/user/index',[UserController::class,'store'])->name('user.store');
+Route::get('/admin/user/edit/{id}',[UserController::class,'edit'])->name('user.edit');
+Route::POST('/admin/user/update/{id}',[UserController::class,'update'])->name('user.update');
+Route::get('/admin/user/{id}',[UserController::class,'delete'])->name('user.delete');
+      
+});
+
 /****** for dashboard *****/
+Route::middleware(['auth', 'verified'])->group(function () {
 
 Route::get('/admin/dashboard',[HomeController::class,'index'])->name('dashboard');
+
+});
 
 /****** for admin *****/
 

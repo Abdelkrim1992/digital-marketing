@@ -28,26 +28,27 @@
                       <form method="POST" action="{{route('service.store')}}" enctype="multipart/form-data"> @csrf
                         <div class="row" > 
                                 <div class="form-group col-lg-6 col-sm-12">
-                                    <label>Service Title <span class="manitory">*</span></label>
+                                    <label>Service Title </label>
                                     <input type="text" id="service_title" name="service_title" >
                                 </div>
                                 <div class="form-group">
-                                    <label>Short Description <span class="manitory">*</span></label>
+                                    <label>Short Description </label>
                                     <textarea type="text" id="short_description" name="short_description" ></textarea>
+                                </div>
+                                <div class="form-group col-lg-6 col-sm-12">
+                                    <label>Button Text </label>
+                                    <input type="text"  id="button_text" name="button_text" >
                                 </div>
                                 <div class="card-body">
                                         <div class="col-sm-12">
-                                            <label>Full Description <span class="manitory">*</span></label>
+                                            <label>Full Description </label>
                                             <textarea id="summernote" name="service_description" ></textarea>
                                         </div>
                                 </div>
-                                <div class="form-group col-lg-6 col-sm-12">
-                                    <label>Button Text<span class="manitory">*</span></label>
-                                    <input type="text"  id="button_text" name="button_text" >
-                                </div>
+                                
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Service Icon</label>
+                                    <label>Add Service Icon</label>
                                     <div for="service_icon" class="image-upload" id="service_icon" name="service_icon">
                                         <input type="file" name="service_icon">
                                         <div for="service_icon" class="image-uploads" name="service_icon">
@@ -57,10 +58,22 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label>Add Service Hover</label>
+                                    <div for="service_hover" class="image-upload" id="service_hover" name="service_hover">
+                                        <input type="file" name="service_hover">
+                                        <div for="service_hover" class="image-uploads" name="service_hover">
+                                            <img src="{{asset('backend/img/icons/upload.svg')}}" alt="img">
+                                            <h4>Drag and drop a file to upload</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col-lg-12">
                                     <button type="submit" class="btn btn-submit me-2">Submit</button>
-                                    <button href="{{route('dashboard')}}" class="btn btn-cancel">Cancel</button>
+                                    <button href="{{route('service.index')}}" class="btn btn-cancel">Cancel</button>
                                 </div>
                             </div>  
                         </div>
