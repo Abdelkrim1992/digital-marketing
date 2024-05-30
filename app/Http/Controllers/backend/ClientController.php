@@ -4,7 +4,6 @@ namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 use App\Models\Client;
 
 class ClientController extends Controller
@@ -36,28 +35,29 @@ class ClientController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function sendMessage(Request $request)
     {
-        $Data= new Client();
-        $Data->member_image= $request->member_image;
-        $Data->member_name= $request->member_name;
-        $Data->member_speciality= $request->member_speciality;
-        $Data->facebook= $request->facebook;
-        $Data->instagram= $request->instagram;
-
-        if($request->hasFile('member_image')){
-            $file= $request->file('member_image');
-            $file_extension= $file->getClientOriginalExtension();
-            $random_no= str::random(12);
-            $file_name= $random_no.'.'.$file_extension;
-            $destination_path= public_path().'/frontend/img/team';
-            $request->file('member_image')->move($destination_path,$file_name);
-
-            $Data->member_image = $file_name;
-        }
-
-        $Data->save();
-        return redirect()->route('client.index');
+        $request->validate([
+            'company_name' => 'required|string|max:255',
+            'client_name' => 'required|string|max:255',
+            'client_email' => 'required|email|max:255',
+            'client_phone' => 'required|string|max:255',
+            'choosed_service' => 'required|string|max:255',
+            'message' => 'required|string',
+        ]);
+    
+        // Store the data in the database
+        $client = new Client;
+        $client->company_name = $request->company_name;
+        $client->client_name = $request->client_name;
+        $client->client_email = $request->client_email;
+        $client->client_phone = $request->client_phone;
+        $client->choosed_service = $request->choosed_service;
+        $client->message = $request->message;
+        $client->save();
+    
+        // Return a JSON response
+        return response()->json(['message' => 'Thank you for submitting your information!']);
     }
 
     /**
@@ -79,8 +79,6 @@ class ClientController extends Controller
      */
     public function edit($id)
     {
-        $editData= Client::findOrFail($id);
-        return view('backend.client.edit',compact('editData'));
     }
 
     /**
@@ -92,25 +90,6 @@ class ClientController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $team= Client::findOrFail($id);
-        $team->member_name= $request->member_name;
-        $team->member_speciality= $request->member_speciality;
-        $team->facebook= $request->facebook;
-        $team->instagram= $request->instagram;
-        $team->member_image= $request->member_image;
-
-        if($request->hasFile('member_image')){
-            $file= $request->file('member_image');
-            $file_extension= $file->getClientOriginalExtension();
-            $random_no= str::random(12);
-            $file_name= $random_no.'.'.$file_extension;
-            $destination_path= public_path().'/frontend/img/team';
-            $request->file('member_image')->move($destination_path,$file_name);
-
-            $team->member_image = $file_name;
-        }
-        $team->save();
-        return redirect()->route('client.index');
 
     }
 
@@ -122,7 +101,7 @@ class ClientController extends Controller
      */
     public function delete($id)
     {
-        $deleteData = Clent::findOrFail($id);
+        $deleteData = Client::findOrFail($id);
         $deleteData->delete();
         return redirect()->route('client.index');
     }

@@ -10,6 +10,7 @@ use App\Http\Controllers\backend\ServiceManagementController;
 use App\Http\Controllers\backend\TeamController;
 use App\Http\Controllers\backend\TestimonialController;
 use App\Http\Controllers\backend\UserController;
+use App\Http\Controllers\backend\ClientController;
 
 
 /****** frontend *****/
@@ -35,6 +36,10 @@ Route::get('/contact-us',[ContactUsController::class,'index'])->name('frontend.c
 Route::get('/services',[ServiceController::class,'index'])->name('frontend.services');
 Route::get('/service-details/{id}',[ServiceDetailController::class,'index'])->name('frontend.service_details');
 
+/****** frontend contact form *****/
+
+Route::post('/reservation', 'ClientController@sendMessage')->name('reservation');
+
 
 /****** backend *****/
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -59,6 +64,9 @@ Route::POST('/admin/service/index',[ServiceManagementController::class,'store'])
 Route::get('/admin/service/edit/{id}',[ServiceManagementController::class,'edit'])->name('service.edit');
 Route::POST('/admin/service/update/{id}',[ServiceManagementController::class,'update'])->name('service.update');
 Route::get('/admin/service/{id}',[ServiceManagementController::class,'delete'])->name('service.delete');
+
+Route::get('/admin/client/index',[ClientController::class,'index'])->name('client.index');
+Route::get('/admin/client/{$id}',[ClientController::class,'delete'])->name('client.delete');
 
 });
 
@@ -109,7 +117,5 @@ Route::get('/admin/dashboard',[HomeController::class,'index'])->name('dashboard'
 
 Route::get('/home',[HomeController::class,'index'])->name('admin.dashboard');
 
-/****** for logout *****/
 
-Route::get('/logout',[LogoutController::class,'logout'])->name('logout');
 

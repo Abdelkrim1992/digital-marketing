@@ -22,7 +22,7 @@
                     <a class="offer-title" href="service-details.html">{{$row->service_title}}</a>
                     <i class="fa-light offer-icon fa-arrow-right"></i>
                     <div class="offer__image-wrp">
-                        <a class="offer__image image" href="{{route ('frontend.service_details',$row->id)}}" >
+                        <a class="side_edge image" href="{{route ('frontend.service_details',$row->id)}}" >
                             <img src="{{asset('frontend/img/service/'.$row->service_hover)}}" alt="image" />
                         </a>
                     </div>

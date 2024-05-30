@@ -3001,7 +3001,7 @@ input {
 .offer__image {
   width: 344px;
   position: relative;
-  border-left: 4px solid #ffffff; /* Example of a left border for side edge effect */
+  border-radius : 20px solid #ffffff; /* Example of a left border for side edge effect */
   box-shadow: -5px 0 10px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for a side edge effect */
   padding-left: 10px; /* Optional: Add padding to separate content from the border */
 }

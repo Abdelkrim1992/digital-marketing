@@ -36,6 +36,7 @@
 
 
     <main>
+
       @include('frontend.partial.slider')
 
       @include('frontend.partial.about')
@@ -50,7 +51,10 @@
 
       @include('frontend.partial.testimonial')
 
+      @include('frontend.partial.faq')
+
       @include('frontend.partial.talk')
+
 
     </main>
 
@@ -65,5 +69,4 @@
     @include('frontend.scripts.js_scripts')
 
   </body>
-<!-- Mirrored from marketi-html.vercel.app/marketi-demo/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 16 May 2024 20:55:09 GMT -->
 </html>

@@ -17,6 +17,8 @@
     <!-- Style css -->
     <link rel="stylesheet" href="{{asset('frontend/css/style.css')}}" />
 
+    
+
     <style>
       .profile-image {
         width: 90px;  /* Set the desired width */
@@ -39,4 +41,13 @@
           max-width: 100%;
         }
     </style>
-    
+    <style>
+        .side_edge img {
+          border-radius: 40px;
+          width: 344px;
+          position: relative;
+          box-shadow: -5px 0 10px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for a side edge effect */
+          padding-left: 10px;
+          transform: translate(40px, 30px);
+        }
+    </style>

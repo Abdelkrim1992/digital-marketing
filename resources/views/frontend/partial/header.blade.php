@@ -42,23 +42,9 @@
               </ul>
             </nav>
           </div>
-              @if (Route::has('login'))
-                            @auth
-                                @if(Auth::user()->usertype=='admin')
-
-                                   <a href="{{ route('admin.dashboard') }}" class="btn-menu d-none d-lg-inline-block">My Dashboard<i class="fa-regular fa-circle-arrow-right ml-10"></i></a>
-
-                                @else(Auth::user()->usertype=='user')
-                
-                                   <a href="{{ route('dashboard') }}" class="btn-menu d-none d-lg-inline-block">My Dashboard<i class="fa-regular fa-circle-arrow-right ml-10"></i></a>
-
-                                @endif
-                            @else
-
-                                   <a href="{{ route('login') }}" class="btn-menu d-none d-lg-inline-block">Get Started<i class="fa-regular fa-circle-arrow-right ml-10"></i></a>
-                
-                            @endif
-              @endif    
+          
+          <a href="https://wa.me/message/GFIZ4I7R7NJ3G1" class="btn-menu d-none d-lg-inline-block">Free Consultation<i class="fa-regular fa-circle-arrow-right ml-10"></i></a>
+          
           <div class="bars d-block d-lg-none">
             <i id="openButton" class="fa-solid fa-bars"></i>
           </div>

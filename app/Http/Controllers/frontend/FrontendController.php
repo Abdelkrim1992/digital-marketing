@@ -8,6 +8,7 @@ use App\Models\Setting;
 use App\Models\Team;
 use App\Models\Testimonial;
 use App\Models\Service;
+use App\Models\Client;
 
 class FrontendController extends Controller
 {
@@ -22,7 +23,8 @@ class FrontendController extends Controller
         $team= Team::all();
         $testimonial= Testimonial::all();
         $service= Service::all();
-        return view('frontend.layouts.master',compact('setting','team','testimonial','service'));
+        $client= Client::all();
+        return view('frontend.layouts.master',compact('setting','team','testimonial','service','client'));
     }
 
     /**

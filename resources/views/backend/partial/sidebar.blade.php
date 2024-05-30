@@ -15,7 +15,7 @@
                 <li class="submenu">
                     <a href="javascript:void(0);"><img src="{{asset('backend/img/icons/clients.svg')}}" alt="img"><span> Clients Management</span> <span class="menu-arrow"></span></a>
                     <ul>
-                        <li><a href="customerlist.html">Client List</a></li>
+                        <li><a href="{{route('client.index')}}">Client List</a></li>
                         <li><a href="addcustomer.html">Add New Client </a></li>
                     </ul>
                 </li> 
@@ -36,7 +36,7 @@
                 <li class="submenu">
                     <a href="javascript:void(0);"><img src="{{asset('backend/img/icons/contact-form.svg')}}" alt="img"><span> Contact Form Management</span> <span class="menu-arrow"></span></a>
                     <ul>
-                        <li><a href="customerlist.html">Clients List</a></li>
+                        <li><a href="{{route('client.index')}}">Clients List</a></li>
                         <li><a href="addcustomer.html">Add Client </a></li>
                     </ul>
                 </li> 
