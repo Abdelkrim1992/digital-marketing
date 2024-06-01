@@ -21,6 +21,4 @@
     <!-- Script Js -->
     <script src="{{asset('frontend/js/script.js')}}"></script>
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    

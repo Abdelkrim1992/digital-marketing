@@ -5,6 +5,8 @@ namespace App\Http\Controllers\frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Setting;
+use App\Models\Service;
+use App\Models\Team;
 
 class ContactUsController extends Controller
 {
@@ -16,7 +18,9 @@ class ContactUsController extends Controller
     public function index()
     {
         $setting= Setting::findOrFail(1);
-        return view('frontend.contact.contact_us',compact('setting'));
+        $service= Service::all();
+        $team= team::all();
+        return view('frontend.contact.contact_us',compact('setting','service','team'));
     }
 
     /**

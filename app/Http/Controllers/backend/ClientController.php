@@ -5,6 +5,7 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Client;
+use App\Models\Setting;
 
 class ClientController extends Controller
 {
@@ -16,7 +17,7 @@ class ClientController extends Controller
     public function index()
     {
         $allData = Client::all();
-        return view('backend.client.index',compact('allData'));
+        return view('backend.clients.index',compact('allData'));
     }
 
     /**
@@ -26,7 +27,7 @@ class ClientController extends Controller
      */
     public function create()
     {
-        return view('backend.client.create');
+        return view('backend.clients.create');
     }
 
     /**
@@ -35,25 +36,29 @@ class ClientController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function sendMessage(Request $request)
+    public function store(Request $request)
     {
+        // Log CSRF token for debugging
+        \Log::info('CSRF Token: ' . $request->input('_token'));
+        \Log::info('Session Token: ' . session('_token'));
+
+        // Validate the request
         $request->validate([
-            'company_name' => 'required|string|max:255',
             'client_name' => 'required|string|max:255',
-            'client_email' => 'required|email|max:255',
+            'client_email' => 'required|string|max:255',
             'client_phone' => 'required|string|max:255',
             'choosed_service' => 'required|string|max:255',
-            'message' => 'required|string',
+            'message' => 'required|string|max:1000',
         ]);
     
         // Store the data in the database
         $client = new Client;
-        $client->company_name = $request->company_name;
         $client->client_name = $request->client_name;
         $client->client_email = $request->client_email;
         $client->client_phone = $request->client_phone;
         $client->choosed_service = $request->choosed_service;
         $client->message = $request->message;
+
         $client->save();
     
         // Return a JSON response
@@ -101,7 +106,7 @@ class ClientController extends Controller
      */
     public function delete($id)
     {
-        $deleteData = Client::findOrFail($id);
+        $deleteData = Client::find($id);
         $deleteData->delete();
         return redirect()->route('client.index');
     }

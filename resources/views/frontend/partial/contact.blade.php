@@ -23,7 +23,7 @@
                             </div>
                             <h4>Chat to support</h4>
                             <p>Speak to our friendly team.</p>
-                            <a href="#0">support@marketi.test</a>
+                            <a href="#0">{{$setting->email}}</a>
                         </div>
                     </div>
                     <div class="col-lg-4">
@@ -38,8 +38,7 @@
                             </div>
                             <h4>Visit us</h4>
                             <p>Visit our office HQ.</p>
-                            <a href="#0">456 Elm Avenue, <br>
-                                Cityville, State 67890</a>
+                            <a href="#0">{{$setting->address}}</a>
                         </div>
                     </div>
                     <div class="col-lg-4">
@@ -54,7 +53,7 @@
                             </div>
                             <h4>Call us</h4>
                             <p>Mon-Fri from 8am to 5pm.</p>
-                            <a href="tel:+3929299999">+3929 299 999</a>
+                            <a href="tel:+3929299999">{{$setting->mobile}}</a>
                         </div>
                     </div>
                 </div>

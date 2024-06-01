@@ -13,7 +13,7 @@
                   <img src="{{asset('frontend/images/shape/about-shape1.png')}}" alt="shape" />
                 </div>
                 <div class="about__shape2">
-                  <img src="{{asset('frontendimages/shape/about-shape2.png')}}" alt="shape" />
+                  <img src="{{asset('frontend/images/shape/about-shape2.png')}}" alt="shape" />
                 </div>
               </div>
             </div>

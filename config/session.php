@@ -198,4 +198,8 @@ return [
 
     'same_site' => 'lax',
 
+    'driver' => env('SESSION_DRIVER', 'file'),
+    'lifetime' => 120, // Session lifetime in minutes
+    'expire_on_close' => false,
+
 ];

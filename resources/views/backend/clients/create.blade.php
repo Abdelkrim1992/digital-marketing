@@ -20,7 +20,7 @@
             <div class="content">
                 <div class="page-header">
                     <div class="page-title">
-                        <h4>Add User</h4>
+                        <h4>Add Client</h4>
                     </div>
                 </div>
                 <div class="card">
@@ -29,59 +29,42 @@
                         <div class="row" > 
                             <div class="col-lg-3 col-sm-6 col-12">
                                 <div class="form-group">
-                                    <label>Full Name </label>
-                                    <input type="text" name="name" >
+                                    <label>Client Name </label>
+                                    <input type="text" name="client_name" >
                                 </div>
                             </div>
                             <div class="col-lg-3 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label>Email </label>
-                                    <input type="text" name="email" >
+                                    <input type="email" name="client_email" >
                                 </div>
                             </div>
                             <div class="col-lg-3 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label>Phone </label>
-                                    <input type="text" name="phone" >
+                                    <input type="phone" name="client_phone" >
                                 </div>
-                            </div>
+                            </div> 
                             <div class="col-lg-3 col-sm-6 col-12">
                                 <div class="form-group">
-                                    <label>Address </label>
-                                    <input type="text" name="address" >
+                                    <label>Choosed Service </label>
+                                    <select type="text" name="choosed_service" >
+                                        @foreach($service as $row)
+                                            <option value="choosed_service">{{$service->choosed_service}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
-                            </div>
+                            </div> 
                             <div class="col-lg-3 col-sm-6 col-12">
                                 <div class="form-group">
-                                    <label>Password </label>
-                                    <div class="pass-group" name="password" >
-                                        <input type="password" class=" pass-input" name="password">
-                                        <span class="fas toggle-password fa-eye-slash"></span>
-                                    </div>
-                                </div>   
-                            </div>   
-                            <div class="col-lg-3 col-sm-6 col-12">
-                                <div class="form-group">
-                                    <label>Role </label>
-                                    <input type="text" name="role" >
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    <label>User Photo</label>
-                                    <div  class="image-upload"  name="image">
-                                        <input type="file" name="image">
-                                        <div class="image-uploads" name="image">
-                                            <img src="{{asset('backend/img/icons/upload.svg')}}" alt="img">
-                                            <h4>Drag and drop a file to upload</h4>
-                                        </div>
-                                    </div>
+                                    <label>Subject </label>
+                                    <textarea type="text" name="message" ></textarea>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-lg-12">
                                     <button type="submit" class="btn btn-submit me-2">Submit</button>
-                                    <button href="{{route('user.index')}}" class="btn btn-cancel">Cancel</button>
+                                    <button href="{{route('client.index')}}" class="btn btn-cancel">Cancel</button>
                                 </div>
                             </div>  
                         </div>

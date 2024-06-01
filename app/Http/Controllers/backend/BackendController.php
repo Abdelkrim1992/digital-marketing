@@ -5,6 +5,7 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Setting;
+use App\Models\Client;
 use App\Models\User;
 
 class BackendController extends Controller
@@ -17,7 +18,8 @@ class BackendController extends Controller
     public function index()
     {
         $setting= Setting::findOrFail(1);
-        return view('backend.layouts.master',compact('setting'));
+        $client= Client::all();
+        return view('backend.layouts.master',compact('setting','client'));
     }
 
     /**

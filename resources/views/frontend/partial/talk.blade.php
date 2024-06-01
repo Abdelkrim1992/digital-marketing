@@ -27,23 +27,30 @@
                     </div>
                 </div>
                 <div class="col-lg-5 wow fadeInLeft" data-wow-delay="200ms" data-wow-duration="1000ms">
-                    <div class="contact__form"  >
+                    <div class="contact__form" >
                         <h3 class="text-capitalize mb-30 text-center">
                             Get a free consultation 
                         </h3>
-                        <div id="formMessage" style="display:none;" class="alert alert-success"></div>
-                        <form id="form" action="{{ route('reservation') }}" method="POST" > @csrf
-                            <input type="text" id="company_name" name="company_name" placeholder="Company Name" class="form-control mb-4" required />
-                            <input type="text" id="client_name" name="client_name" placeholder="Full Name" class="form-control mb-4" required />
-                            <input type="text" id="client_email" name="client_email" placeholder="Email" class="form-control mb-4" required />
-                            <input type="text" id="client_phone" name="client_phone" placeholder="Phone" class="form-control mb-4" required />
+                    <div id="formMessage" style="display:none;" class="alert alert-success"></div>
+                        <form id="form" action="{{ route('reservation') }}" method="POST" >
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <input type="text" id="client_name" name="client_name" placeholder="Your Name*" required />
+                            <div class="row g-3">
+                                <div class="col-6">
+                                    <input type="text" id="client_email" name="client_email"  placeholder="Your Email*" required />
+                                </div>
+                                <div class="col-6">
+                                    <input type="text" id="client_phone" name="client_phone" placeholder="Your Phone*" required/>
+                                </div>
+                            </div>
                             <div class="row g-3 ">
                                 <div class="col-lg-3 col-sm-6 col-12 mb-20">
                                     <select name="choosed_service" id="choosed_service" class="form-control mb-10" required>
-                                        @foreach ($service as $service)
+                                            <option >Select Service</option>
+                                            @foreach ($service as $service)
                                             <option value="{{ $service->service_title }}">{{ $service->service_title }}</option>
-                                        @endforeach
-                                    </select>
+                                            @endforeach
+                                   </select>
                                 </div>
                             </div>
                             <textarea name="message" id="message" placeholder="Message" class="form-control mb-3" required ></textarea>
@@ -55,8 +62,6 @@
         </div>
     </section>
     <!-- Talk area end here -->
-
-
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -72,17 +77,15 @@
                 processData: false,
                 contentType: false,
                 success: function(response) {
+                    console.log(response); // Log success response
                     $('#formMessage').text(response.message).show(); // Show the success message
                     $('#form')[0].reset(); // Optionally reset the form
                 },
                 error: function(xhr, status, error) {
-                    console.error(error); // Log error
+                    console.error(xhr.responseText); // Log the detailed error response
                     $('#formMessage').text('An error occurred. Please try again.').show(); // Show error message
                 }
             });
         });
     });
 </script>
-
-
-

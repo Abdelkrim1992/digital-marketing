@@ -57,29 +57,9 @@
 
         @include('frontend.partial.contact_form')
 
-        <!-- started area start here -->
-        <section class="started-area">
-            <div class="container">
-                <div class="started__item bg-image" data-background="assets/images/bg/started-bg.png">
-                    <div class="section-header-two text-center mb-40">
-                        <h2 class="text-white wow fadeInUp" data-wow-delay="00ms" data-wow-duration="1000ms">Unlock Your
-                            Digital Potential with <br> Marketi's SEO Solutions!</h2>
-                        <p class="para-light-color wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1000ms">
-                            Elevate your online presence with Marketi's trusted SEO
-                            solutions.
-                        </p>
-                    </div>
-                    <div class="btn__group text-center wow fadeInDown" data-wow-delay="200ms"
-                        data-wow-duration="1000ms">
-                        <a href="pricing.html" class="btn-two">Get Started<i
-                                class="fa-regular fa-arrow-right ml-10"></i></a>
-                        <a href="about.html" class="btn-three ms-4">Learn More<i
-                                class="fa-regular fa-arrow-right ml-10"></i></a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- started area end here -->
+        @include('frontend.partial.team')
+
+        
     </main>
 
     @include('frontend.partial.footer')

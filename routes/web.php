@@ -4,13 +4,13 @@ use Illuminate\Support\Facades\Route;
 
 /****** backend *****/
 
+use App\Http\Controllers\backend\ClientController;
 use App\Http\Controllers\backend\BackendController;
 use App\Http\Controllers\backend\SettingController;
 use App\Http\Controllers\backend\ServiceManagementController;
 use App\Http\Controllers\backend\TeamController;
 use App\Http\Controllers\backend\TestimonialController;
 use App\Http\Controllers\backend\UserController;
-use App\Http\Controllers\backend\ClientController;
 
 
 /****** frontend *****/
@@ -38,8 +38,7 @@ Route::get('/service-details/{id}',[ServiceDetailController::class,'index'])->na
 
 /****** frontend contact form *****/
 
-Route::post('/reservation', 'ClientController@sendMessage')->name('reservation');
-
+Route::post('/reservation', [ClientController::class, 'store'])->name('reservation');
 
 /****** backend *****/
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -58,24 +57,28 @@ Route::POST('/admin/setting/update',[SettingController::class,'update'])->name('
    /****** service *****/
 Route::middleware(['auth', 'verified'])->group(function () {
 
-Route::get('/admin/service/index',[ServiceManagementController::class,'index'])->name('service.index');
+Route::get('/admin/services',[ServiceManagementController::class,'index'])->name('service.index');
 Route::get('/admin/service/create',[ServiceManagementController::class,'create'])->name('service.create');
 Route::POST('/admin/service/index',[ServiceManagementController::class,'store'])->name('service.store');
 Route::get('/admin/service/edit/{id}',[ServiceManagementController::class,'edit'])->name('service.edit');
 Route::POST('/admin/service/update/{id}',[ServiceManagementController::class,'update'])->name('service.update');
 Route::get('/admin/service/{id}',[ServiceManagementController::class,'delete'])->name('service.delete');
 
-Route::get('/admin/client/index',[ClientController::class,'index'])->name('client.index');
-Route::get('/admin/client/{$id}',[ClientController::class,'delete'])->name('client.delete');
+});
 
+   /****** clients *****/
+Route::middleware(['auth'])->group(function () {
+   Route::get('/admin/request/clients', [ClientController::class, 'index'])->name('client.index');
+   Route::get('/admin/clients/delete/{$id}', [ClientController::class, 'delete'])->name('client.delete');
+   
 });
 
    /****** team *****/
 Route::middleware(['auth', 'verified'])->group(function () {
 
-Route::get('/admin/team/index',[TeamController::class,'index'])->name('team.index');
+Route::get('/admin/team',[TeamController::class,'index'])->name('team.index');
 Route::get('/admin/team/create',[TeamController::class,'create'])->name('team.create');
-Route::POST('/admin/team/index',[TeamController::class,'store'])->name('team.store');
+Route::POST('/admin/team',[TeamController::class,'store'])->name('team.store');
 Route::get('/admin/team/edit/{id}',[TeamController::class,'edit'])->name('team.edit');
 Route::POST('/admin/team/update/{id}',[TeamController::class,'update'])->name('team.update');
 Route::get('/admin/team/{id}',[TeamController::class,'delete'])->name('team.delete');
@@ -85,21 +88,21 @@ Route::get('/admin/team/{id}',[TeamController::class,'delete'])->name('team.dele
     /****** testimonial *****/
 Route::middleware(['auth', 'verified'])->group(function () {
 
-Route::get('/admin/testimonial/index',[TestimonialController::class,'index'])->name('testimonial.index');
+Route::get('/admin/testimonials',[TestimonialController::class,'index'])->name('testimonial.index');
 Route::get('/admin/testimonial/create',[TestimonialController::class,'create'])->name('testimonial.create');
-Route::POST('/admin/testimonial/index',[TestimonialController::class,'store'])->name('testimonial.store');
+Route::POST('/admin/testimonials',[TestimonialController::class,'store'])->name('testimonial.store');
 Route::get('/admin/testimonial/edit/{id}',[TestimonialController::class,'edit'])->name('testimonial.edit');
 Route::POST('/admin/testimonial/update/{id}',[TestimonialController::class,'update'])->name('testimonial.update');
 Route::get('/admin/testimonial/{id}',[TestimonialController::class,'delete'])->name('testimonial.delete');
 
 });
 
-/****** team *****/
+/****** users *****/
 Route::middleware(['auth', 'verified'])->group(function () {
 
-Route::get('/admin/user/index',[UserController::class,'index'])->name('user.index');
+Route::get('/admin/users',[UserController::class,'index'])->name('user.index');
 Route::get('/admin/user/create',[UserController::class,'create'])->name('user.create');
-Route::POST('/admin/user/index',[UserController::class,'store'])->name('user.store');
+Route::POST('/admin/users',[UserController::class,'store'])->name('user.store');
 Route::get('/admin/user/edit/{id}',[UserController::class,'edit'])->name('user.edit');
 Route::POST('/admin/user/update/{id}',[UserController::class,'update'])->name('user.update');
 Route::get('/admin/user/{id}',[UserController::class,'delete'])->name('user.delete');
@@ -110,12 +113,11 @@ Route::get('/admin/user/{id}',[UserController::class,'delete'])->name('user.dele
 Route::middleware(['auth', 'verified'])->group(function () {
 
 Route::get('/admin/dashboard',[HomeController::class,'index'])->name('dashboard');
+Route::get('/home',[HomeController::class,'index'])->name('admin.dashboard');
 
 });
 
-/****** for admin *****/
 
-Route::get('/home',[HomeController::class,'index'])->name('admin.dashboard');
 
 
 
