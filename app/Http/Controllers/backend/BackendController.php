@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Setting;
 use App\Models\Client;
+use App\Models\ConfirmedClient;
 use App\Models\User;
 
 class BackendController extends Controller
@@ -19,7 +20,8 @@ class BackendController extends Controller
     {
         $setting= Setting::findOrFail(1);
         $client= Client::all();
-        return view('backend.layouts.master',compact('setting','client'));
+        $confirmed_client= ConfirmedClient::all();
+        return view('backend.layouts.master',compact('setting','client','confirmed_client'));
     }
 
     /**

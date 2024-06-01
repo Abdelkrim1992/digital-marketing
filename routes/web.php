@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 /****** backend *****/
 
 use App\Http\Controllers\backend\ClientController;
+use App\Http\Controllers\backend\ConfirmedClientController;
 use App\Http\Controllers\backend\BackendController;
 use App\Http\Controllers\backend\SettingController;
 use App\Http\Controllers\backend\ServiceManagementController;
@@ -66,11 +67,24 @@ Route::get('/admin/service/{id}',[ServiceManagementController::class,'delete'])-
 
 });
 
-   /****** clients *****/
+   /****** contact form clients *****/
 Route::middleware(['auth'])->group(function () {
-   Route::get('/admin/request/clients', [ClientController::class, 'index'])->name('client.index');
-   Route::get('/admin/clients/delete/{$id}', [ClientController::class, 'delete'])->name('client.delete');
+
+Route::get('/admin/request/clients', [ClientController::class, 'index'])->name('client.index');
+Route::get('/admin/request/clients/delete/{$id}', [ClientController::class, 'delete'])->name('client.delete');
    
+});
+
+   /****** confirmed clients *****/
+Route::middleware(['auth', 'verified'])->group(function () {
+
+Route::get('/admin/clients', [ConfirmedClientController::class, 'index'])->name('confirmed_client_index');
+Route::get('/admin/clients/create', [ConfirmedClientController::class, 'create'])->name('confirmed_client_create');
+Route::POST('/admin/clients/index', [ConfirmedClientController::class, 'store'])->name('confirmed_client_store');
+Route::get('/admin/clients/edit/{$id}', [ConfirmedClientController::class, 'edit'])->name('confirmed_client_edit');
+Route::POST('/admin/clients/update/{$id}', [ConfirmedClientController::class, 'update'])->name('confirmed_client_update');
+Route::get('/admin/clients/delete/{$id}', [ConfirmedClientController::class, 'delete'])->name('confirmed_client_delete');
+
 });
 
    /****** team *****/
