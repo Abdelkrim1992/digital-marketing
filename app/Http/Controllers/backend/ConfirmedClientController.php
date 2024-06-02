@@ -16,8 +16,9 @@ class ConfirmedClientController extends Controller
      */
     public function index()
     {
-        $allData= ConfirmedClient::all();
-        return view('backend.ConfirmedClients.index',compact('allData'));
+        $allData = ConfirmedClient::all();
+        $service = Service::all();
+        return view('backend.confirmed_clients.index', compact('allData','service'));
     }
 
     /**
@@ -27,8 +28,7 @@ class ConfirmedClientController extends Controller
      */
     public function create()
     {
-        $service= Service::all();
-        return view('backend.ConfirmedClients.create',compact('service'));
+        return view('backend.confirmed_clients.create');
     }
 
     /**
@@ -39,15 +39,18 @@ class ConfirmedClientController extends Controller
      */
     public function store(Request $request)
     {
-        $Data = new ConfirmedClient();
-        $Data->client_name = $request->client_name;
-        $Data->client_email = $request->client_email;
-        $Data->client_phone = $request->client_phone;
-        $Data->choosed_service = $request->choosed_service;
-        $Data->project_description = $request->project_description;
 
-        $Data->save();
-        return redirect()->route('confirmed_client_index');
+        $confirmed_client = new ConfirmedClient;
+        $confirmed_client->client_name = $request->client_name;
+        $confirmed_client->client_email = $request->client_email;
+        $confirmed_client->client_phone = $request->client_phone;
+        $confirmed_client->choosed_service = $request->choosed_service;
+        $confirmed_client->project_description = $request->project_description;
+
+        $confirmed_client->save();
+
+        return redirect()->route('confirmed-clients.index');
+    
     }
 
     /**
@@ -69,8 +72,9 @@ class ConfirmedClientController extends Controller
      */
     public function edit($id)
     {
-        $editData= ConfirmedClient::findOrFail($id);
-        return view('backend.ConfirmedClients.edit',compact('editData'));
+        $editData = ConfirmedClient::findOrFail($id);
+        $service = Service::all();
+        return view('backend.confirmed_clients.edit', compact('editData','service'));
     }
 
     /**
@@ -82,17 +86,19 @@ class ConfirmedClientController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'client_name' => 'required|string|max:255',
+            'client_email' => 'required|string|max:255',
+            'client_phone' => 'required|string|max:16',
+            'choosed_service' => 'required|string|max:255',
+            'project_description' => 'required|string|max:1000',
+        ]);
+
         $confirmed_client = ConfirmedClient::findOrFail($id);
-        $confirmed_client->client_name = $request->client_name;
-        $confirmed_client->client_email = $request->client_email;
-        $confirmed_client->client_phone = $request->client_phone;
-        $confirmed_client->choosed_service = $request->choosed_service;
-        $confirmed_client->project_description = $request->project_description;
+        $confirmed_client ->update($request->all());
 
-        $confirmed_client->save();
-
-        return redirect()->route('confirmed_client_index');
-
+        return redirect()->route('confirmed-clients.index');
+    
     }
 
     /**
@@ -101,10 +107,10 @@ class ConfirmedClientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function delete($id)
+    public function destroy($id)
     {
-        $deleteData = ConfirmedClient::findOrFail($id);
-        $deleteData->delete();
-        return redirect()->route('confirmed_client_index');
+        $client = ConfirmedClient::findOrFail($id);
+        $client->delete();
+        return redirect()->route('confirmed-clients.index');
     }
 }

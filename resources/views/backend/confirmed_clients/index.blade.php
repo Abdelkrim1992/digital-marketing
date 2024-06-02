@@ -3,7 +3,7 @@
 <head>
     @include('backend.scripts.css_scripts')
     
-    <title>Confirmed Client Management</title>
+    <title>Client Management</title>
 
 </head>
 <body>
@@ -23,7 +23,7 @@
                         <h6>Manage your clients</h6>
                     </div>
                     <div class="page-btn">
-                        <a href="{{route('confirmed_client_create')}}" class="btn btn-added">
+                        <a href="{{ route('confirmed-clients.create') }}" class="btn btn-added">
                             <img src="{{asset('backend/img/icons/plus.svg')}}" alt="img" class="me-1">Add New Client
                         </a>
                     </div>
@@ -38,6 +38,7 @@
                                         <th>Client Name</th>
                                         <th>Client Email</th>
                                         <th>Client Phone</th>
+                                        <th>Choosed Service</th>
                                         <th>Project Description</th>
                                         <th>Edit Or Delete</th>
                                     </tr>
@@ -46,16 +47,16 @@
                                   @foreach($allData as $key=>$row)
                                     <tr>
                                         <td>{{$key+1}}</td>
-                                        <td>{{$row->company_name}}</td>
                                         <td>{{$row->client_name}}</td>
                                         <td>{{$row->client_email}}</td>
                                         <td>{{$row->client_phone}}</td>
+                                        <td>{{$row->choosed_service}}</td>
                                         <td>{{$row->project_description}}</td>
                                         <td>
-                                            <a class="me-3" href="{{route('confirmed_client_edit',$row->id)}}">
+                                            <a class="me-3" href="{{ route('confirmed-clients.edit',$row->id) }} ">
                                                 <img src="{{asset('backend/img/icons/edit.svg')}}" alt="img">
                                             </a>
-                                            <a class="confirm-text" href="{{route('confirmed_client_delete',$row->id)}}">
+                                            <a class="confirm-text" href="{{ route('confirmed-clients.destroy',$row->id) }} " onclick="return confirm('Are you sure you want to delete this client?')">
                                                 <img src="{{asset('backend/img/icons/delete.svg')}}" alt="img">
                                             </a>
                                         </td>

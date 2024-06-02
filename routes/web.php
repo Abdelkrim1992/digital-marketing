@@ -76,15 +76,9 @@ Route::get('/admin/request/clients/delete/{$id}', [ClientController::class, 'del
 });
 
    /****** confirmed clients *****/
-Route::middleware(['auth', 'verified'])->group(function () {
-
-Route::get('/admin/clients', [ConfirmedClientController::class, 'index'])->name('confirmed_client_index');
-Route::get('/admin/clients/create', [ConfirmedClientController::class, 'create'])->name('confirmed_client_create');
-Route::POST('/admin/clients/index', [ConfirmedClientController::class, 'store'])->name('confirmed_client_store');
-Route::get('/admin/clients/edit/{$id}', [ConfirmedClientController::class, 'edit'])->name('confirmed_client_edit');
-Route::POST('/admin/clients/update/{$id}', [ConfirmedClientController::class, 'update'])->name('confirmed_client_update');
-Route::get('/admin/clients/delete/{$id}', [ConfirmedClientController::class, 'delete'])->name('confirmed_client_delete');
-
+   
+Route::prefix('admin')->middleware('auth')->group(function () {
+   Route::resource('confirmed-clients', ConfirmedClientController::class);
 });
 
    /****** team *****/

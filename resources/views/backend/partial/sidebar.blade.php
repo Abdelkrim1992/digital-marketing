@@ -15,8 +15,9 @@
                 <li class="submenu">
                     <a href="javascript:void(0);"><img src="{{asset('backend/img/icons/clients.svg')}}" alt="img"><span> Clients Management</span> <span class="menu-arrow"></span></a>
                     <ul>
-                        <li><a href="{{ route('client.index') }}">Client List</a></li>
-                        <li><a href="">Add New Client </a></li>
+                        <li><a href="{{ route('client.index') }}">Contact Form Client List</a></li>
+                        <li><a href="{{ route('confirmed-clients.index') }}">Confirmed Client List</a></li>
+                        <li><a href="{{ route('confirmed-clients.create') }}">Add New Client </a></li>
                     </ul>
                 </li> 
                 <li class="submenu">
@@ -33,13 +34,6 @@
                         <li><a href="{{route('testimonial.create')}}">Add New Testimonial </a></li>
                     </ul>
                 </li>
-                <li class="submenu">
-                    <a href="javascript:void(0);"><img src="{{asset('backend/img/icons/contact-form.svg')}}" alt="img"><span> Contact Form Management</span> <span class="menu-arrow"></span></a>
-                    <ul>
-                        <li><a href="{{ route('confirmed_client_index') }}">Clients List</a></li>
-                        <li><a href="{{ route('confirmed_client_create') }}">Add Client </a></li>
-                    </ul>
-                </li> 
                 <li class="submenu">
                     <a href="javascript:void(0);"><img src="{{asset('backend/img/icons/return1.svg')}}" alt="img"><span> Pages</span> <span class="menu-arrow"></span></a>
                     <ul>
