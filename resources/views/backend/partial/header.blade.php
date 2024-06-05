@@ -1,4 +1,6 @@
-            <!--begin::Header-->
+<?php $setting= App\Models\Setting::findOrFail(1)?>
+
+
                 <div id="kt_app_header" class="app-header" data-kt-sticky="true" data-kt-sticky-activate="{default: true, lg: true}" data-kt-sticky-name="app-header-minimize" data-kt-sticky-offset="{default: '200px', lg: '0'}" data-kt-sticky-animation="false">
 					<!--begin::Header container-->
 					<div class="app-container container-fluid d-flex align-items-stretch justify-content-between" id="kt_app_header_container">
@@ -14,8 +16,8 @@
 						<!--end::Sidebar mobile toggle-->
 						<!--begin::Mobile logo-->
 						<div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0">
-							<a href="../../demo1/dist/index.html" class="d-lg-none">
-								<img alt="Logo" src="assets/media/logos/default-small.svg" class="h-30px" />
+							<a href="{{route('dashboard')}}" class="d-lg-none">
+								<img alt="Logo" src="{{asset('frontend/img/logo/'.$setting->logo)}}" class="h-30px" />
 							</a>
 						</div>
 						<!--end::Mobile logo-->
@@ -59,7 +61,7 @@
 										<!--end::Menu separator-->
 										<!--begin::Menu item-->
 										<div class="menu-item px-5 my-1">
-											<a href="{{route('setting.index')}}" class="menu-link px-5">Account Settings</a>
+											<a href="" class="menu-link px-5">Account Settings</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -79,4 +81,3 @@
 					</div>
 					<!--end::Header container-->
 				</div>
-		    <!--end::Header-->

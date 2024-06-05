@@ -5,6 +5,7 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Client;
+use App\Models\ConfirmedClient;
 use App\Models\Setting;
 
 class ClientController extends Controller
@@ -109,5 +110,29 @@ class ClientController extends Controller
         $deleteData = Client::find($id);
         $deleteData->delete();
         return redirect()->route('client.index');
+    }
+
+    public function acceptClient($id)
+    {
+        // Retrieve the client request by ID
+        $client = Client::findOrFail($id);
+
+        // Create a new ConfirmedClient instance
+        $confirmed_client = new ConfirmedClient;
+        $confirmed_client->client_name = $client->client_name;
+        $confirmed_client->client_email = $client->client_email;
+        $confirmed_client->client_phone = $client->client_phone;
+        $confirmed_client->choosed_service = $client->choosed_service;
+        $confirmed_client->project_description = $client->message;
+        // Other client details...
+
+        // Save the confirmed client
+        $confirmed_client->save();
+
+        // Delete the accepted client request
+        $client->delete();
+
+        // Redirect back with a success message or any desired response
+        return redirect()->back()->with('success', 'Client request has been accepted and added to confirmed clients.');
     }
 }

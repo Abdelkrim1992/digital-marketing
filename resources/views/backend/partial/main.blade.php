@@ -135,8 +135,7 @@
 													<!--end::Users group-->
 													<!--begin::Actions-->
 													<div class="d-flex">
-														<a href="#" class="btn btn-primary btn-sm me-3" data-bs-toggle="modal" data-bs-target="#kt_modal_view_users">All Clients</a>
-														
+														<a href="{{ route('confirmed-clients.index') }}" class="btn btn-primary btn-sm me-3" data-bs-toggle="modal" data-bs-target="#kt_modal_view_users">All Clients</a>
 													</div>
 													<!--end::Actions-->
 												</div>

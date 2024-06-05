@@ -71,7 +71,7 @@ Route::get('/admin/service/{id}',[ServiceManagementController::class,'delete'])-
 Route::middleware(['auth'])->group(function () {
 
 Route::get('/admin/request/clients', [ClientController::class, 'index'])->name('client.index');
-Route::get('/admin/request/clients/delete/{$id}', [ClientController::class, 'delete'])->name('client.delete');
+Route::get('admin/request/client/{id}/accept', [ClientController::class, 'acceptClient'])->name('client.accept');
    
 });
 

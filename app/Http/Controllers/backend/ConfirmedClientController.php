@@ -28,7 +28,8 @@ class ConfirmedClientController extends Controller
      */
     public function create()
     {
-        return view('backend.confirmed_clients.create');
+        $service = Service::all();
+        return view('backend.confirmed_clients.create',compact('service'));
     }
 
     /**
