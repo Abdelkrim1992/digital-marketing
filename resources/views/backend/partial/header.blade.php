@@ -1,67 +1,82 @@
-<?php $setting = App\Models\Setting::find(1); ?>
-
-<div class="header">
-    <div class="header-left active">
-        <a href="{{route('dashboard')}}" class="logo">
-            <img src="{{asset('frontend/img/logo/'.$setting->logo)}}" alt="logo">
-        </a>
-        <a href="index.html" class="logo-small">
-            <img src="{{asset('frontend/img/logo/'.$setting->logo)}}" alt="">
-        </a>
-    </div>
-
-    <a id="mobile_btn" class="mobile_btn" href="#sidebar">
-        <span class="bar-icon">
-            <span></span>
-            <span></span>
-            <span></span>
-        </span>
-    </a>
-
-    <ul class="nav user-menu">
-        <li class="nav-item dropdown has-arrow main-drop">
-            <a href="javascript:void(0);" class="dropdown-toggle nav-link userset" data-bs-toggle="dropdown">
-                <span class="user-img">
-                    <img src="{{asset('backend/img/profiles/avator1.jpg')}}" alt="">
-                    <span class="status online"></span>
-                </span>
-            </a>
-            <div class="dropdown-menu menu-drop-user">
-                <div class="profilename">
-                    <div class="profileset">
-                    @if(isset($user))
-                        <span class="user-img">
-                            <img src="{{asset('backend/img/user/'.$user->image)}}" alt="">
-                            <span class="status online"></span>
-                        </span>
-                        <div class="profilesets">
-                            <h6>{{ $user->name }}</h6>
-                            <h5>Admin</h5>
-                        </div>
-                    @endif    
-                    </div>
-                    <a class="dropdown-item" href="{{route('setting.index')}}">
-                        <i class="me-2" data-feather="settings"></i> Settings
-                    </a>
-                    <hr class="m-0">
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf
-                    </form>
-                    <a class="dropdown-item logout pb-0" href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                        <img src="{{asset('backend/img/icons/log-out.svg')}}" class="me-2" alt="img"> Logout
-                    </a>
-                </div>
-            </div>
-        </li>
-    </ul>
-
-    <div class="dropdown mobile-user-menu">
-        <a href="javascript:void(0);" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="fa fa-ellipsis-v"></i>
-        </a>
-        <div class="dropdown-menu dropdown-menu-right">
-            <a class="dropdown-item" href="profile.html">My Profile</a>
-            <a class="dropdown-item" href="{{route('setting.index')}}">Settings</a>
-            <a class="dropdown-item" href="{{route('logout')}}">Logout</a>
-        </div>
-    </div>
-</div>
+            <!--begin::Header-->
+                <div id="kt_app_header" class="app-header" data-kt-sticky="true" data-kt-sticky-activate="{default: true, lg: true}" data-kt-sticky-name="app-header-minimize" data-kt-sticky-offset="{default: '200px', lg: '0'}" data-kt-sticky-animation="false">
+					<!--begin::Header container-->
+					<div class="app-container container-fluid d-flex align-items-stretch justify-content-between" id="kt_app_header_container">
+						<!--begin::Sidebar mobile toggle-->
+						<div class="d-flex align-items-center d-lg-none ms-n3 me-1 me-md-2" title="Show sidebar menu">
+							<div class="btn btn-icon btn-active-color-primary w-35px h-35px" id="kt_app_sidebar_mobile_toggle">
+								<i class="ki-duotone ki-abstract-14 fs-2 fs-md-1">
+									<span class="path1"></span>
+									<span class="path2"></span>
+								</i>
+							</div>
+						</div>
+						<!--end::Sidebar mobile toggle-->
+						<!--begin::Mobile logo-->
+						<div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0">
+							<a href="../../demo1/dist/index.html" class="d-lg-none">
+								<img alt="Logo" src="assets/media/logos/default-small.svg" class="h-30px" />
+							</a>
+						</div>
+						<!--end::Mobile logo-->
+						<!--begin::Header wrapper-->
+						<div class="d-flex align-items-stretch justify-content-between flex-lg-grow-1" id="kt_app_header_wrapper">
+							<!--begin::Menu wrapper-->
+							<div class="app-header-menu app-header-mobile-drawer align-items-stretch" data-kt-drawer="true" data-kt-drawer-name="app-header-menu" data-kt-drawer-activate="{default: true, lg: false}" data-kt-drawer-overlay="true" data-kt-drawer-width="250px" data-kt-drawer-direction="end" data-kt-drawer-toggle="#kt_app_header_menu_toggle" data-kt-swapper="true" data-kt-swapper-mode="{default: 'append', lg: 'prepend'}" data-kt-swapper-parent="{default: '#kt_app_body', lg: '#kt_app_header_wrapper'}">
+							
+							</div>
+							<!--end::Menu wrapper-->
+							<!--begin::Navbar-->
+							<div class="app-navbar flex-shrink-0">
+								<!--begin::User menu-->
+								<div class="app-navbar-item ms-1 ms-md-4" id="kt_header_user_menu_toggle">
+									<!--begin::Menu wrapper-->
+									<div class="cursor-pointer symbol symbol-35px" data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
+										<img src="{{asset('backend/media/avatars/300-3.jpg')}}" class="rounded-3" alt="user" />
+									</div>
+									<!--begin::User account menu-->
+									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-color fw-semibold py-4 fs-6 w-275px" data-kt-menu="true">
+										<!--begin::Menu item-->
+										<div class="menu-item px-3">
+											<div class="menu-content d-flex align-items-center px-3">
+												<!--begin::Avatar-->
+												<div class="symbol symbol-50px me-5">
+													<img alt="Logo" src="{{asset('backend/media/avatars/300-3.jpg')}}" />
+												</div>
+												<!--end::Avatar-->
+												<!--begin::Username-->
+												<div class="d-flex flex-column">
+													<div class="fw-bold d-flex align-items-center fs-5">Robert Fox
+												    </div>
+													<a  class="fw-semibold text-muted text-hover-primary fs-7">robert@kt.com</a>
+												</div>
+												<!--end::Username-->
+											</div>
+										</div>
+										<!--end::Menu item-->
+										<!--begin::Menu separator-->
+										<div class="separator my-2"></div>
+										<!--end::Menu separator-->
+										<!--begin::Menu item-->
+										<div class="menu-item px-5 my-1">
+											<a href="{{route('setting.index')}}" class="menu-link px-5">Account Settings</a>
+										</div>
+										<!--end::Menu item-->
+										<!--begin::Menu item-->
+										<div class="menu-item px-5">
+											<a href="{{route('logout')}}" class="menu-link px-5">Sign Out</a>
+										</div>
+										<!--end::Menu item-->
+									</div>
+									<!--end::User account menu-->
+									<!--end::Menu wrapper-->
+								</div>
+								<!--end::User menu-->
+							</div>
+							<!--end::Navbar-->
+						</div>
+						<!--end::Header wrapper-->
+					</div>
+					<!--end::Header container-->
+				</div>
+		    <!--end::Header-->

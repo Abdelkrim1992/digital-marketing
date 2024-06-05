@@ -1,118 +1,55 @@
 <!DOCTYPE html>
+
 <html lang="en">
-<head>
+	<!--begin::Head-->
+	<head><base href=""/>
 
-  @include('backend.scripts.css_scripts')
+  @include('backend.scripts.css_scripts') 
 
-  <title>Admin Dashboard</title>
-
-</head>
-<body>
-  <div id="global-loader">
-    <div class="whirly-loader"> </div>
-  </div>
-
-  <div class="main-wrapper">
-
-    @include('backend.partial.header')
-
-    @include('backend.partial.sidebar')
-
-    <div class="page-wrapper">
-      <div class="content">
-        <div class="row">
-            <div class="col-lg-3 col-sm-6 col-12">
-              <div class="dash-widget">
-                <div class="dash-widgetimg">
-                  <span><img src="{{asset('backend/img/icons/dash1.svg')}}" alt="img"></span>
-                </div>
-                <div class="dash-widgetcontent">
-                  <h5>$<span class="counters" data-count="307144.00">$307,144.00</span></h5>
-                  <h6>Total Purchase Due</h6>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-sm-6 col-12">
-              <div class="dash-widget dash1">
-                <div class="dash-widgetimg">
-                  <span><img src="{{asset('backend/img/icons/dash2.svg')}}" alt="img"></span>
-                </div>
-                <div class="dash-widgetcontent">
-                  <h5>$<span class="counters" data-count="4385.00">$4,385.00</span></h5>
-                  <h6>Total Sales Due</h6>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-sm-6 col-12">
-              <div class="dash-widget dash2">
-                <div class="dash-widgetimg">
-                  <span><img src="{{asset('backend/img/icons/dash3.svg')}}" alt="img"></span>
-                </div>
-              <div class="dash-widgetcontent">
-                <h5>$<span class="counters" data-count="385656.50">385,656.50</span></h5>
-                <h6>Total Sale Amount</h6>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-sm-6 col-12">
-            <div class="dash-widget dash3">
-              <div class="dash-widgetimg">
-                <span><img src="{{asset('backend/img/icons/dash4.svg')}}" alt="img"></span>
-              </div>
-              <div class="dash-widgetcontent">
-                <h5>$<span class="counters" data-count="40000.00">400.00</span></h5>
-                <h6>Total Sale Amount</h6>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-sm-6 col-12 d-flex">
-            <div class="dash-count">
-              <div class="dash-counts">
-                <h4>100</h4>
-                <h5>Customers</h5>
-              </div>
-              <div class="dash-imgs"><i data-feather="user"></i>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-sm-6 col-12 d-flex">
-            <div class="dash-count das1">
-              <div class="dash-counts">
-                <h4>100</h4>
-                <h5>Suppliers</h5>
-              </div>
-              <div class="dash-imgs"><i data-feather="user-check"></i>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-sm-6 col-12 d-flex">
-            <div class="dash-count das2">
-              <div class="dash-counts">
-                <h4>100</h4>
-                <h5>Purchase Invoice</h5>
-              </div>
-              <div class="dash-imgs"><i data-feather="file-text"></i>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-sm-6 col-12 d-flex">
-            <div class="dash-count das3">
-              <div class="dash-counts">
-                <h4>105</h4>
-                <h5>Sales Invoice</h5>
-              </div>
-              <div class="dash-imgs"><i data-feather="file"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+  </head>
+	<!--end::Head-->
+	<!--begin::Body-->
+	<body id="kt_app_body" data-kt-app-layout="dark-sidebar" data-kt-app-header-fixed="true" data-kt-app-sidebar-enabled="true" data-kt-app-sidebar-fixed="true" data-kt-app-sidebar-hoverable="true" data-kt-app-sidebar-push-header="true" data-kt-app-sidebar-push-toolbar="true" data-kt-app-sidebar-push-footer="true" data-kt-app-toolbar-enabled="true" class="app-default">
+		<!--begin::Theme mode setup on page load-->
+		<script>var defaultThemeMode = "light"; var themeMode; if ( document.documentElement ) { if ( document.documentElement.hasAttribute("data-bs-theme-mode")) { themeMode = document.documentElement.getAttribute("data-bs-theme-mode"); } else { if ( localStorage.getItem("data-bs-theme") !== null ) { themeMode = localStorage.getItem("data-bs-theme"); } else { themeMode = defaultThemeMode; } } if (themeMode === "system") { themeMode = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; } document.documentElement.setAttribute("data-bs-theme", themeMode); }</script>
+		<!--end::Theme mode setup on page load-->
+		<!--begin::App-->
+		<div class="d-flex flex-column flex-root app-root" id="kt_app_root">
+			<!--begin::Page-->
+			<div class="app-page flex-column flex-column-fluid" id="kt_app_page">
 
 
-@include('backend.scripts.js_scripts')
+				@include('backend.partial.header')
 
-</body>
+
+				<!--begin::Wrapper-->
+				<div class="app-wrapper flex-column flex-row-fluid" id="kt_app_wrapper">
+					
+					
+					@include('backend.partial.sidebar')
+
+                    @include('backend.partial.main')
+
+					
+				</div>
+				<!--end::Wrapper-->
+			</div>
+			<!--end::Page-->
+		</div>
+		<!--end::App-->
+		<!--begin::Scrolltop-->
+		<div id="kt_scrolltop" class="scrolltop" data-kt-scrolltop="true">
+			<i class="ki-duotone ki-arrow-up">
+				<span class="path1"></span>
+				<span class="path2"></span>
+			</i>
+		</div>
+		<!--end::Scrolltop-->
+
+		@include('backend.partial.modal')
+
+        @include('backend.scripts.js_scripts') 
+
+	</body>
+	<!--end::Body-->
 </html>

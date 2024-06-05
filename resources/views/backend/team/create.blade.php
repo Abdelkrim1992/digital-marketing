@@ -1,82 +1,284 @@
-
 <!DOCTYPE html>
+
 <html lang="en">
-<head>
-    @include('backend.scripts.css_scripts')
-    
-    <title>Team Management</title>
+	<!--begin::Head-->
+	<head><base href=""/>
 
-</head>
-<body>
-    <div id="global-loader">
-        <div class="whirly-loader"></div>
-    </div>
-    <div class="main-wrapper">
+  @include('backend.scripts.css_scripts') 
 
-        @include('backend.partial.header')
-        @include('backend.partial.sidebar')
+  </head>
+	<!--end::Head-->
+	<!--begin::Body-->
+	<body id="kt_app_body" data-kt-app-layout="dark-sidebar" data-kt-app-header-fixed="true" data-kt-app-sidebar-enabled="true" data-kt-app-sidebar-fixed="true" data-kt-app-sidebar-hoverable="true" data-kt-app-sidebar-push-header="true" data-kt-app-sidebar-push-toolbar="true" data-kt-app-sidebar-push-footer="true" data-kt-app-toolbar-enabled="true" class="app-default">
+		<!--begin::Theme mode setup on page load-->
+		<script>var defaultThemeMode = "light"; var themeMode; if ( document.documentElement ) { if ( document.documentElement.hasAttribute("data-bs-theme-mode")) { themeMode = document.documentElement.getAttribute("data-bs-theme-mode"); } else { if ( localStorage.getItem("data-bs-theme") !== null ) { themeMode = localStorage.getItem("data-bs-theme"); } else { themeMode = defaultThemeMode; } } if (themeMode === "system") { themeMode = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; } document.documentElement.setAttribute("data-bs-theme", themeMode); }</script>
+		<!--end::Theme mode setup on page load-->
+		<!--begin::App-->
+		<div class="d-flex flex-column flex-root app-root" id="kt_app_root">
+			<!--begin::Page-->
+			<div class="app-page flex-column flex-column-fluid" id="kt_app_page">
 
-        <div class="page-wrapper">
-            <div class="content">
-                <div class="page-header">
-                    <div class="page-title">
-                        <h4>Add Team Member</h4>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-body">
-                      <form method="POST" action="{{route('team.store')}}" enctype="multipart/form-data"> @csrf
-                        <div class="row" > 
-                            <div class="col-lg-3 col-sm-6 col-12">
-                                <div class="form-group">
-                                    <label>Member Name <span class="manitory">*</span></label>
-                                    <input type="text" placeholder="Enter Member Name" id="member_name" name="member_name" >
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-sm-6 col-12">
-                                <div class="form-group">
-                                    <label>Member Speciality <span class="manitory">*</span></label>
-                                    <input type="text" placeholder="Enter Member Speciality" id="member_speciality" name="member_speciality" >
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-sm-12">
-                                <div class="form-group">
-                                    <label>Instagram<span class="manitory">*</span></label>
-                                    <input type="text" placeholder="Enter Instagram" id="instagram" name="instagram" >
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-sm-12">
-                                <div class="form-group">
-                                    <label>Facebook<span class="manitory">*</span></label>
-                                    <input type="text" placeholder="Enter Facebook" id="facebook" name="facebook" >
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    <label>Member Photo</label>
-                                    <div for="member_image" class="image-upload" id="member_image" name="member_image">
-                                        <input type="file" name="member_image">
-                                        <div for="member_image" class="image-uploads" name="member_image">
-                                            <img src="{{asset('backend/img/icons/upload.svg')}}" alt="img">
-                                            <h4>Drag and drop a file to upload</h4>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <button type="submit" class="btn btn-submit me-2">Submit</button>
-                                    <button href="{{route('dashboard')}}" class="btn btn-cancel">Cancel</button>
-                                </div>
-                            </div>  
-                        </div>
-                      </form> 
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    @include('backend.scripts.js_scripts')
-</body>
+				@include('backend.partial.header')
+
+
+				<!--begin::Wrapper-->
+				<div class="app-wrapper flex-column flex-row-fluid" id="kt_app_wrapper">
+					
+					
+					@include('backend.partial.sidebar')
+
+                    <!--begin::Main-->
+					<div class="app-main flex-column flex-row-fluid" id="kt_app_main">
+						<!--begin::Content wrapper-->
+						<div class="d-flex flex-column flex-column-fluid">
+							<!--begin::Toolbar-->
+							<div id="kt_app_toolbar" class="app-toolbar py-3 py-lg-6">
+								<!--begin::Toolbar container-->
+								<div id="kt_app_toolbar_container" class="app-container container-xxl d-flex flex-stack">
+									<!--begin::Page title-->
+									<div class="page-title d-flex flex-column justify-content-center flex-wrap me-3">
+										<!--begin::Title-->
+										<h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">Team member informations</h1>
+										<!--end::Title-->
+									</div>
+									<!--end::Page title-->
+								</div>
+								<!--end::Toolbar container-->
+							</div>
+							<!--end::Toolbar-->
+							<!--begin::Content-->
+							<div id="kt_app_content" class="app-content flex-column-fluid">
+								<!--begin::Content container-->
+								<div id="kt_app_content_container" class="app-container container-xxl">
+									<!--begin::Form-->
+									<form id="kt_ecommerce_add_product_form" class="form d-flex flex-column flex-lg-row"  method="POST" action="{{route('team.store')}}" enctype="multipart/form-data"> @csrf
+										<!--begin::Aside column-->
+										<div class="d-flex flex-column gap-7 gap-lg-10 w-100 w-lg-300px mb-7 me-lg-10">
+											<!--begin::Thumbnail settings-->
+											<div class="card card-flush py-4">
+												<!--begin::Card header-->
+												<div class="card-header">
+													<!--begin::Card title-->
+													<div class="card-title">
+														<h2>Member Photo</h2>
+													</div>
+													<!--end::Card title-->
+												</div>
+												<!--end::Card header-->
+												<!--begin::Card body-->
+												<div class="card-body text-center pt-0">
+													<!--begin::Image input-->
+													<!--begin::Image input placeholder-->
+													<style>.image-input-placeholder { background-image: url('assets/media/svg/files/blank-image.svg'); } [data-bs-theme="dark"] .image-input-placeholder { background-image: url('assets/media/svg/files/blank-image-dark.svg'); }</style>
+													<!--end::Image input placeholder-->
+													<div class="image-input image-input-empty image-input-outline image-input-placeholder mb-3" data-kt-image-input="true">
+														<!--begin::Preview existing avatar-->
+														<div class="image-input-wrapper w-150px h-150px" name="member_image" ></div>
+														<!--end::Preview existing avatar-->
+														<!--begin::Label-->
+														<label name="member_image" class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Change photo">
+															<i class="ki-duotone ki-pencil fs-7">
+																<span class="path1"></span>
+																<span class="path2"></span>
+															</i>
+															<!--begin::Inputs-->
+															<input type="file" name="member_image" accept=".png, .jpg, .jpeg" />
+															<input type="hidden" name="member_image" />
+															<!--end::Inputs-->
+														</label>
+														<!--end::Label-->
+														<!--begin::Cancel-->
+														<span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="cancel" data-bs-toggle="tooltip" title="Cancel avatar">
+															<i class="ki-duotone ki-cross fs-2">
+																<span class="path1"></span>
+																<span class="path2"></span>
+															</i>
+														</span>
+														<!--end::Cancel-->
+														<!--begin::Remove-->
+														<span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="remove" data-bs-toggle="tooltip" title="Remove avatar">
+															<i class="ki-duotone ki-cross fs-2">
+																<span class="path1"></span>
+																<span class="path2"></span>
+															</i>
+														</span>
+														<!--end::Remove-->
+													</div>
+													<!--end::Image input-->
+													<!--begin::Description-->
+													<div class="text-muted fs-7">Set the member photo. </div>
+													<!--end::Description-->
+												</div>
+												<!--end::Card body-->
+											</div>
+											<!--end::Thumbnail settings-->
+										</div>
+										<!--end::Aside column-->
+										<!--begin::Main column-->
+										<div class="d-flex flex-column flex-row-fluid gap-7 gap-lg-10">
+											<!--begin:::Tabs-->
+											<ul class="nav nav-custom nav-tabs nav-line-tabs nav-line-tabs-2x border-0 fs-4 fw-semibold mb-n2">
+												<!--begin:::Tab item-->
+												<li class="nav-item">
+													<a class="nav-link text-active-primary pb-4 active" data-bs-toggle="tab" href="#kt_ecommerce_add_product_general">General</a>
+												</li>
+												<!--end:::Tab item-->
+											</ul>
+											<!--end:::Tabs-->
+											<!--begin::Tab content-->
+											<div class="tab-content">
+												<!--begin::Tab pane-->
+												<div class="tab-pane fade show active" id="kt_ecommerce_add_product_general" role="tab-panel">
+													<div class="d-flex flex-column gap-7 gap-lg-10">
+														<!--begin::General options-->
+														<div class="card card-flush py-4">
+															<!--begin::Card header-->
+															<div class="card-header">
+																<div class="card-title">
+																	<h2>General</h2>
+																</div>
+															</div>
+															<!--end::Card header-->
+															<!--begin::Card body-->
+															<div class="card-body pt-0">
+																<!--begin::Input group-->
+																<div class="mb-10 fv-row">
+																	<!--begin::Label-->
+																	<label class="required form-label">Member Name</label>
+																	<!--end::Label-->
+																	<!--begin::Input-->
+																	<input type="text" name="member_name" class="form-control mb-2" placeholder="Member name" value="" />
+																	<!--end::Input-->
+																</div>
+																<!--end::Input group-->
+                                                                <!--begin::Input group-->
+																<div class="mb-10 fv-row">
+																	<!--begin::Label-->
+																	<label class="required form-label">Speciality</label>
+																	<!--end::Label-->
+																	<!--begin::Input-->
+																	<input type="text" name="member_speciality" class="form-control mb-2" placeholder="Speciality" value="" />
+																	<!--end::Input-->
+																</div>
+																<!--end::Input group-->
+                                                                <!--begin::Input group-->
+																<div class="mb-10 fv-row">
+																	<!--begin::Label-->
+																	<label class="required form-label">Email</label>
+																	<!--end::Label-->
+																	<!--begin::Input-->
+																	<input type="text" name="email" class="form-control mb-2" placeholder="Email" value="" />
+																	<!--end::Input-->
+																</div>
+																<!--end::Input group-->
+                                                                <!--begin::Input group-->
+																<div class="mb-10 fv-row">
+																	<!--begin::Label-->
+																	<label class="required form-label">Phone</label>
+																	<!--end::Label-->
+																	<!--begin::Input-->
+																	<input type="text" name="phone" class="form-control mb-2" placeholder="Phone" value="" />
+																	<!--end::Input-->
+																</div>
+																<!--end::Input group-->
+                                                                <!--begin::Input group-->
+																<div class="mb-10 fv-row">
+																	<!--begin::Label-->
+																	<label class="required form-label">Instagram</label>
+																	<!--end::Label-->
+																	<!--begin::Input-->
+																	<input type="text" name="instagram" class="form-control mb-2" placeholder="Instagram link" value="" />
+																	<!--end::Input-->
+																</div>
+																<!--end::Input group-->
+                                                                <!--begin::Input group-->
+																<div class="mb-10 fv-row">
+																	<!--begin::Label-->
+																	<label class="required form-label">Facebook</label>
+																	<!--end::Label-->
+																	<!--begin::Input-->
+																	<input type="text" name="facebook" class="form-control mb-2" placeholder="Facebook link" value="" />
+																	<!--end::Input-->
+																</div>
+																<!--end::Input group-->
+															</div>
+															<!--end::Card header-->
+														</div>
+													</div>
+												</div>
+												<!--end::Tab pane-->
+											</div>
+											<!--end::Tab content-->
+											<div class="d-flex justify-content-end">
+												<!--begin::Button-->
+												<button type="submit" id="kt_ecommerce_add_product_submit" class="btn btn-primary">
+													<span class="indicator-label">Save Changes</span>
+													<span class="indicator-progress">Please wait...
+													<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+												</button>
+												<!--end::Button-->
+											</div>
+										</div>
+										<!--end::Main column-->
+									</form>
+									<!--end::Form-->
+								</div>
+								<!--end::Content container-->
+							</div>
+							<!--end::Content-->
+						</div>
+						<!--end::Content wrapper-->
+						<!--begin::Footer-->
+						<div id="kt_app_footer" class="app-footer">
+							<!--begin::Footer container-->
+							<div class="app-container container-fluid d-flex flex-column flex-md-row flex-center flex-md-stack py-3">
+								<!--begin::Copyright-->
+								<div class="text-dark order-2 order-md-1">
+									<span class="text-muted fw-semibold me-1">2023&copy;</span>
+									<a href="https://keenthemes.com" target="_blank" class="text-gray-800 text-hover-primary">Keenthemes</a>
+								</div>
+								<!--end::Copyright-->
+								<!--begin::Menu-->
+								<ul class="menu menu-gray-600 menu-hover-primary fw-semibold order-1">
+									<li class="menu-item">
+										<a href="https://keenthemes.com" target="_blank" class="menu-link px-2">About</a>
+									</li>
+									<li class="menu-item">
+										<a href="https://devs.keenthemes.com" target="_blank" class="menu-link px-2">Support</a>
+									</li>
+									<li class="menu-item">
+										<a href="https://1.envato.market/EA4JP" target="_blank" class="menu-link px-2">Purchase</a>
+									</li>
+								</ul>
+								<!--end::Menu-->
+							</div>
+							<!--end::Footer container-->
+						</div>
+						<!--end::Footer-->
+					</div>
+					<!--end:::Main-->
+
+					
+				</div>
+				<!--end::Wrapper-->
+			</div>
+			<!--end::Page-->
+		</div>
+		<!--end::App-->
+		<!--begin::Scrolltop-->
+		<div id="kt_scrolltop" class="scrolltop" data-kt-scrolltop="true">
+			<i class="ki-duotone ki-arrow-up">
+				<span class="path1"></span>
+				<span class="path2"></span>
+			</i>
+		</div>
+		<!--end::Scrolltop-->
+
+		@include('backend.partial.modal')
+
+        @include('backend.scripts.js_scripts') 
+
+	</body>
+	<!--end::Body-->
 </html>

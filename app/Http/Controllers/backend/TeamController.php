@@ -41,6 +41,8 @@ class TeamController extends Controller
         $Data= new Team();
         $Data->member_image= $request->member_image;
         $Data->member_name= $request->member_name;
+        $Data->email= $request->email;
+        $Data->phone= $request->phone;
         $Data->member_speciality= $request->member_speciality;
         $Data->facebook= $request->facebook;
         $Data->instagram= $request->instagram;
@@ -95,6 +97,8 @@ class TeamController extends Controller
         $team= Team::findOrFail($id);
         $team->member_name= $request->member_name;
         $team->member_speciality= $request->member_speciality;
+        $team->email= $request->email;
+        $team->phone= $request->phone;
         $team->facebook= $request->facebook;
         $team->instagram= $request->instagram;
         $team->member_image= $request->member_image;
