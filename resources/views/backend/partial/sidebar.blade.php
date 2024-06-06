@@ -247,7 +247,7 @@
 													<!--begin:Menu item-->
 													<div class="menu-item">
 															<!--begin:Menu link-->
-															<a class="menu-link" href="../../demo1/dist/apps/user-management/users/list.html">
+															<a class="menu-link" href="{{route('user.index')}}">
 																<span class="menu-bullet">
 																	<span class="bullet bullet-dot"></span>
 																</span>

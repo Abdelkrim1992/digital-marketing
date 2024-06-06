@@ -20,8 +20,9 @@ class BackendController extends Controller
     {
         $setting= Setting::findOrFail(1);
         $client= Client::all();
+        $user= User::all();
         $confirmed_client= ConfirmedClient::all();
-        return view('backend.layouts.master',compact('setting','client','confirmed_client'));
+        return view('backend.layouts.master',compact('setting','client','confirmed_client','user'));
     }
 
     /**

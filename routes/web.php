@@ -109,7 +109,6 @@ Route::get('/admin/testimonial/{id}',[TestimonialController::class,'delete'])->n
 Route::middleware(['auth', 'verified'])->group(function () {
 
 Route::get('/admin/users',[UserController::class,'index'])->name('user.index');
-Route::get('/admin/user/create',[UserController::class,'create'])->name('user.create');
 Route::POST('/admin/users',[UserController::class,'store'])->name('user.store');
 Route::get('/admin/user/edit/{id}',[UserController::class,'edit'])->name('user.edit');
 Route::POST('/admin/user/update/{id}',[UserController::class,'update'])->name('user.update');

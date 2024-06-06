@@ -195,7 +195,7 @@
 		</div>
 		<!--end::Scrolltop-->
 
-		@include('backend.partial.modal')
+		@include('backend.testimonial.modal')
 
         @include('backend.scripts.js_scripts') 
 

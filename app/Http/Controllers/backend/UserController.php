@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use App\Models\Role;
 
 class UserController extends Controller
 {
@@ -18,7 +19,8 @@ class UserController extends Controller
     public function index()
     {
         $allData = User::all();
-        return view('backend.user.index',compact('allData'));
+        $roles = Role::all();
+        return view('backend.user.index',compact('allData','roles'));
     }
 
     /**
@@ -28,7 +30,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('backend.user.create');
+        $roles = Role::all();
+        return view('backend.user.create', compact('roles'));
     }
 
     /**
@@ -39,13 +42,15 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $allData = User::all();
+        $roles = Role::all();
         $Data= new User();
         $Data->name= $request->name;
         $Data->email= $request->email;
         $Data->phone= $request->phone;
         $Data->address= $request->address;
-        $Data->image= $request->user_image;
-        $Data->role= $request->role;
+        $Data->image= $request->image;
+        $Data->role_id= $request->role_id;
         $Data->password= Hash::make($request->password);
 
         if($request->hasFile('image')){
@@ -60,7 +65,8 @@ class UserController extends Controller
         }
 
         $Data->save();
-        return redirect()->route('user.index');
+
+        return redirect()->back();
     }
 
     /**
@@ -83,7 +89,8 @@ class UserController extends Controller
     public function edit($id)
     {
         $editData= User::findOrFail($id);
-        return view('backend.user.edit',compact('editData'));
+        $roles = Role::all();
+        return view('backend.user.edit',compact('editData','roles'));
     }
 
     /**
@@ -102,7 +109,7 @@ class UserController extends Controller
         $user->address= $request->address;
         $user->image= $request->image;
         $user->password= Hash::make($request->password);
-        $user->role= $request->role;
+        $user->role_id= $request->role_id;
 
         if($request->hasFile('image')){
             $file= $request->file('image');
@@ -115,6 +122,7 @@ class UserController extends Controller
             $user->image = $file_name;
         }
         $user->save();
+
         return redirect()->route('user.index');
 
     }

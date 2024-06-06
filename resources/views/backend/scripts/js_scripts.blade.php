@@ -33,5 +33,9 @@
 		<script src="{{asset('backend/js/custom/apps/ecommerce/catalog/save-product.js')}}"></script>
 		<script src="{{asset('backend/js/custom/account/settings/profile-details.js')}}"></script>
 		<script src="{{asset('backend/js/custom/pages/user-profile/general.js')}}"></script>
+		<script src="{{asset('backend/js/custom/utilities/modals/users-search.js')}}"></script>
+		<script src="{{asset('backend/js/custom/apps/user-management/users/list/add.js')}}"></script>
 		<!--end::Custom Javascript-->
 		<!--end::Javascript-->
+
+	

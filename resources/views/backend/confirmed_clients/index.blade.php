@@ -202,7 +202,7 @@
 		</div>
 		<!--end::Scrolltop-->
 
-		@include('backend.partial.modal')
+		@include('backend.confirmed_clients.modal')
 
         @include('backend.scripts.js_scripts') 
 
