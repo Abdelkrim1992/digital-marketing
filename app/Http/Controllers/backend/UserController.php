@@ -66,7 +66,7 @@ class UserController extends Controller
 
         $Data->save();
 
-        return redirect()->back();
+        return response()->json(['message' => 'User created successfully']);
     }
 
     /**
@@ -133,10 +133,18 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function delete($id)
+    public function delete(Request $request, $id)
     {
         $deleteData = User::findOrFail($id);
         $deleteData->delete();
-        return redirect()->route('user.index');
+
+        $request->validate([
+            'user_ids' => 'required|array',
+            'user_ids.*' => 'integer|exists:users,id',
+        ]);
+
+        User::whereIn('id', $request->input('user_ids'))->delete();
+
+        return response()->json(['message' => 'Selected users deleted successfully'], 200);
     }
 }
