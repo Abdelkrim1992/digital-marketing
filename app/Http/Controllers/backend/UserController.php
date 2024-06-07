@@ -137,14 +137,14 @@ class UserController extends Controller
     {
         $deleteData = User::findOrFail($id);
         $deleteData->delete();
+    }
 
-        $request->validate([
-            'user_ids' => 'required|array',
-            'user_ids.*' => 'integer|exists:users,id',
-        ]);
+    public function deleteUsers(Request $request)
+    {
 
-        User::whereIn('id', $request->input('user_ids'))->delete();
-
-        return response()->json(['message' => 'Selected users deleted successfully'], 200);
+    $userIds = $request->input('userIds');
+    User::whereIn('id', $userIds)->delete();
+    return response()->json(['message' => 'Users deleted successfully'], 200);
+    
     }
 }
