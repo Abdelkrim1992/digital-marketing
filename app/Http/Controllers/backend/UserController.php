@@ -111,7 +111,6 @@ class UserController extends Controller
         $user->image= $request->image;
         $user->password= Hash::make($request->password);
         $user->role_id= $request->role_id;
-        $user->registration_date=$request->registration_date;
 
         if($request->hasFile('image')){
             $file= $request->file('image');
