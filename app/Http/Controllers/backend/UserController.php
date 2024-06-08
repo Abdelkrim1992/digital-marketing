@@ -52,6 +52,7 @@ class UserController extends Controller
         $Data->image= $request->image;
         $Data->role_id= $request->role_id;
         $Data->password= Hash::make($request->password);
+        $Data->registration_date=now();
 
         if($request->hasFile('image')){
             $file= $request->file('image');
@@ -110,6 +111,7 @@ class UserController extends Controller
         $user->image= $request->image;
         $user->password= Hash::make($request->password);
         $user->role_id= $request->role_id;
+        $user->registration_date=$request->registration_date;
 
         if($request->hasFile('image')){
             $file= $request->file('image');
@@ -145,6 +147,6 @@ class UserController extends Controller
     $userIds = $request->input('userIds');
     User::whereIn('id', $userIds)->delete();
     return response()->json(['message' => 'Users deleted successfully'], 200);
-    
+
     }
 }
