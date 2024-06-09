@@ -84,24 +84,24 @@ Route::prefix('admin')->middleware('auth')->group(function () {
    /****** team *****/
 Route::middleware(['auth', 'verified'])->group(function () {
 
-Route::get('/admin/team',[TeamController::class,'index'])->name('team.index');
-Route::get('/admin/team/create',[TeamController::class,'create'])->name('team.create');
-Route::POST('/admin/team',[TeamController::class,'store'])->name('team.store');
-Route::get('/admin/team/edit/{id}',[TeamController::class,'edit'])->name('team.edit');
-Route::POST('/admin/team/update/{id}',[TeamController::class,'update'])->name('team.update');
-Route::get('/admin/team/{id}',[TeamController::class,'delete'])->name('team.delete');
+Route::get('/teams',[TeamController::class,'index'])->name('team.index');
+Route::POST('/teams',[TeamController::class,'store'])->name('team.store');
+Route::get('/team/edit/{id}',[TeamController::class,'edit'])->name('team.edit');
+Route::POST('/team/update/{id}',[TeamController::class,'update'])->name('team.update');
+Route::delete('team/{id}', [TeamController::class,'delete'])->name('team.delete');
+Route::post('/team/delete-multiple', [TeamController::class, 'deleteMultiple'])->name('team.delete.multiple');
 
 });
 
     /****** testimonial *****/
 Route::middleware(['auth', 'verified'])->group(function () {
 
-Route::get('/admin/testimonials',[TestimonialController::class,'index'])->name('testimonial.index');
-Route::get('/admin/testimonial/create',[TestimonialController::class,'create'])->name('testimonial.create');
-Route::POST('/admin/testimonials',[TestimonialController::class,'store'])->name('testimonial.store');
-Route::get('/admin/testimonial/edit/{id}',[TestimonialController::class,'edit'])->name('testimonial.edit');
-Route::POST('/admin/testimonial/update/{id}',[TestimonialController::class,'update'])->name('testimonial.update');
-Route::get('/admin/testimonial/{id}',[TestimonialController::class,'delete'])->name('testimonial.delete');
+   Route::get('/testimonials', [TestimonialController::class, 'index'])->name('testimonial.index');
+   Route::post('/testimonials', [TestimonialController::class, 'store'])->name('testimonial.store');
+   Route::get('/testimonials/{id}/edit', [TestimonialController::class, 'edit'])->name('testimonial.edit');
+   Route::post('/testimonials/{id}', [TestimonialController::class, 'update'])->name('testimonial.update');
+   Route::delete('/testimonial', [TestimonialController::class, 'delete'])->name('testimonial.delete');
+   Route::post('/testimonial/delete-multiple', [TestimonialController::class, 'deleteMultiple'])->name('testimonial.delete.multiple');
 
 });
 
@@ -113,7 +113,8 @@ Route::POST('/users', [UserController::class, 'store'])->name('user.store');
 Route::get('/admin/user/edit/{id}',[UserController::class,'edit'])->name('user.edit');
 Route::POST('/users/update/{id}',[UserController::class,'update'])->name('user.update');
 Route::get('/users/delete',[UserController::class,'delete'])->name('user.delete');
-Route::post('/delete-users', [UserController::class, 'deleteUsers'])->name('user.deleteUsers');
+Route::POST('/delete-users', [UserController::class, 'deleteUsers'])->name('user.deleteUsers');
+
 });
 
 /****** for dashboard *****/
@@ -122,7 +123,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
 Route::get('/admin/dashboard',[HomeController::class,'index'])->name('dashboard');
 Route::get('/home',[HomeController::class,'index'])->name('admin.dashboard');
 
+Route::get('/logout',[LogoutController::class,'logout'])->name('admin.logout');
 });
+
+
 
 
 

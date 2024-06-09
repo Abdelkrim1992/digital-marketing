@@ -31,9 +31,12 @@
 		<script src="{{asset('backend/js/custom/apps/ecommerce/catalog/save-product.js')}}"></script>
 		<script src="{{asset('backend/js/custom/account/settings/profile-details.js')}}"></script>
 		<script src="{{asset('backend/js/custom/pages/user-profile/general.js')}}"></script>
-		<script src="{{asset('backend/js/custom/apps/user-management/users/list/table.js')}}"></script>
-		<script src="{{asset('backend/js/custom/apps/user-management/users/list/export-users.js')}}"></script>
-		<script src="{{asset('backend/js/custom/apps/user-management/users/list/add.js')}}"></script>
+		<script src="{{asset('backend/js/custom/apps/user/users/list/table.js')}}"></script>
+		<script src="{{asset('backend/js/custom/apps/user/users/list/add.js')}}"></script>
+		<script src="{{asset('backend/js/custom/apps/testimonial/testimonials/list/table.js')}}"></script>
+		<script src="{{asset('backend/js/custom/apps/testimonial/testimonials/list/add.js')}}"></script>
+		<script src="{{asset('backend/js/custom/apps/team/teams/list/table.js')}}"></script>
+		<script src="{{asset('backend/js/custom/apps/team/teams/list/add.js')}}"></script>
 		<!--end::Custom Javascript-->
 		<!--end::Javascript-->
 	

@@ -124,10 +124,22 @@ class TeamController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function delete($id)
+    public function delete(Request $request, $id)
+{
+    $team = Team::find($id);
+    if($team) {
+        $team->delete();
+    }
+    return redirect()->route('team.index');
+}
+
+
+    // Method to delete multiple testimonials
+    public function deleteMultiple(Request $request)
     {
-        $deleteData = Team::findOrFail($id);
-        $deleteData->delete();
-        return redirect()->route('team.index');
+        $teamIds = $request->input('team');
+        Team::whereIn('id', $teamIds)->delete();
+
+        return response()->json(['message' => 'Selected members deleted successfully.'], 200);
     }
 }

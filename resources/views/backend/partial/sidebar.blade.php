@@ -300,18 +300,6 @@
 													<!--end:Menu link-->
 												</div>
 												<!--end:Menu item-->
-												<!--begin:Menu item-->
-												<div class="menu-item">
-													<!--begin:Menu link-->
-													<a class="menu-link" href="{{route('team.create')}}">
-														<span class="menu-bullet">
-															<span class="bullet bullet-dot"></span>
-														</span>
-														<span class="menu-title">Add Team Member</span>
-													</a>
-													<!--end:Menu link-->
-												</div>
-												<!--end:Menu item-->
 											</div>
 											<!--end:Menu sub-->
 										</div>
@@ -344,18 +332,6 @@
 													</a>
 													<!--end:Menu link-->
 												</div>
-												<!--end:Menu item-->
-												<div class="menu-item">
-													<!--begin:Menu link-->
-													<a class="menu-link" href="{{route('testimonial.create')}}">
-														<span class="menu-bullet">
-															<span class="bullet bullet-dot"></span>
-														</span>
-														<span class="menu-title">Add Testimonial</span>
-													</a>
-													<!--end:Menu link-->
-												</div>
-												<!--end:Menu item-->
 											</div>
 											<!--end:Menu sub-->
 										</div>

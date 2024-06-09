@@ -56,6 +56,7 @@ class TestimonialController extends Controller
         }
 
         $Data->save();
+
         return redirect()->route('testimonial.index');
     }
 
@@ -108,6 +109,7 @@ class TestimonialController extends Controller
             $testimonial->client_image = $file_name;
         }
         $testimonial->save();
+        
         return redirect()->route('testimonial.index');
 
     }
@@ -118,10 +120,22 @@ class TestimonialController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function delete($id)
+    public function delete(Request $request, $id)
     {
-        $deleteData = Testimonial::findOrFail($id);
-        $deleteData->delete();
+        $testimonial = Testimonial::find($id);
+        // Delete the testimonial
+        $testimonial->delete();
+
         return redirect()->route('testimonial.index');
     }
+
+    // Method to delete multiple testimonials
+    public function deleteMultiple(Request $request)
+    {
+        $testimonialIds = $request->input('testimonialIds');
+        Testimonial::whereIn('id', $testimonialIds)->delete();
+
+        return response()->json(['message' => 'Selected testimonials deleted successfully.'], 200);
+    }
+
 }
