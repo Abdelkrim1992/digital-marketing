@@ -1,179 +1,217 @@
 "use strict";
 
-var KTTeamsAddTeam = function() {
-    const t = document.getElementById("kt_modal_add_team"),
-        e = t.querySelector("#kt_modal_add_team_form"),
-        n = new bootstrap.Modal(t);
+var KTModalMembersAdd = function() {
+    var submitButton, cancelButton, closeButton, validator, form, modal;
 
     return {
         init: function() {
-            (() => {
-                var o = FormValidation.formValidation(e, {
+            modal = new bootstrap.Modal(document.querySelector("#kt_modal_add_customer"));
+            form = document.querySelector("#kt_modal_add_customer_form");
+            submitButton = form.querySelector("#kt_modal_add_customer_submit");
+            cancelButton = form.querySelector("#kt_modal_add_customer_cancel");
+            closeButton = form.querySelector("#kt_modal_add_customer_close");
+
+            // Initialize form validation rules
+            validator = FormValidation.formValidation(
+                form, {
                     fields: {
-                        client_name: {
+                        member_image: {
                             validators: {
                                 notEmpty: {
-                                    message: "Client name is required"
+                                    message: "Member image is required"
                                 }
                             }
                         },
-                        client_service: {
+                        member_name: {
                             validators: {
                                 notEmpty: {
-                                    message: "Client service is required"
+                                    message: "Member name is required"
                                 }
                             }
                         },
-                        main_text: {
+                        email: {
                             validators: {
                                 notEmpty: {
-                                    message: "Testimonial text is required"
+                                    message: "Member email is required"
+                                },
+                                emailAddress: {
+                                    message: "The value is not a valid email address"
                                 }
                             }
                         },
-                        client_image: {
+                        phone: {
                             validators: {
-                                file: {
-                                    extension: 'jpeg,jpg,png',
-                                    type: 'image/jpeg,image/png',
-                                    message: 'The selected file is not valid'
+                                notEmpty: {
+                                    message: "Phone number is required"
+                                }
+                            }
+                        },
+                        member_speciality: {
+                            validators: {
+                                notEmpty: {
+                                    message: "Speciality is required"
                                 }
                             }
                         }
                     },
                     plugins: {
-                        trigger: new FormValidation.plugins.Trigger,
+                        trigger: new FormValidation.plugins.Trigger(),
                         bootstrap: new FormValidation.plugins.Bootstrap5({
                             rowSelector: ".fv-row",
                             eleInvalidClass: "",
                             eleValidClass: ""
                         })
                     }
-                });
+                }
+            );
 
-                const i = t.querySelector('[data-kt-team-modal-action="submit"]');
-                i.addEventListener("click", (t => {
-                    t.preventDefault();
-                    o && o.validate().then((function(t) {
+            // Handle form submission
+            submitButton.addEventListener("click", function(e) {
+                e.preventDefault();
+
+                if (validator) {
+                    validator.validate().then(function(status) {
                         console.log("validated!");
-                        if (t === "Valid") {
-                            i.setAttribute("data-kt-indicator", "on");
-                            i.disabled = !0;
+                        if (status == "Valid") {
+                            submitButton.setAttribute("data-kt-indicator", "on");
+                            submitButton.disabled = true;
 
-                            // Prepare form data
-                            var formData = new FormData(e);
+                            // Submit the form using AJAX
+                            var formData = new FormData(form);
 
-                            // Send AJAX request
-                            fetch('/teams', {
+                            fetch('/team', {
                                 method: 'POST',
                                 headers: {
                                     'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
                                 },
                                 body: formData
-                            })
-                            .then(response => response.json())
-                            .then(data => {
-                                i.removeAttribute("data-kt-indicator");
-                                i.disabled = !1;
+                            }).then(response => response.json())
+                              .then(data => {
+                                submitButton.removeAttribute("data-kt-indicator");
+                                submitButton.disabled = false;
+                                if (data.success) {
+                                    Swal.fire({
+                                        text: "Form has been successfully submitted!",
+                                        icon: "success",
+                                        buttonsStyling: false,
+                                        confirmButtonText: "Ok, got it!",
+                                        customClass: {
+                                            confirmButton: "btn btn-primary"
+                                        }
+                                    }).then(function(result) {
+                                        if (result.isConfirmed) {
+                                            modal.hide();
+                                            window.location = form.getAttribute("data-kt-redirect");
+                                        }
+                                    });
+                                } else {
+                                    Swal.fire({
+                                        text: "There was an error submitting the form. Please try again.",
+                                        icon: "error",
+                                        buttonsStyling: false,
+                                        confirmButtonText: "Ok, got it!",
+                                        customClass: {
+                                            confirmButton: "btn btn-primary"
+                                        }
+                                    });
+                                }
+                              }).catch(error => {
+                                submitButton.removeAttribute("data-kt-indicator");
+                                submitButton.disabled = false;
                                 Swal.fire({
-                                    text: "Form has been successfully submitted!",
-                                    icon: "success",
-                                    buttonsStyling: !1,
-                                    confirmButtonText: "Ok, got it!",
-                                    customClass: {
-                                        confirmButton: "btn btn-primary"
-                                    }
-                                }).then((function(t) {
-                                    if (t.isConfirmed) {
-                                        e.reset();
-                                        n.hide();
-                                    }
-                                }));
-                            })
-                            .catch(error => {
-                                console.error('Error:', error);
-                                i.removeAttribute("data-kt-indicator");
-                                i.disabled = !1;
-                                Swal.fire({
-                                    text: "Sorry, looks like there are some errors detected, please try again.",
+                                    text: "There was an error submitting the form. Please try again.",
                                     icon: "error",
-                                    buttonsStyling: !1,
+                                    buttonsStyling: false,
                                     confirmButtonText: "Ok, got it!",
                                     customClass: {
                                         confirmButton: "btn btn-primary"
                                     }
                                 });
-                            });
+                              });
                         } else {
                             Swal.fire({
                                 text: "Sorry, looks like there are some errors detected, please try again.",
                                 icon: "error",
-                                buttonsStyling: !1,
+                                buttonsStyling: false,
                                 confirmButtonText: "Ok, got it!",
                                 customClass: {
                                     confirmButton: "btn btn-primary"
                                 }
                             });
                         }
-                    }))
-                }));
+                    });
+                }
+            });
 
-                t.querySelector('[data-kt-team-modal-action="cancel"]').addEventListener("click", (t => {
-                    t.preventDefault();
-                    Swal.fire({
-                        text: "Are you sure you would like to cancel?",
-                        icon: "warning",
-                        showCancelButton: !0,
-                        buttonsStyling: !1,
-                        confirmButtonText: "Yes, cancel it!",
-                        cancelButtonText: "No, return",
-                        customClass: {
-                            confirmButton: "btn btn-primary",
-                            cancelButton: "btn btn-active-light"
-                        }
-                    }).then((function(t) {
-                        t.value ? (e.reset(), n.hide()) : "cancel" === t.dismiss && Swal.fire({
-                            text: "Your form has not been cancelled!.",
+            // Handle cancel button
+            cancelButton.addEventListener("click", function(e) {
+                e.preventDefault();
+
+                Swal.fire({
+                    text: "Are you sure you would like to cancel?",
+                    icon: "warning",
+                    showCancelButton: true,
+                    buttonsStyling: false,
+                    confirmButtonText: "Yes, cancel it!",
+                    cancelButtonText: "No, return",
+                    customClass: {
+                        confirmButton: "btn btn-primary",
+                        cancelButton: "btn btn-active-light"
+                    }
+                }).then(function(result) {
+                    if (result.value) {
+                        form.reset();
+                        modal.hide();
+                    } else if (result.dismiss === "cancel") {
+                        Swal.fire({
+                            text: "Your form has not been cancelled!",
                             icon: "error",
-                            buttonsStyling: !1,
+                            buttonsStyling: false,
                             confirmButtonText: "Ok, got it!",
                             customClass: {
                                 confirmButton: "btn btn-primary"
                             }
-                        })
-                    }))
-                }));
+                        });
+                    }
+                });
+            });
 
-                t.querySelector('[data-kt-team-modal-action="close"]').addEventListener("click", (t => {
-                    t.preventDefault();
-                    Swal.fire({
-                        text: "Are you sure you would like to cancel?",
-                        icon: "warning",
-                        showCancelButton: !0,
-                        buttonsStyling: !1,
-                        confirmButtonText: "Yes, cancel it!",
-                        cancelButtonText: "No, return",
-                        customClass: {
-                            confirmButton: "btn btn-primary",
-                            cancelButton: "btn btn-active-light"
-                        }
-                    }).then((function(t) {
-                        t.value ? (e.reset(), n.hide()) : "cancel" === t.dismiss && Swal.fire({
-                            text: "Your form has not been cancelled!.",
+            // Handle close button
+            closeButton.addEventListener("click", function(e) {
+                e.preventDefault();
+
+                Swal.fire({
+                    text: "Are you sure you would like to cancel?",
+                    icon: "warning",
+                    showCancelButton: true,
+                    buttonsStyling: false,
+                    confirmButtonText: "Yes, cancel it!",
+                    cancelButtonText: "No, return",
+                    customClass: {
+                        confirmButton: "btn btn-primary",
+                        cancelButton: "btn btn-active-light"
+                    }
+                }).then(function(result) {
+                    if (result.value) {
+                        form.reset();
+                        modal.hide();
+                    } else if (result.dismiss === "cancel") {
+                        Swal.fire({
+                            text: "Your form has not been cancelled!",
                             icon: "error",
-                            buttonsStyling: !1,
+                            buttonsStyling: false,
                             confirmButtonText: "Ok, got it!",
                             customClass: {
                                 confirmButton: "btn btn-primary"
                             }
-                        })
-                    }))
-                }))
-            })()
+                        });
+                    }
+                });
+            });
         }
-    }
+    };
 }();
 
-KTUtil.onDOMContentLoaded((function() {
-    KTTeamsAddTeam.init()
-}));
+KTUtil.onDOMContentLoaded(function() {
+    KTModalMembersAdd.init();
+});

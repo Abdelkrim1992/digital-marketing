@@ -89,7 +89,7 @@ var KTTeamMembersList = function() {
                             'Content-Type': 'application/json',
                             'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
                         },
-                        body: JSON.stringify({ teamIds: selectedIds })
+                        body: JSON.stringify({ teamsIds: selectedIds })
                     }).then(response => {
                         if (response.ok) {
                             console.log('Members deleted successfully');
