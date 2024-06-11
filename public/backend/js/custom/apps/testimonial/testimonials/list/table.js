@@ -198,7 +198,7 @@ var KTTestimonialsList = function () {
             })();
         }
     }
-}
+    }
 }();
 
 KTUtil.onDOMContentLoaded((function () {

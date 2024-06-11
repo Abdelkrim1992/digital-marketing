@@ -317,8 +317,8 @@
         </i>
     </div>
     <!--end::Scrolltop-->
-	<!--begin::Modal - Users Search-->
-	<div class="modal fade" id="kt_modal_users_search" tabindex="-1" aria-hidden="true">
+	    <!--begin::Modal - Users Search-->
+	    <div class="modal fade" id="kt_modal_users_search" tabindex="-1" aria-hidden="true">
 			<!--begin::Modal dialog-->
 			<div class="modal-dialog modal-dialog-centered mw-650px">
 				<!--begin::Modal content-->

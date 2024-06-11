@@ -137,9 +137,9 @@ class TeamController extends Controller
     // Method to delete multiple testimonials
     public function deleteMultiple(Request $request)
     {
-        $teamIds = $request->input('team');
+        $teamIds = $request->input('teamIds');
         Team::whereIn('id', $teamIds)->delete();
 
-        return response()->json(['message' => 'Selected members deleted successfully.'], 200);
+        return response()->json(['message' => 'Selected members deleted successfully.']);
     }
 }

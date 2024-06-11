@@ -306,7 +306,7 @@
 		</div>
 		<!--end::Scrolltop-->
 
-		@include('backend.team.modal')
+		
 
         @include('backend.scripts.js_scripts') 
 

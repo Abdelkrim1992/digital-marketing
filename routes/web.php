@@ -84,13 +84,12 @@ Route::prefix('admin')->middleware('auth')->group(function () {
    /****** team *****/
 Route::middleware(['auth', 'verified'])->group(function () {
 
-Route::get('/teams',[TeamController::class,'index'])->name('team.index');
-Route::POST('/teams',[TeamController::class,'store'])->name('team.store');
+Route::get('/team',[TeamController::class,'index'])->name('team.index');
+Route::POST('/team',[TeamController::class,'store'])->name('team.store');
 Route::get('/team/edit/{id}',[TeamController::class,'edit'])->name('team.edit');
 Route::POST('/team/update/{id}',[TeamController::class,'update'])->name('team.update');
 Route::delete('team/{id}', [TeamController::class,'delete'])->name('team.delete');
-Route::post('/team/delete-multiple', [TeamController::class, 'deleteMultiple'])->name('team.delete.multiple');
-
+Route::post('/team/delete-multiple', [TeamController::class, 'deleteMultiple'])->name('team.delete-multiple');
 });
 
     /****** testimonial *****/
