@@ -97,96 +97,9 @@
 											<div class="card-toolbar">
 												<!--begin::Toolbar-->
 												<div class="d-flex justify-content-end" data-kt-customer-table-toolbar="base">
-													<!--begin::Filter-->
-													<button type="button" class="btn btn-light-primary me-3" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-													<i class="ki-duotone ki-filter fs-2">
-														<span class="path1"></span>
-														<span class="path2"></span>
-													</i>Filter</button>
-													<!--begin::Menu 1-->
-													<div class="menu menu-sub menu-sub-dropdown w-300px w-md-325px" data-kt-menu="true" id="kt-toolbar-filter">
-														<!--begin::Header-->
-														<div class="px-7 py-5">
-															<div class="fs-4 text-dark fw-bold">Filter Options</div>
-														</div>
-														<!--end::Header-->
-														<!--begin::Separator-->
-														<div class="separator border-gray-200"></div>
-														<!--end::Separator-->
-														<!--begin::Content-->
-														<div class="px-7 py-5">
-															<!--begin::Input group-->
-															<div class="mb-10">
-																<!--begin::Label-->
-																<label class="form-label fs-5 fw-semibold mb-3">Month:</label>
-																<!--end::Label-->
-																<!--begin::Input-->
-																<select class="form-select form-select-solid fw-bold" data-kt-select2="true" data-placeholder="Select option" data-allow-clear="true" data-kt-customer-table-filter="month" data-dropdown-parent="#kt-toolbar-filter">
-																	<option></option>
-																	<option value="aug">August</option>
-																	<option value="sep">September</option>
-																	<option value="oct">October</option>
-																	<option value="nov">November</option>
-																	<option value="dec">December</option>
-																</select>
-																<!--end::Input-->
-															</div>
-															<!--end::Input group-->
-															<!--begin::Input group-->
-															<div class="mb-10">
-																<!--begin::Label-->
-																<label class="form-label fs-5 fw-semibold mb-3">Payment Type:</label>
-																<!--end::Label-->
-																<!--begin::Options-->
-																<div class="d-flex flex-column flex-wrap fw-semibold" data-kt-customer-table-filter="payment_type">
-																	<!--begin::Option-->
-																	<label class="form-check form-check-sm form-check-custom form-check-solid mb-3 me-5">
-																		<input class="form-check-input" type="radio" name="payment_type" value="all" checked="checked" />
-																		<span class="form-check-label text-gray-600">All</span>
-																	</label>
-																	<!--end::Option-->
-																	<!--begin::Option-->
-																	<label class="form-check form-check-sm form-check-custom form-check-solid mb-3 me-5">
-																		<input class="form-check-input" type="radio" name="payment_type" value="visa" />
-																		<span class="form-check-label text-gray-600">Visa</span>
-																	</label>
-																	<!--end::Option-->
-																	<!--begin::Option-->
-																	<label class="form-check form-check-sm form-check-custom form-check-solid mb-3">
-																		<input class="form-check-input" type="radio" name="payment_type" value="mastercard" />
-																		<span class="form-check-label text-gray-600">Mastercard</span>
-																	</label>
-																	<!--end::Option-->
-																	<!--begin::Option-->
-																	<label class="form-check form-check-sm form-check-custom form-check-solid">
-																		<input class="form-check-input" type="radio" name="payment_type" value="american_express" />
-																		<span class="form-check-label text-gray-600">American Express</span>
-																	</label>
-																	<!--end::Option-->
-																</div>
-																<!--end::Options-->
-															</div>
-															<!--end::Input group-->
-															<!--begin::Actions-->
-															<div class="d-flex justify-content-end">
-																<button type="reset" class="btn btn-light btn-active-light-primary me-2" data-kt-menu-dismiss="true" data-kt-customer-table-filter="reset">Reset</button>
-																<button type="submit" class="btn btn-primary" data-kt-menu-dismiss="true" data-kt-customer-table-filter="filter">Apply</button>
-															</div>
-															<!--end::Actions-->
-														</div>
-														<!--end::Content-->
-													</div>
-													<!--end::Menu 1-->
-													<!--end::Filter-->
-													<!--begin::Export-->
-													<button type="button" class="btn btn-light-primary me-3" data-bs-toggle="modal" data-bs-target="#kt_customers_export_modal">
-													<i class="ki-duotone ki-exit-up fs-2">
-														<span class="path1"></span>
-														<span class="path2"></span>
-													</i>Export</button>
-													<!--end::Export-->
+													
 													<!--begin::Add customer-->
-													<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_add_customer">Add Customer</button>
+													<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_add_customer">Add Member</button>
 													<!--end::Add customer-->
 												</div>
 												<!--end::Toolbar-->
@@ -276,7 +189,7 @@
 											<!--begin::Modal content-->
 											<div class="modal-content">
 												<!--begin::Form-->
-												<form class="form" action="{{route('team.store')}}" id="kt_modal_add_customer_form" data-kt-redirect="{{route('team.index')}}" method="POST" enctype="multipart/form-data"> @csrf
+												<form class="form" action="{{route('team.store')}}" id="kt_modal_add_customer_form" data-kt-redirect="/team" method="POST" enctype="multipart/form-data"> @csrf
 													<!--begin::Modal header-->
 													<div class="modal-header" id="kt_modal_add_customer_header">
 														<!--begin::Modal title-->
@@ -381,6 +294,26 @@
 																<!--end::Label-->
 																<!--begin::Input-->
 																<input type="text" class="form-control form-control-solid"  name="member_speciality" placeholder="Member speciality" />
+																<!--end::Input-->
+															</div>
+															<!--end::Input group-->
+															<!--begin::Input group-->
+															<div class="fv-row mb-7">
+																<!--begin::Label-->
+																<label class="required fs-6 fw-semibold mb-2">Facebook</label>
+																<!--end::Label-->
+																<!--begin::Input-->
+																<input type="text" class="form-control form-control-solid"  name="facebook" placeholder="Member facebook" />
+																<!--end::Input-->
+															</div>
+															<!--end::Input group-->
+															<!--begin::Input group-->
+															<div class="fv-row mb-7">
+																<!--begin::Label-->
+																<label class="required fs-6 fw-semibold mb-2">Instagram</label>
+																<!--end::Label-->
+																<!--begin::Input-->
+																<input type="text" class="form-control form-control-solid"  name="instagram" placeholder="Member instagram" />
 																<!--end::Input-->
 															</div>
 															<!--end::Input group-->

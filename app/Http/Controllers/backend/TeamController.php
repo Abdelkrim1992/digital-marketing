@@ -59,7 +59,7 @@ class TeamController extends Controller
         }
 
         $Data->save();
-        return response()->json(['message' => 'Member added successfully.']);
+        return response()->json(['message' => 'Selected members deleted successfully.'],200);
     }
 
     /**

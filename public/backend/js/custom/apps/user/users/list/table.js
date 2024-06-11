@@ -68,7 +68,7 @@ var KTUsersList = function () {
 
         s.addEventListener("click", (function () {
             Swal.fire({
-                text: "Are you sure you want to delete selected customers?",
+                text: "Are you sure you want to delete selected users?",
                 icon: "warning",
                 showCancelButton: !0,
                 buttonsStyling: !1,
@@ -81,7 +81,7 @@ var KTUsersList = function () {
             }).then((function (t) {
                 if (t.value) {
                     Swal.fire({
-                        text: "You have deleted all selected customers!",
+                        text: "You have deleted all selected users!",
                         icon: "success",
                         buttonsStyling: !1,
                         confirmButtonText: "Ok, got it!",
@@ -120,7 +120,7 @@ var KTUsersList = function () {
                     }))
                 } else if ("cancel" === t.dismiss) {
                     Swal.fire({
-                        text: "Selected customers were not deleted.",
+                        text: "Selected users were not deleted.",
                         icon: "error",
                         buttonsStyling: !1,
                         confirmButtonText: "Ok, got it!",

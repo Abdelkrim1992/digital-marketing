@@ -78,22 +78,23 @@ var KTModalMembersAdd = function() {
 
                             // Submit the form using AJAX
                             var formData = new FormData(form);
-
-                            fetch('/team', {
+                            fetch(form.action, {
                                 method: 'POST',
                                 headers: {
                                     'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
                                 },
                                 body: formData
-                            }).then(response => response.json())
-                              .then(data => {
+                            })
+                            .then(response => response.json())
+                            .then(data => {
                                 submitButton.removeAttribute("data-kt-indicator");
                                 submitButton.disabled = false;
+
                                 if (data.success) {
                                     Swal.fire({
                                         text: "Form has been successfully submitted!",
                                         icon: "success",
-                                        buttonsStyling: false,
+                                        buttonsStyling: true,
                                         confirmButtonText: "Ok, got it!",
                                         customClass: {
                                             confirmButton: "btn btn-primary"
@@ -106,7 +107,7 @@ var KTModalMembersAdd = function() {
                                     });
                                 } else {
                                     Swal.fire({
-                                        text: "There was an error submitting the form. Please try again.",
+                                        text: data.message || "There was an error submitting the form. Please try again.",
                                         icon: "error",
                                         buttonsStyling: false,
                                         confirmButtonText: "Ok, got it!",
@@ -115,7 +116,8 @@ var KTModalMembersAdd = function() {
                                         }
                                     });
                                 }
-                              }).catch(error => {
+                            })
+                            .catch(error => {
                                 submitButton.removeAttribute("data-kt-indicator");
                                 submitButton.disabled = false;
                                 Swal.fire({
@@ -127,7 +129,7 @@ var KTModalMembersAdd = function() {
                                         confirmButton: "btn btn-primary"
                                     }
                                 });
-                              });
+                            });
                         } else {
                             Swal.fire({
                                 text: "Sorry, looks like there are some errors detected, please try again.",
@@ -181,7 +183,7 @@ var KTModalMembersAdd = function() {
                 e.preventDefault();
 
                 Swal.fire({
-                    text: "Are you sure you would like to cancel?",
+                    text: "Are you sure you would to cancel?",
                     icon: "warning",
                     showCancelButton: true,
                     buttonsStyling: false,
@@ -212,6 +214,7 @@ var KTModalMembersAdd = function() {
     };
 }();
 
+// Initialize the modal add member functionality on DOMContentLoaded
 KTUtil.onDOMContentLoaded(function() {
     KTModalMembersAdd.init();
 });
