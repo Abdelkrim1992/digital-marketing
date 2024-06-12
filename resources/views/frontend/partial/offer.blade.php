@@ -17,7 +17,7 @@
 
         <div class="offer__item">
             <ul>
-                @foreach($service as $row)
+                @foreach($all_services as $row)
                 <li class="wow fadeInDown" data-wow-delay="00ms" data-wow-duration="1000ms">
                     <a class="offer-title" href="service-details.html">{{$row->service_title}}</a>
                     <i class="fa-light offer-icon fa-arrow-right"></i>

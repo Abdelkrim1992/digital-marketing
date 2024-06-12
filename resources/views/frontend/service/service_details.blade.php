@@ -48,7 +48,7 @@
                         <div class="service-details__left-item">
                             <div class="item mb-40">
                                 <ul>
-                                    @foreach($services as $row)
+                                    @foreach($all_services as $row)
                                         <li>
                                             <img src="{{ asset('frontend/img/service/'.$row->service_icon) }}" alt="service_icon" class="profile-service-image">
                                             <h6>

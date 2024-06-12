@@ -22,8 +22,8 @@ class FrontendController extends Controller
         $setting= Setting::findOrFail(1);
         $team= Team::all();
         $testimonial= Testimonial::all();
-        $service= Service::all();
-        return view('frontend.layouts.master',compact('setting','team','testimonial','service'));
+        $all_services= Service::all();
+        return view('frontend.layouts.master',compact('setting','team','testimonial','all_services'));
     }
 
     /**

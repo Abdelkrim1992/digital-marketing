@@ -67,7 +67,7 @@
 							<!--begin::Content-->
 							<div id="kt_app_content" class="app-content flex-column-fluid">
 								<!--begin::Content container-->
-								<div id="kt_app_content_container" class="app-container container-xxl">
+								<div id="kt_app_content_container" class="app-container container-xxl pb-10">
 									<!--begin::Products-->
 									<div class="card card-flush">
 										<!--begin::Card header-->
@@ -87,14 +87,16 @@
 											<table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_ecommerce_products_table">
 												<thead>
 													<tr class="text-start text-gray-400 fw-bold fs-7 text-uppercase gs-0">
-														<th class="min-w-200px">Service </th>
-														<th class="text-end min-w-100px">Short Description</th>
-														<th class="text-end min-w-70px">Actions</th>
+													    <th class=" min-w-50px">id</th>
+													    <th class="text-center min-w-100px">Service </th>
+														<th class="text-center min-w-100px">Short Description</th>
+														<th class="text-center min-w-70px">Actions</th>
 													</tr>
 												</thead>
 												<tbody class="fw-semibold text-gray-600">
-                                                @foreach($allData as $row)
+                                                @foreach($allData as $key=>$row)
                                                     <tr>
+													   <td >{{$key+1}}</td>
 														<td>
 															<div class="d-flex align-items-center">
 																<!--begin::Thumbnail-->
@@ -109,7 +111,7 @@
 																</div>
 															</div>
 														</td>
-														<td class="text-end pe-0">
+														<td class="text-center pe-0">
 															<span class="fw-bold">{{$row->short_description}}</span>
 														</td>
                                                         <td class="text-end">
@@ -145,33 +147,6 @@
 							<!--end::Content-->
 						</div>
 						<!--end::Content wrapper-->
-						<!--begin::Footer-->
-						<div id="kt_app_footer" class="app-footer">
-							<!--begin::Footer container-->
-							<div class="app-container container-fluid d-flex flex-column flex-md-row flex-center flex-md-stack py-3">
-								<!--begin::Copyright-->
-								<div class="text-dark order-2 order-md-1">
-									<span class="text-muted fw-semibold me-1">2023&copy;</span>
-									<a href="https://keenthemes.com" target="_blank" class="text-gray-800 text-hover-primary">Keenthemes</a>
-								</div>
-								<!--end::Copyright-->
-								<!--begin::Menu-->
-								<ul class="menu menu-gray-600 menu-hover-primary fw-semibold order-1">
-									<li class="menu-item">
-										<a href="https://keenthemes.com" target="_blank" class="menu-link px-2">About</a>
-									</li>
-									<li class="menu-item">
-										<a href="https://devs.keenthemes.com" target="_blank" class="menu-link px-2">Support</a>
-									</li>
-									<li class="menu-item">
-										<a href="https://1.envato.market/EA4JP" target="_blank" class="menu-link px-2">Purchase</a>
-									</li>
-								</ul>
-								<!--end::Menu-->
-							</div>
-							<!--end::Footer container-->
-						</div>
-						<!--end::Footer-->
 					</div>
 					<!--end:::Main-->
 
@@ -190,8 +165,6 @@
 			</i>
 		</div>
 		<!--end::Scrolltop-->
-
-		@include('backend.service.modal')
 
         @include('backend.scripts.js_scripts') 
 

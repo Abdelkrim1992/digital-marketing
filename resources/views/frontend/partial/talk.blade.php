@@ -47,8 +47,8 @@
                                 <div class="col-lg-3 col-sm-6 col-12 mb-20">
                                     <select name="choosed_service" id="choosed_service" class="form-control mb-10" required>
                                             <option >Select Service</option>
-                                            @foreach ($service as $service)
-                                            <option value="{{ $service->service_title }}">{{ $service->service_title }}</option>
+                                            @foreach ($all_services as $row)
+                                            <option value="{{ $row->service_title }}">{{ $row->service_title }}</option>
                                             @endforeach
                                    </select>
                                 </div>

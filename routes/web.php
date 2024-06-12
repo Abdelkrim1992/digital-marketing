@@ -50,34 +50,34 @@ Route::get('/dashboard',[BackendController::class,'index'])->name('backend.index
    /****** setting *****/
 Route::middleware(['auth', 'verified'])->group(function () {
 
-Route::get('/admin/setting',[SettingController::class,'index'])->name('setting.index');
-Route::POST('/admin/setting/update',[SettingController::class,'update'])->name('setting.update');
+Route::get('/setting',[SettingController::class,'index'])->name('setting.index');
+Route::POST('/setting/update',[SettingController::class,'update'])->name('setting.update');
 
 });
 
    /****** service *****/
 Route::middleware(['auth', 'verified'])->group(function () {
 
-Route::get('/admin/services',[ServiceManagementController::class,'index'])->name('service.index');
-Route::get('/admin/service/create',[ServiceManagementController::class,'create'])->name('service.create');
-Route::POST('/admin/service/index',[ServiceManagementController::class,'store'])->name('service.store');
-Route::get('/admin/service/edit/{id}',[ServiceManagementController::class,'edit'])->name('service.edit');
-Route::POST('/admin/service/update/{id}',[ServiceManagementController::class,'update'])->name('service.update');
-Route::get('/admin/service/{id}',[ServiceManagementController::class,'delete'])->name('service.delete');
+Route::get('/services/index',[ServiceManagementController::class,'index'])->name('service.index');
+Route::get('/services/create',[ServiceManagementController::class,'create'])->name('service.create');
+Route::POST('/services/store/index',[ServiceManagementController::class,'store'])->name('service.store');
+Route::get('/services/edit/{id}',[ServiceManagementController::class,'edit'])->name('service.edit');
+Route::POST('/services/update/{id}',[ServiceManagementController::class,'update'])->name('service.update');
+Route::get('/services/delete/{id}',[ServiceManagementController::class,'delete'])->name('service.delete');
 
 });
 
    /****** contact form clients *****/
 Route::middleware(['auth'])->group(function () {
 
-Route::get('/admin/request/clients', [ClientController::class, 'index'])->name('client.index');
-Route::get('admin/request/client/{id}/accept', [ClientController::class, 'acceptClient'])->name('client.accept');
+Route::get('/request/clients', [ClientController::class, 'index'])->name('client.index');
+Route::get('request/client/{id}/accept', [ClientController::class, 'acceptClient'])->name('client.accept');
    
 });
 
    /****** confirmed clients *****/
    
-Route::prefix('admin')->middleware('auth')->group(function () {
+Route::middleware('auth')->group(function () {
    Route::resource('confirmed-clients', ConfirmedClientController::class);
 });
 
@@ -109,7 +109,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 Route::get('/users',[UserController::class,'index'])->name('user.index');
 Route::POST('/users', [UserController::class, 'store'])->name('user.store');
-Route::get('/user/edit/{id}',[UserController::class,'edit'])->name('user.edit');
+Route::get('/users/edit/{id}',[UserController::class,'edit'])->name('user.edit');
 Route::POST('/users/update/{id}',[UserController::class,'update'])->name('user.update');
 Route::get('/users/delete',[UserController::class,'delete'])->name('user.delete');
 Route::POST('/delete-users', [UserController::class, 'deleteUsers'])->name('user.deleteUsers');

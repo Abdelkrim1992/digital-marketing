@@ -18,8 +18,8 @@ class ServiceDetailController extends Controller
     {
         $setting= Setting::findOrFail(1);
         $service= Service::find($id);
-        $services = Service::all();
-        return view('frontend.service.service_details',compact('setting','service','services'));
+        $all_services = Service::all();
+        return view('frontend.service.service_details',compact('setting','service','all_services'));
     }
 
     /**

@@ -35,7 +35,7 @@
 							<!--begin::Toolbar-->
 							<div id="kt_app_toolbar" class="app-toolbar py-3 py-lg-6">
 								<!--begin::Toolbar container-->
-								<div id="kt_app_toolbar_container" class="app-container container-xxl d-flex flex-stack">
+								<div id="kt_app_toolbar_container" class="app-container container-xxl d-flex flex-stack ">
 									<!--begin::Page title-->
 									<div class="page-title d-flex flex-column justify-content-center flex-wrap me-3">
 										<!--begin::Title-->
@@ -50,7 +50,7 @@
 							<!--begin::Content-->
 							<div id="kt_app_content" class="app-content flex-column-fluid">
 								<!--begin::Content container-->
-								<div id="kt_app_content_container" class="app-container container-xxl">
+								<div id="kt_app_content_container" class="app-container container-xxl pb-10">
 									<!--begin::Form-->
 									<form id="kt_ecommerce_add_product_form" class="form d-flex flex-column flex-lg-row"  method="POST" action="{{route('service.update',$editData->id)}}" enctype="multipart/form-data"> @csrf
 										<!--begin::Aside column-->
@@ -203,16 +203,9 @@
 																</div>
 																<!--end::Input group-->
 																<!--begin::Input group-->
-																<div>
-																	<!--begin::Label-->
-																	<label class="form-label">Main Description</label>
-																	<!--end::Label-->
-																	<!--begin::Editor-->
-																	<div id="kt_ecommerce_add_product_description" name="service_description" class="min-h-200px mb-2" value="{{$editData->service_description}}" ></div>
-																	<!--end::Editor-->
-																	<!--begin::Description-->
-																	<div class="text-muted fs-7">Set a description to the service for better visibility.</div>
-																	<!--end::Description-->
+																<div class="mb-10 fv-row">
+																    <label class="form-label">Full Description</label>
+																    <textarea id="service_description_editor" name="service_description" class="form-control mb-2">{{$editData->service_description}}</textarea>
 																</div>
 																<!--end::Input group-->
 															</div>
@@ -242,33 +235,6 @@
 							<!--end::Content-->
 						</div>
 						<!--end::Content wrapper-->
-						<!--begin::Footer-->
-						<div id="kt_app_footer" class="app-footer">
-							<!--begin::Footer container-->
-							<div class="app-container container-fluid d-flex flex-column flex-md-row flex-center flex-md-stack py-3">
-								<!--begin::Copyright-->
-								<div class="text-dark order-2 order-md-1">
-									<span class="text-muted fw-semibold me-1">2023&copy;</span>
-									<a href="https://keenthemes.com" target="_blank" class="text-gray-800 text-hover-primary">Keenthemes</a>
-								</div>
-								<!--end::Copyright-->
-								<!--begin::Menu-->
-								<ul class="menu menu-gray-600 menu-hover-primary fw-semibold order-1">
-									<li class="menu-item">
-										<a href="https://keenthemes.com" target="_blank" class="menu-link px-2">About</a>
-									</li>
-									<li class="menu-item">
-										<a href="https://devs.keenthemes.com" target="_blank" class="menu-link px-2">Support</a>
-									</li>
-									<li class="menu-item">
-										<a href="https://1.envato.market/EA4JP" target="_blank" class="menu-link px-2">Purchase</a>
-									</li>
-								</ul>
-								<!--end::Menu-->
-							</div>
-							<!--end::Footer container-->
-						</div>
-						<!--end::Footer-->
 					</div>
 					<!--end:::Main-->
 
@@ -288,9 +254,8 @@
 		</div>
 		<!--end::Scrolltop-->
 
-		@include('backend.service.modal')
-
         @include('backend.scripts.js_scripts') 
+		<script src="https://cdn.ckeditor.com/4.17.0/standard/ckeditor.js"></script>
 
 	</body>
 	<!--end::Body-->

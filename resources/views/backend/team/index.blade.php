@@ -189,7 +189,7 @@
 											<!--begin::Modal content-->
 											<div class="modal-content">
 												<!--begin::Form-->
-												<form class="form" action="{{route('team.store')}}" id="kt_modal_add_customer_form" data-kt-redirect="/team" method="POST" enctype="multipart/form-data"> @csrf
+												<form class="form" action="{{route('team.store')}}" id="kt_modal_add_customer_form" method="POST" enctype="multipart/form-data"> @csrf
 													<!--begin::Modal header-->
 													<div class="modal-header" id="kt_modal_add_customer_header">
 														<!--begin::Modal title-->

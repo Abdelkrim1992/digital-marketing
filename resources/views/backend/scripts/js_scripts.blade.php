@@ -6,6 +6,7 @@
 		<!--end::Global Javascript Bundle-->
 		<!--begin::Vendors Javascript(used for this page only)-->
 		<script src="{{asset('backend/plugins/custom/datatables/datatables.bundle.js')}}"></script>
+		<script src="{{asset('backend/plugins/custom/formrepeater/formrepeater.bundle.js')}}"></script>
 		<script src="{{asset('backend/plugins/custom/vis-timeline/vis-timeline.bundle.js')}}"></script>
 		<script src="https://cdn.amcharts.com/lib/5/index.js"></script>
 		<script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
@@ -16,6 +17,7 @@
 		<!--begin::Custom Javascript(used for this page only)-->
 		<script src="{{asset('backend/js/widgets.bundle.js')}}"></script>
 		<script src="{{asset('backend/js/custom/widgets.js')}}"></script>
+		<script src="{{asset('backend/js/custom/apps/services/add-service/save-product.js')}}"></script>
 		<script src="{{asset('backend/js/custom/utilities/modals/create-project/type.js')}}"></script>
 		<script src="{{asset('backend/js/custom/utilities/modals/create-project/budget.js')}}"></script>
 		<script src="{{asset('backend/js/custom/utilities/modals/create-project/settings.js')}}"></script>
@@ -28,7 +30,6 @@
 		<script src="{{asset('backend/js/custom/utilities/modals/new-address.js')}}"></script>
 		<script src="{{asset('backend/js/custom/utilities/modals/users-search.js')}}"></script>
 		<script src="{{asset('backend/plugins/custom/formrepeater/formrepeater.bundle.js')}}"></script>
-		<script src="{{asset('backend/js/custom/apps/ecommerce/catalog/save-product.js')}}"></script>
 		<script src="{{asset('backend/js/custom/account/settings/profile-details.js')}}"></script>
 		<script src="{{asset('backend/js/custom/pages/user-profile/general.js')}}"></script>
 		<script src="{{asset('backend/js/custom/apps/user/users/list/table.js')}}"></script>

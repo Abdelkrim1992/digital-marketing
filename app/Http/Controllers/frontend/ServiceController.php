@@ -17,8 +17,8 @@ class ServiceController extends Controller
     public function index()
     {
         $setting= Setting::findOrFail(1);
-        $service= Service::all();
-        return view('frontend.service.services',compact('setting','service'));
+        $all_services= Service::all();
+        return view('frontend.service.services',compact('setting','all_services'));
     }
 
     /**

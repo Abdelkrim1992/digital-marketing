@@ -4,9 +4,9 @@
 	<!--begin::Head-->
 	<head><base href=""/>
 
-  @include('backend.scripts.css_scripts') 
+        @include('backend.scripts.css_scripts') 
 
-  </head>
+    </head>
 	<!--end::Head-->
 	<!--begin::Body-->
 	<body id="kt_app_body" data-kt-app-layout="dark-sidebar" data-kt-app-header-fixed="true" data-kt-app-sidebar-enabled="true" data-kt-app-sidebar-fixed="true" data-kt-app-sidebar-hoverable="true" data-kt-app-sidebar-push-header="true" data-kt-app-sidebar-push-toolbar="true" data-kt-app-sidebar-push-footer="true" data-kt-app-toolbar-enabled="true" class="app-default">
@@ -50,7 +50,7 @@
 							<!--begin::Content-->
 							<div id="kt_app_content" class="app-content flex-column-fluid">
 								<!--begin::Content container-->
-								<div id="kt_app_content_container" class="app-container container-xxl">
+								<div id="kt_app_content_container" class="app-container container-xxl pb-10">
 									<!--begin::Form-->
 									<form id="kt_ecommerce_add_product_form" class="form d-flex flex-column flex-lg-row"  method="POST" action="{{route('service.store')}}" enctype="multipart/form-data"> @csrf
 										<!--begin::Aside column-->
@@ -148,7 +148,7 @@
 																	<label class="required form-label">Service Title</label>
 																	<!--end::Label-->
 																	<!--begin::Input-->
-																	<input type="text" name="service_title" class="form-control mb-2" placeholder="Service title" value="" />
+																	<input type="text" name="service_title" class="form-control mb-2" placeholder="Service title" required />
 																	<!--end::Input-->
 																</div>
 																<!--end::Input group-->
@@ -158,7 +158,7 @@
 																	<label class="required form-label">Short Description</label>
 																	<!--end::Label-->
 																	<!--begin::Input-->
-																	<textarea type="text" name="short_description" class="form-control mb-2" placeholder="Short Description" value="" ></textarea>
+																	<textarea type="text" name="short_description" class="form-control mb-2" placeholder="Short Description" required ></textarea>
 																	<!--end::Input-->
 																</div>
 																<!--end::Input group-->
@@ -168,23 +168,15 @@
 																	<label class="required form-label">Button Text</label>
 																	<!--end::Label-->
 																	<!--begin::Input-->
-																	<input type="text" name="button_text" class="form-control mb-2" placeholder="Button text" value="" />
+																	<input type="text" name="button_text" class="form-control mb-2" placeholder="Button text" required />
 																	<!--end::Input-->
 																</div>
 																<!--end::Input group-->
 																<!--begin::Input group-->
-																<div>
-																	<!--begin::Label-->
-																	<label class="form-label">Main Description</label>
-																	<!--end::Label-->
-																	<!--begin::Editor-->
-																	<div id="kt_ecommerce_add_product_description" name="service_description" class="min-h-200px mb-2"></div>
-																	<!--end::Editor-->
-																	<!--begin::Description-->
-																	<div class="text-muted fs-7">Set a description to the service for better visibility.</div>
-																	<!--end::Description-->
+																<div class="mb-10 fv-row">
+																    <label class="form-label">Full Description</label>
+																    <textarea id="service_description_editor" name="service_description" class="form-control mb-2" required></textarea>
 																</div>
-																<!--end::Input group-->
 															</div>
 															<!--end::Card header-->
 														</div>
@@ -212,33 +204,7 @@
 							<!--end::Content-->
 						</div>
 						<!--end::Content wrapper-->
-						<!--begin::Footer-->
-						<div id="kt_app_footer" class="app-footer">
-							<!--begin::Footer container-->
-							<div class="app-container container-fluid d-flex flex-column flex-md-row flex-center flex-md-stack py-3">
-								<!--begin::Copyright-->
-								<div class="text-dark order-2 order-md-1">
-									<span class="text-muted fw-semibold me-1">2023&copy;</span>
-									<a href="https://keenthemes.com" target="_blank" class="text-gray-800 text-hover-primary">Keenthemes</a>
-								</div>
-								<!--end::Copyright-->
-								<!--begin::Menu-->
-								<ul class="menu menu-gray-600 menu-hover-primary fw-semibold order-1">
-									<li class="menu-item">
-										<a href="https://keenthemes.com" target="_blank" class="menu-link px-2">About</a>
-									</li>
-									<li class="menu-item">
-										<a href="https://devs.keenthemes.com" target="_blank" class="menu-link px-2">Support</a>
-									</li>
-									<li class="menu-item">
-										<a href="https://1.envato.market/EA4JP" target="_blank" class="menu-link px-2">Purchase</a>
-									</li>
-								</ul>
-								<!--end::Menu-->
-							</div>
-							<!--end::Footer container-->
-						</div>
-						<!--end::Footer-->
+						
 					</div>
 					<!--end:::Main-->
 
@@ -256,12 +222,12 @@
 				<span class="path2"></span>
 			</i>
 		</div>
+
+		
+
 		<!--end::Scrolltop-->
-
-		@include('backend.service.modal')
-
         @include('backend.scripts.js_scripts') 
-
+		<script src="https://cdn.ckeditor.com/4.17.0/standard/ckeditor.js"></script>
 	</body>
 	<!--end::Body-->
 </html>

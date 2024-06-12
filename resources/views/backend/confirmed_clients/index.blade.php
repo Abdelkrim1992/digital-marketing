@@ -202,8 +202,6 @@
 		</div>
 		<!--end::Scrolltop-->
 
-		@include('backend.confirmed_clients.modal')
-
         @include('backend.scripts.js_scripts') 
 
 	</body>
