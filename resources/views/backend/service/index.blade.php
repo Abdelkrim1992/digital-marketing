@@ -111,7 +111,7 @@
 																</div>
 															</div>
 														</td>
-														<td class="text-center pe-0">
+														<td class="pe-0">
 															<span class="fw-bold">{{$row->short_description}}</span>
 														</td>
                                                         <td class="text-end">

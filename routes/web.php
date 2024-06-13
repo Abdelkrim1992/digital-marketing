@@ -12,6 +12,7 @@ use App\Http\Controllers\backend\ServiceManagementController;
 use App\Http\Controllers\backend\TeamController;
 use App\Http\Controllers\backend\TestimonialController;
 use App\Http\Controllers\backend\UserController;
+use App\Http\Controllers\backend\ProjectController;
 
 
 /****** frontend *****/
@@ -114,6 +115,19 @@ Route::POST('/users/update/{id}',[UserController::class,'update'])->name('user.u
 Route::get('/users/delete',[UserController::class,'delete'])->name('user.delete');
 Route::POST('/delete-users', [UserController::class, 'deleteUsers'])->name('user.deleteUsers');
 
+});
+
+/****** projects *****/
+
+Route::middleware(['auth', 'verified'])->group(function () {
+
+   Route::get('/projects/index',[ProjectController::class,'index'])->name('projects.index');
+   Route::get('/projects/create', [ProjectController::class, 'create'])->name('projects.create');
+   Route::POST('/projects/index', [ProjectController::class, 'store'])->name('projects.store');
+   Route::get('/projects/edit/{id}',[ProjectController::class,'edit'])->name('projects.edit');
+   Route::POST('/projects/update/{id}',[ProjectController::class,'update'])->name('projects.update');
+   Route::get('/projects/delete/{id}',[ProjectController::class,'delete'])->name('projects.delete');
+   
 });
 
 /****** for dashboard *****/

@@ -18,14 +18,7 @@
 		<script src="{{asset('backend/js/widgets.bundle.js')}}"></script>
 		<script src="{{asset('backend/js/custom/widgets.js')}}"></script>
 		<script src="{{asset('backend/js/custom/apps/services/add-service/save-product.js')}}"></script>
-		<script src="{{asset('backend/js/custom/utilities/modals/create-project/type.js')}}"></script>
-		<script src="{{asset('backend/js/custom/utilities/modals/create-project/budget.js')}}"></script>
-		<script src="{{asset('backend/js/custom/utilities/modals/create-project/settings.js')}}"></script>
-		<script src="{{asset('backend/js/custom/utilities/modals/create-project/team.js')}}"></script>
-		<script src="{{asset('backend/js/custom/utilities/modals/create-project/targets.js')}}"></script>
-		<script src="{{asset('backend/js/custom/utilities/modals/create-project/files.js')}}"></script>
-		<script src="{{asset('backend/js/custom/utilities/modals/create-project/complete.js')}}"></script>
-		<script src="{{asset('backend/js/custom/utilities/modals/create-project/main.js')}}"></script>
+		<script src="{{asset('backend/js/custom/apps/projects/settings/settings.js')}}"></script>
 		<script src="{{asset('backend/js/custom/utilities/modals/create-app.js')}}"></script>
 		<script src="{{asset('backend/js/custom/utilities/modals/new-address.js')}}"></script>
 		<script src="{{asset('backend/js/custom/utilities/modals/users-search.js')}}"></script>
@@ -38,6 +31,7 @@
 		<script src="{{asset('backend/js/custom/apps/testimonial/testimonials/list/add.js')}}"></script>
 		<script src="{{asset('backend/js/custom/apps/team/teams/list/table.js')}}"></script>
 		<script src="{{asset('backend/js/custom/apps/team/teams/list/add.js')}}"></script>
+		<script src="{{asset('backend/js/custom/apps/projects/list/list.js')}}"></script>
 		<!--end::Custom Javascript-->
 		<!--end::Javascript-->
 	
