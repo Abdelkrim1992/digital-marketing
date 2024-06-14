@@ -52,7 +52,7 @@
 							<!--begin::Content-->
 							<div id="kt_app_content" class="app-content flex-column-fluid">
 								<!--begin::Content container-->
-								<div id="kt_app_content_container" class="app-container container-xxl ">
+								<div id="kt_app_content_container" class="app-container container-xxl pb-10">
 									<!--begin::Card-->
 									<div class="card">
 										<!--begin::Card header-->
@@ -134,6 +134,19 @@
 												<div class="row mb-8">
 													<!--begin::Col-->
 													<div class="col-xl-3">
+														<div class="fs-6 fw-semibold mt-2 mb-3">Client Name</div>
+													</div>
+													<!--end::Col-->
+													<!--begin::Col-->
+													<div class="col-xl-9 fv-row">
+														<input type="text" class="form-control form-control-solid" name="client_name" placeholder="Client name" />
+													</div>
+												</div>
+												<!--end::Row-->
+												<!--begin::Row-->
+												<div class="row mb-8">
+													<!--begin::Col-->
+													<div class="col-xl-3">
 														<div class="fs-6 fw-semibold mt-2 mb-3">Project Short Description</div>
 													</div>
 													<!--end::Col-->
@@ -157,43 +170,44 @@
 													<!--begin::Col-->
 												</div>
 												<!--end::Row-->
-                                                <!--begin::Row-->
-												<div class="row mb-8">
-													<!--begin::Col-->
-													<div class="col-xl-3">
-														<div class="fs-6 fw-semibold mt-2 mb-3">Manage Budget</div>
-													</div>
-													<!--end::Col-->
-													<!--begin::Col-->
-													<div class="col-xl-9">
-														<!--begin::Dialer-->
-														<div class="position-relative w-md-300px" data-kt-dialer="true" data-kt-dialer-min="1000" data-kt-dialer-max="50000" data-kt-dialer-step="1000" data-kt-dialer-prefix="$" data-kt-dialer-decimals="2">
-															<!--begin::Decrease control-->
-															<button type="button" class="btn btn-icon btn-active-color-gray-700 position-absolute translate-middle-y top-50 start-0" data-kt-dialer-control="decrease">
-																<i class="ki-duotone ki-minus-square fs-1">
-																	<span class="path1"></span>
-																	<span class="path2"></span>
-																</i>
-															</button>
-															<!--end::Decrease control-->
-															<!--begin::Input control-->
-															<input type="text" class="form-control form-control-solid border-0 ps-12" data-kt-dialer-control="input" placeholder="Amount" name="budget" readonly="readonly" value="$1000" />
-															<!--end::Input control-->
-															<!--begin::Increase control-->
-															<button type="button" class="btn btn-icon btn-active-color-gray-700 position-absolute translate-middle-y top-50 end-0" data-kt-dialer-control="increase">
-																<i class="ki-duotone ki-plus-square fs-1">
-																	<span class="path1"></span>
-																	<span class="path2"></span>
-																	<span class="path3"></span>
-																</i>
-															</button>
-															<!--end::Increase control-->
-														</div>
-														<!--end::Dialer-->
-													</div>
-													<!--end::Col-->
-												</div>
-												<!--end::Row-->
+<!--begin::Row-->
+<div class="row mb-8">
+    <!--begin::Col-->
+    <div class="col-xl-3">
+        <div class="fs-6 fw-semibold mt-2 mb-3">Manage Budget</div>
+    </div>
+    <!--end::Col-->
+    <!--begin::Col-->
+    <div class="col-xl-9">
+        <!--begin::Dialer-->
+        <div class="position-relative w-md-300px" data-kt-dialer="true" data-kt-dialer-min="100" data-kt-dialer-max="50000" data-kt-dialer-step="100" data-kt-dialer-prefix="$" data-kt-dialer-decimals="2">
+            <!--begin::Decrease control-->
+            <button type="button" class="btn btn-icon btn-active-color-gray-700 position-absolute translate-middle-y top-50 start-0" data-kt-dialer-control="decrease">
+                <i class="ki-duotone ki-minus-square fs-1">
+                    <span class="path1"></span>
+                    <span class="path2"></span>
+                </i>
+            </button>
+            <!--end::Decrease control-->
+            <!--begin::Input control-->
+            <input type="text" class="form-control form-control-solid border-0 ps-12" data-kt-dialer-control="input" placeholder="Amount" name="budget" readonly="readonly" />
+            <!--end::Input control-->
+            <!--begin::Increase control-->
+            <button type="button" class="btn btn-icon btn-active-color-gray-700 position-absolute translate-middle-y top-50 end-0" data-kt-dialer-control="increase">
+                <i class="ki-duotone ki-plus-square fs-1">
+                    <span class="path1"></span>
+                    <span class="path2"></span>
+                    <span class="path3"></span>
+                </i>
+            </button>
+            <!--end::Increase control-->
+        </div>
+        <!--end::Dialer-->
+    </div>
+    <!--end::Col-->
+</div>
+<!--end::Row-->
+
 												<!--begin::Row-->
 												<div class="row mb-8">
 													<!--begin::Col-->
@@ -254,16 +268,54 @@
 							<!--end::Content-->
 						</div>
 						<!--end::Content wrapper-->
-						<!--begin::Footer-->
-						<div id="kt_app_footer" class="app-footer">
-							
-						</div>
-						<!--end::Footer-->
 					</div>
 					<!--end:::Main-->
             </div>	
 		</div>
 	</div>
+
+<script>
+        document.addEventListener('DOMContentLoaded', function () {
+    // Update the budget input value on form submit
+    const form = document.querySelector('form');
+    const budgetInput = document.querySelector('input[name="budget"]');
+
+    form.addEventListener('submit', function (e) {
+        const dialerControl = document.querySelector('[data-kt-dialer="true"]');
+        const dialerInput = dialerControl.querySelector('[data-kt-dialer-control="input"]');
+        
+        // Remove the prefix and convert to a float
+        const budgetValue = parseFloat(dialerInput.value.replace('$', '').replace(',', ''));
+
+        // Set the cleaned value back to the input
+        budgetInput.value = budgetValue;
+    });
+
+    // Dialer control logic
+    const dialerControl = document.querySelector('[data-kt-dialer="true"]');
+    const dialerInput = dialerControl.querySelector('[data-kt-dialer-control="input"]');
+    const decreaseButton = dialerControl.querySelector('[data-kt-dialer-control="decrease"]');
+    const increaseButton = dialerControl.querySelector('[data-kt-dialer-control="increase"]');
+    const step = parseFloat(dialerControl.getAttribute('data-kt-dialer-step'));
+    const min = parseFloat(dialerControl.getAttribute('data-kt-dialer-min'));
+    const max = parseFloat(dialerControl.getAttribute('data-kt-dialer-max'));
+    const prefix = dialerControl.getAttribute('data-kt-dialer-prefix') || '';
+    const decimals = parseInt(dialerControl.getAttribute('data-kt-dialer-decimals')) || 0;
+
+    decreaseButton.addEventListener('click', function () {
+        let value = parseFloat(dialerInput.value.replace(prefix, '')) - step;
+        if (value < min) value = min;
+        dialerInput.value = prefix + value.toFixed(decimals);
+    });
+
+    increaseButton.addEventListener('click', function () {
+        let value = parseFloat(dialerInput.value.replace(prefix, '')) + step;
+        if (value > max) value = max;
+        dialerInput.value = prefix + value.toFixed(decimals);
+    });
+    });
+
+</script>
 
 	@include('backend.scripts.js_scripts')
 

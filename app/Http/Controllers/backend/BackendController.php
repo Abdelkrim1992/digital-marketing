@@ -8,6 +8,8 @@ use App\Models\Setting;
 use App\Models\Client;
 use App\Models\ConfirmedClient;
 use App\Models\User;
+use App\Models\Project;
+use App\Models\ProjectStatus;
 
 class BackendController extends Controller
 {
@@ -17,13 +19,16 @@ class BackendController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $setting= Setting::findOrFail(1);
-        $client= Client::all();
-        $user= User::all();
-        $confirmed_client= ConfirmedClient::all();
-        return view('backend.layouts.master',compact('setting','client','confirmed_client','user'));
-    }
+{
+    $setting = Setting::findOrFail(1);
+    $client = Client::all();
+    $user = User::all();
+    $confirmed_client = ConfirmedClient::all()->count();
+    $projects = Project::all();
+    $status= ProjectStatus::all();
+    
+    return view('backend.layouts.master', compact('setting', 'client', 'confirmed_client', 'user', 'projects','status'));
+}
 
     /**
      * Show the form for creating a new resource.

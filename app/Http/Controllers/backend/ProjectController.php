@@ -43,6 +43,7 @@ class ProjectController extends Controller
     {
         $Data= new Project();
         $Data->project_name= $request->project_name;
+        $Data->client_name= $request->client_name;
         $Data->project_icon= $request->project_icon;
         $Data->project_description= $request->project_description;
         $Data->short_description= $request->short_description;
@@ -101,6 +102,7 @@ class ProjectController extends Controller
     {
         $project= Project::findOrFail($id);
         $project->project_name= $request->project_name;
+        $project->client_name= $request->client_name;
         $project->project_icon= $request->project_icon;
         $project->project_description= $request->project_description;
         $project->status_id= $request->status_id;

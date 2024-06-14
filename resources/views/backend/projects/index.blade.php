@@ -81,7 +81,7 @@
 													<!--end::Car Title-->
 													<!--begin::Card toolbar-->
 													<div class="card-toolbar">
-														<span class="badge badge-light-primary fw-bold me-auto px-4 py-3">{{$row->status}}</span>
+														<span class="badge badge-light-primary fw-bold me-auto px-4 py-3">{{$row->status->status ?? 'No status'}}</span>
 													</div>
 													<!--end::Card toolbar-->
 												</div>
@@ -132,7 +132,11 @@
 											<li class="page-item active">
 												<a href="#" class="page-link">1</a>
 											</li>
-											
+											<li class="page-item next">
+												<a href="#" class="page-link">
+													<i class="next"></i>
+												</a>
+											</li>
 										</ul>
 										<!--end::Pages-->
 									</div>
