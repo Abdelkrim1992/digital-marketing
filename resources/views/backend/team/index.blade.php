@@ -1,35 +1,50 @@
 <!DOCTYPE html>
-
 <html lang="en">
+<!--begin::Head-->
+<head>
+
+    <base href="" />
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    @include('backend.scripts.css_scripts') 
-
-  </head>
-	<!--end::Head-->
-	<!--begin::Body-->
-	<body id="kt_app_body" data-kt-app-layout="dark-sidebar" data-kt-app-header-fixed="true" data-kt-app-sidebar-enabled="true" data-kt-app-sidebar-fixed="true" data-kt-app-sidebar-hoverable="true" data-kt-app-sidebar-push-header="true" data-kt-app-sidebar-push-toolbar="true" data-kt-app-sidebar-push-footer="true" data-kt-app-toolbar-enabled="true" class="app-default">
-		<!--begin::Theme mode setup on page load-->
-		<script>var defaultThemeMode = "light"; var themeMode; if ( document.documentElement ) { if ( document.documentElement.hasAttribute("data-bs-theme-mode")) { themeMode = document.documentElement.getAttribute("data-bs-theme-mode"); } else { if ( localStorage.getItem("data-bs-theme") !== null ) { themeMode = localStorage.getItem("data-bs-theme"); } else { themeMode = defaultThemeMode; } } if (themeMode === "system") { themeMode = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; } document.documentElement.setAttribute("data-bs-theme", themeMode); }</script>
-		<!--end::Theme mode setup on page load-->
-		<!--begin::App-->
-		<div class="d-flex flex-column flex-root app-root" id="kt_app_root">
-			<!--begin::Page-->
-			<div class="app-page flex-column flex-column-fluid" id="kt_app_page">
-
-
-				@include('backend.partial.header')
-
-
-				<!--begin::Wrapper-->
-				<div class="app-wrapper flex-column flex-row-fluid" id="kt_app_wrapper">
-					
-					
-					@include('backend.partial.sidebar')
-
-                    <!--begin::Main-->
-					<div class="app-main flex-column flex-row-fluid" id="kt_app_main">
+	
+    @include('backend.scripts.css_scripts')
+	
+</head>
+<!--end::Head-->
+<!--begin::Body-->
+<body id="kt_app_body" class="app-default" data-kt-app-layout="dark-sidebar" data-kt-app-header-fixed="true" data-kt-app-sidebar-enabled="true" data-kt-app-sidebar-fixed="true" data-kt-app-sidebar-hoverable="true" data-kt-app-sidebar-push-header="true" data-kt-app-sidebar-push-toolbar="true" data-kt-app-sidebar-push-footer="true" data-kt-app-toolbar-enabled="true">
+    <!--begin::Theme mode setup on page load-->
+    <script>
+        var defaultThemeMode = "light"; 
+        var themeMode; 
+        if (document.documentElement) {
+            if (document.documentElement.hasAttribute("data-bs-theme-mode")) { 
+                themeMode = document.documentElement.getAttribute("data-bs-theme-mode"); 
+            } else { 
+                if (localStorage.getItem("data-bs-theme") !== null) { 
+                    themeMode = localStorage.getItem("data-bs-theme"); 
+                } else { 
+                    themeMode = defaultThemeMode; 
+                } 
+            } 
+            if (themeMode === "system") { 
+                themeMode = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; 
+            } 
+            document.documentElement.setAttribute("data-bs-theme", themeMode); 
+        }
+    </script>
+    <!--end::Theme mode setup on page load-->
+    <!--begin::App-->
+    <div class="d-flex flex-column flex-root app-root" id="kt_app_root">
+        <!--begin::Page-->
+        <div class="app-page flex-column flex-column-fluid" id="kt_app_page">
+            @include('backend.partial.header')
+            <!--begin::Wrapper-->
+            <div class="app-wrapper flex-column flex-row-fluid" id="kt_app_wrapper">
+                @include('backend.partial.sidebar')
+               
+				    <!--begin::Main-->
+				    <div class="app-main flex-column flex-row-fluid" id="kt_app_main">
 						<!--begin::Content wrapper-->
 						<div class="d-flex flex-column flex-column-fluid">
 							<!--begin::Toolbar-->
@@ -39,13 +54,13 @@
 									<!--begin::Page title-->
 									<div class="page-title d-flex flex-column justify-content-center flex-wrap me-3">
 										<!--begin::Title-->
-										<h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">Team</h1>
+										<h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">Team Members List</h1>
 										<!--end::Title-->
 										<!--begin::Breadcrumb-->
 										<ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
 											<!--begin::Item-->
 											<li class="breadcrumb-item text-muted">
-												<a href="{{route('dashboard')}}" class="text-muted text-hover-primary">Home</a>
+												<a href="../../demo1/dist/index.html" class="text-muted text-hover-primary">Home</a>
 											</li>
 											<!--end::Item-->
 											<!--begin::Item-->
@@ -54,7 +69,7 @@
 											</li>
 											<!--end::Item-->
 											<!--begin::Item-->
-											<li class="breadcrumb-item text-muted">eCommerce</li>
+											<li class="breadcrumb-item text-muted">Team Management</li>
 											<!--end::Item-->
 											<!--begin::Item-->
 											<li class="breadcrumb-item">
@@ -62,7 +77,7 @@
 											</li>
 											<!--end::Item-->
 											<!--begin::Item-->
-											<li class="breadcrumb-item text-muted">Catalog</li>
+											<li class="breadcrumb-item text-muted">Members</li>
 											<!--end::Item-->
 										</ul>
 										<!--end::Breadcrumb-->
@@ -88,7 +103,7 @@
 														<span class="path1"></span>
 														<span class="path2"></span>
 													</i>
-													<input type="text" data-kt-customer-table-filter="search" class="form-control form-control-solid w-250px ps-12" placeholder="Search Customers" />
+													<input type="text" data-kt-user-table-filter="search" class="form-control form-control-solid w-250px ps-13" placeholder="Search user" />
 												</div>
 												<!--end::Search-->
 											</div>
@@ -96,84 +111,252 @@
 											<!--begin::Card toolbar-->
 											<div class="card-toolbar">
 												<!--begin::Toolbar-->
-												<div class="d-flex justify-content-end" data-kt-customer-table-toolbar="base">
+												<div class="d-flex justify-content-end" data-kt-user-table-toolbar="base">
 													
-													<!--begin::Add customer-->
-													<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_add_customer">Add Member</button>
-													<!--end::Add customer-->
+													<!--begin::Add user-->
+													<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_add_user">
+													<i class="ki-duotone ki-plus fs-2"></i>Add Member</button>
+													<!--end::Add user-->
 												</div>
 												<!--end::Toolbar-->
 												<!--begin::Group actions-->
-												<div class="d-flex justify-content-end align-items-center d-none" data-kt-customer-table-toolbar="selected">
+												<div class="d-flex justify-content-end align-items-center d-none" data-kt-user-table-toolbar="selected">
 													<div class="fw-bold me-5">
-													<span class="me-2" data-kt-customer-table-select="selected_count"></span>Selected</div>
-													<button type="button" class="btn btn-danger" data-kt-customer-table-select="delete_selected">Delete Selected</button>
+													<span class="me-2" data-kt-user-table-select="selected_count"></span>Selected</div>
+													<button type="button" class="btn btn-danger" data-kt-user-table-select="delete_selected">Delete Selected</button>
 												</div>
 												<!--end::Group actions-->
+												<!--begin::Modal - Add task-->
+												<div class="modal fade" id="kt_modal_add_user" tabindex="-1" aria-hidden="true">
+													<!--begin::Modal dialog-->
+													<div class="modal-dialog modal-dialog-centered mw-650px">
+														<!--begin::Modal content-->
+														<div class="modal-content">
+															<!--begin::Modal header-->
+															<div class="modal-header" id="kt_modal_add_user_header">
+																<!--begin::Modal title-->
+																<h2 class="fw-bold">Add Member</h2>
+																<!--end::Modal title-->
+																<!--begin::Close-->
+																<div class="btn btn-icon btn-sm btn-active-icon-primary" data-kt-users-modal-action="close">
+																	<i class="ki-duotone ki-cross fs-1">
+																		<span class="path1"></span>
+																		<span class="path2"></span>
+																	</i>
+																</div>
+																<!--end::Close-->
+															</div>
+															<!--end::Modal header-->
+															<!--begin::Modal body-->
+															<div class="modal-body px-5 my-7">
+																<!--begin::Form-->
+																<form id="kt_modal_add_user_form" class="form" action="{{route('team.store')}}" data-kt-redirect="{{ route('team.index') }}" method="post" enctype="multipart/form-data"> @csrf
+																	<!--begin::Scroll-->
+																	<div class="d-flex flex-column scroll-y px-5 px-lg-10" id="kt_modal_add_user_scroll" data-kt-scroll="true" data-kt-scroll-activate="true" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_add_user_header" data-kt-scroll-wrappers="#kt_modal_add_user_scroll" data-kt-scroll-offset="300px">
+																		<!--begin::Input group-->
+																		<div class="fv-row mb-7">
+																			<!--begin::Label-->
+																			<label class="d-block fw-semibold fs-6 mb-5">Member Photo</label>
+																			<!--end::Label-->
+																			<!--begin::Image placeholder-->
+																			<style>.image-input-placeholder { background-image: url('assets/media/svg/files/blank-image.svg'); } [data-bs-theme="dark"] .image-input-placeholder { background-image: url('assets/media/svg/files/blank-image-dark.svg'); }</style>
+																			<!--end::Image placeholder-->
+																			<!--begin::Image input-->
+																			<div class="image-input image-input-outline image-input-placeholder" data-kt-image-input="true">
+																				<!--begin::Preview existing avatar-->
+																				<div class="image-input-wrapper w-125px h-125px" style="background-image: url(assets/media/avatars/300-6.jpg);"></div>
+																				<!--end::Preview existing avatar-->
+																				<!--begin::Label-->
+																				<label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Change avatar">
+																					<i class="ki-duotone ki-pencil fs-7">
+																						<span class="path1"></span>
+																						<span class="path2"></span>
+																					</i>
+																					<!--begin::Inputs-->
+																					<input type="file" name="member_image" accept=".png, .jpg, .jpeg" />
+																					<input type="hidden" name="avatar_remove" />
+																					<!--end::Inputs-->
+																				</label>
+																				<!--end::Label-->
+																				<!--begin::Cancel-->
+																				<span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="cancel" data-bs-toggle="tooltip" title="Cancel avatar">
+																					<i class="ki-duotone ki-cross fs-2">
+																						<span class="path1"></span>
+																						<span class="path2"></span>
+																					</i>
+																				</span>
+																				<!--end::Cancel-->
+																				<!--begin::Remove-->
+																				<span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="remove" data-bs-toggle="tooltip" title="Remove avatar">
+																					<i class="ki-duotone ki-cross fs-2">
+																						<span class="path1"></span>
+																						<span class="path2"></span>
+																					</i>
+																				</span>
+																				<!--end::Remove-->
+																			</div>
+																			<!--end::Image input-->
+																			<!--begin::Hint-->
+																			<div class="form-text">Allowed file types: png, jpg, jpeg.</div>
+																			<!--end::Hint-->
+																		</div>
+																		<!--end::Input group-->
+																		<!--begin::Input group-->
+																		<div class="fv-row mb-7">
+																			<!--begin::Label-->
+																			<label class="required fw-semibold fs-6 mb-2">Member Name</label>
+																			<!--end::Label-->
+																			<!--begin::Input-->
+																			<input type="text" name="member_name" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Member name" />
+																			<!--end::Input-->
+																		</div>
+																		<!--end::Input group-->
+																		<!--begin::Input group-->
+																		<div class="fv-row mb-7">
+																			<!--begin::Label-->
+																			<label class="required fw-semibold fs-6 mb-2">Email</label>
+																			<!--end::Label-->
+																			<!--begin::Input-->
+																			<input type="email" name="email" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="example@domain.com" value="smith@kpmg.com" />
+																			<!--end::Input-->
+																		</div>
+																		<!--end::Input group-->
+																		<!--begin::Input group-->
+																		<div class="fv-row mb-7">
+																			<!--begin::Label-->
+																			<label class="required fw-semibold fs-6 mb-2">Phone</label>
+																			<!--end::Label-->
+																			<!--begin::Input-->
+																			<input type="text" name="phone" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Phone number" />
+																			<!--end::Input-->
+																		</div>
+																		<!--end::Input group-->
+																		<!--begin::Input group-->
+																		<div class="fv-row mb-7">
+																			<!--begin::Label-->
+																			<label class="required fw-semibold fs-6 mb-2">Speciality</label>
+																			<!--end::Label-->
+																			<!--begin::Input-->
+																			<input type="text" name="member_speciality" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Member name" />
+																			<!--end::Input-->
+																		</div>
+																		<!--end::Input group-->
+																		<!--begin::Input group-->
+																		<div class="fv-row mb-7">
+																			<!--begin::Label-->
+																			<label class="required fw-semibold fs-6 mb-2">Facebook</label>
+																			<!--end::Label-->
+																			<!--begin::Input-->
+																			<input type="text" name="facebook" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Member facebook" />
+																			<!--end::Input-->
+																		</div>
+																		<!--end::Input group-->
+																		<!--begin::Input group-->
+																		<div class="fv-row mb-7">
+																			<!--begin::Label-->
+																			<label class="required fw-semibold fs-6 mb-2">Instagram</label>
+																			<!--end::Label-->
+																			<!--begin::Input-->
+																			<input type="text" name="instagram" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Member instagram" />
+																			<!--end::Input-->
+																		</div>
+																		<!--end::Input group-->
+																	</div>
+																	<!--end::Scroll-->
+																	<!--begin::Actions-->
+																	<div class="text-center pt-10">
+																		<button type="reset" class="btn btn-light me-3" data-kt-users-modal-action="cancel">Discard</button>
+																		<button type="submit" class="btn btn-primary" data-kt-users-modal-action="submit">
+																			<span class="indicator-label">Submit</span>
+																			<span class="indicator-progress">Please wait...
+																			<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+																		</button>
+																	</div>
+																	<!--end::Actions-->
+																</form>
+																<!--end::Form-->
+															</div>
+															<!--end::Modal body-->
+														</div>
+														<!--end::Modal content-->
+													</div>
+													<!--end::Modal dialog-->
+												</div>
+												<!--end::Modal - Add task-->
 											</div>
 											<!--end::Card toolbar-->
 										</div>
 										<!--end::Card header-->
 										<!--begin::Card body-->
-										<div class="card-body pt-0">
+										<div class="card-body py-4">
 											<!--begin::Table-->
-											<table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_customers_table">
+											<table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_users">
 												<thead>
-													<tr class="text-start text-gray-400 fw-bold fs-7 text-uppercase gs-0" >
+													<tr class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
 														<th class="w-10px pe-2">
-															<div class="form-check form-check-sm form-check-custom form-check-solid me-3" >
-																<input class="form-check-input" type="checkbox" data-kt-check="true" data-kt-check-target="#kt_customers_table .form-check-input" value="1"/>
+															<div class="form-check form-check-sm form-check-custom form-check-solid me-3">
+																<input class="form-check-input" type="checkbox" data-kt-check="true" data-kt-check-target="#kt_table_users .form-check-input" value="1" />
 															</div>
 														</th>
-														<th class="min-w-125px">Member Image</th>
-														<th class="min-w-125px">Member Name</th>
+														<th class="min-w-125px">Team Member</th>
 														<th class="min-w-125px">Email</th>
 														<th class="min-w-125px">Phone</th>
 														<th class="min-w-125px">Speciality</th>
-														<th class="text-end min-w-90px">Actions</th>
+														<th class="text-end min-w-100px">Actions</th>
 													</tr>
 												</thead>
-												<tbody class="fw-semibold text-gray-600">
-												  @foreach($allData as $team)
-													<tr data-team-id="{{ $team->id }}" >
+												<tbody class="text-gray-600 fw-semibold">
+													@foreach($allData as $row)
+													<tr data-member-id="{{ $row->id }}">
 														<td>
 															<div class="form-check form-check-sm form-check-custom form-check-solid">
-																<input class="form-check-input" type="checkbox" value="{{ $team->id }}"/>
+																<input class="form-check-input" type="checkbox" value="1" />
 															</div>
 														</td>
-														<td>
-														    <div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-															    <a href="{{ route('team.edit', $team->id) }}">
-                                                                    <div class="symbol-label">
-                                                                        <img src="{{ asset('frontend/img/team/'.$team->member_image) }}" alt="{{ $team->member_name }}" class="w-100" />
-                                                                    </div>
-                                                                </a>
-                                                            </div>
+														<td class="d-flex align-items-center">
+															<!--begin:: Avatar -->
+															<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
+																<a href="{{route('team.edit',$row->id)}}">
+																	<div class="symbol-label">
+																		<img src="{{asset('frontend/img/team/'.$row->member_image)}}" alt="member photo" class="w-100" />
+																	</div>
+																</a>
+															</div>
+															<!--end::Avatar-->
+															<!--begin::User details-->
+															<div class="d-flex flex-column">
+																<a href="{{route('team.edit',$row->id)}}" class="text-gray-800 text-hover-primary mb-1">{{$row->member_name}}</a>
+																
+															</div>
+															<!--begin::User details-->
 														</td>
-														<td>{{$team->member_name}}</td>
-														<td>{{$team->email}}</td>
-														<td >{{$team->phone}}</td>
-														<td>{{$team->speciality}}</td>
-					<td class="text-end">
-                        <a href="{{ route('team.edit', $team->id) }}" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
-                            <i class="ki-duotone ki-pencil fs-2">
-                                <span class="path1"></span>
-                                <span class="path2"></span>
-                            </i>
-                        </a>
-                        <form action="{{ route('team.delete', $team->id) }}" method="POST" class="d-inline">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm">
-                                <i class="ki-duotone ki-cross fs-2">
-                                    <span class="path1"></span>
-                                    <span class="path2"></span>
-                                </i>
-                            </button>
-                        </form>
-                    </td>
+														<td>
+															<span>{{$row->email}}</span>
+														</td>
+														<td>
+															<div class="badge badge-light fw-bold">{{$row->phone}}</div>
+														</td>
+														<td>{{$row->member_speciality}}</td>
+														<td class="text-end">
+															<a href="#" class="btn btn-light btn-active-light-primary btn-flex btn-center btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
+															<i class="ki-duotone ki-down fs-5 ms-1"></i></a>
+															<!--begin::Menu-->
+															<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
+																<!--begin::Menu item-->
+																<div class="menu-item px-3">
+																	<a href="{{route('team.edit',$row->id)}}" class="menu-link px-3">Edit</a>
+																</div>
+																<!--end::Menu item-->
+																<!--begin::Menu item-->
+																<div class="menu-item px-3">
+																	<a href="{{route('team.delete',$row->id)}}" class="menu-link px-3" data-kt-users-table-filter="delete_row">Delete</a>
+																</div>
+																<!--end::Menu item-->
+															</div>
+															<!--end::Menu-->
+														</td>
 													</tr>
-												  @endforeach
+													@endforeach
 												</tbody>
 											</table>
 											<!--end::Table-->
@@ -181,168 +364,6 @@
 										<!--end::Card body-->
 									</div>
 									<!--end::Card-->
-									<!--begin::Modals-->
-									<!--begin::Modal - Customers - Add-->
-									<div class="modal fade" id="kt_modal_add_customer" tabindex="-1" aria-hidden="true">
-										<!--begin::Modal dialog-->
-										<div class="modal-dialog modal-dialog-centered mw-650px">
-											<!--begin::Modal content-->
-											<div class="modal-content">
-												<!--begin::Form-->
-												<form class="form" action="{{route('team.store')}}" id="kt_modal_add_customer_form" method="POST" enctype="multipart/form-data"> @csrf
-													<!--begin::Modal header-->
-													<div class="modal-header" id="kt_modal_add_customer_header">
-														<!--begin::Modal title-->
-														<h2 class="fw-bold">Add a Member</h2>
-														<!--end::Modal title-->
-														<!--begin::Close-->
-														<div id="kt_modal_add_customer_close" class="btn btn-icon btn-sm btn-active-icon-primary">
-															<i class="ki-duotone ki-cross fs-1">
-																<span class="path1"></span>
-																<span class="path2"></span>
-															</i>
-														</div>
-														<!--end::Close-->
-													</div>
-													<!--end::Modal header-->
-													<!--begin::Modal body-->
-													<div class="modal-body py-10 px-lg-17">
-														<!--begin::Scroll-->
-														<div class="scroll-y me-n7 pe-7" id="kt_modal_add_customer_scroll" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_add_customer_header" data-kt-scroll-wrappers="#kt_modal_add_customer_scroll" data-kt-scroll-offset="300px">
-						<!--begin::Input group-->
-                        <div class="fv-row mb-7">
-                            <!--begin::Label-->
-                            <label class="d-block fw-semibold fs-6 mb-5">Member Image</label>
-                            <!--end::Label-->
-                            <!--begin::Image placeholder-->
-                            <style>.image-input-placeholder { background-image: url('assets/media/svg/files/blank-image.svg'); } [data-bs-theme="dark"] .image-input-placeholder { background-image: url('assets/media/svg/files/blank-image-dark.svg'); }</style>
-                            <!--end::Image placeholder-->
-                            <!--begin::Image input-->
-                            <div class="image-input image-input-outline image-input-placeholder" data-kt-image-input="true">
-                                <!--begin::Preview existing avatar-->
-                                <div class="image-input-wrapper w-125px h-125px" style="background-image: url(assets/media/avatars/300-6.jpg);"></div>
-                                <!--end::Preview existing avatar-->
-                                <!--begin::Label-->
-                                <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Change avatar">
-                                    <i class="ki-duotone ki-pencil fs-7">
-                                        <span class="path1"></span>
-                                        <span class="path2"></span>
-                                    </i>
-                                    <!--begin::Inputs-->
-                                    <input type="file" name="member_image" accept=".png, .jpg, .jpeg" />
-                                    <input type="hidden" name="image_remove" />
-                                    <!--end::Inputs-->
-                                </label>
-                                <!--end::Label-->
-                                <!--begin::Cancel-->
-                                <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="cancel" data-bs-toggle="tooltip" title="Cancel avatar">
-                                    <i class="ki-duotone ki-cross fs-2">
-                                        <span class="path1"></span>
-                                        <span class="path2"></span>
-                                    </i>
-                                </span>
-                                <!--end::Cancel-->
-                                <!--begin::Remove-->
-                                <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="remove" data-bs-toggle="tooltip" title="Remove avatar">
-                                    <i class="ki-duotone ki-cross fs-2">
-                                        <span class="path1"></span>
-                                        <span class="path2"></span>
-                                    </i>
-                                </span>
-                                <!--end::Remove-->
-                            </div>
-                            <!--end::Image input-->
-                            <!--begin::Hint-->
-                            <div class="form-text">Allowed file types: png, jpg, jpeg.</div>
-                            <!--end::Hint-->
-                        </div>
-                        <!--end::Input group-->
-														    <!--begin::Input group-->
-															<div class="fv-row mb-7">
-																<!--begin::Label-->
-																<label class="required fs-6 fw-semibold mb-2">Member Name</label>
-																<!--end::Label-->
-																<!--begin::Input-->
-																<input type="text" class="form-control form-control-solid" placeholder="Full Name" name="member_name" />
-																<!--end::Input-->
-															</div>
-															<!--end::Input group-->
-															<!--begin::Input group-->
-															<div class="fv-row mb-7">
-																<!--begin::Label-->
-																<label class="required fs-6 fw-semibold mb-2">Email</label>
-																<!--end::Label-->
-																<!--begin::Input-->
-																<input type="text" class="form-control form-control-solid"  name="email" placeholder="Member email" />
-																<!--end::Input-->
-															</div>
-															<!--end::Input group-->
-															<!--begin::Input group-->
-															<div class="fv-row mb-7">
-																<!--begin::Label-->
-																<label class="required fs-6 fw-semibold mb-2">Phone</label>
-																<!--end::Label-->
-																<!--begin::Input-->
-																<input type="text" class="form-control form-control-solid"  name="phone" placeholder="Phone number" />
-																<!--end::Input-->
-															</div>
-															<!--end::Input group-->
-															<!--begin::Input group-->
-															<div class="fv-row mb-7">
-																<!--begin::Label-->
-																<label class="required fs-6 fw-semibold mb-2">Speciality</label>
-																<!--end::Label-->
-																<!--begin::Input-->
-																<input type="text" class="form-control form-control-solid"  name="member_speciality" placeholder="Member speciality" />
-																<!--end::Input-->
-															</div>
-															<!--end::Input group-->
-															<!--begin::Input group-->
-															<div class="fv-row mb-7">
-																<!--begin::Label-->
-																<label class="required fs-6 fw-semibold mb-2">Facebook</label>
-																<!--end::Label-->
-																<!--begin::Input-->
-																<input type="text" class="form-control form-control-solid"  name="facebook" placeholder="Member facebook" />
-																<!--end::Input-->
-															</div>
-															<!--end::Input group-->
-															<!--begin::Input group-->
-															<div class="fv-row mb-7">
-																<!--begin::Label-->
-																<label class="required fs-6 fw-semibold mb-2">Instagram</label>
-																<!--end::Label-->
-																<!--begin::Input-->
-																<input type="text" class="form-control form-control-solid"  name="instagram" placeholder="Member instagram" />
-																<!--end::Input-->
-															</div>
-															<!--end::Input group-->
-															
-														</div>
-														<!--end::Scroll-->
-													</div>
-													<!--end::Modal body-->
-													<!--begin::Modal footer-->
-													<div class="modal-footer flex-center">
-														<!--begin::Button-->
-														<button type="reset" id="kt_modal_add_customer_cancel" class="btn btn-light me-3">Discard</button>
-														<!--end::Button-->
-														<!--begin::Button-->
-														<button type="submit" id="kt_modal_add_customer_submit" class="btn btn-primary">
-															<span class="indicator-label">Submit</span>
-															<span class="indicator-progress">Please wait...
-															<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
-														</button>
-														<!--end::Button-->
-													</div>
-													<!--end::Modal footer-->
-												</form>
-												<!--end::Form-->
-											</div>
-										</div>
-									</div>
-									<!--end::Modal - Customers - Add-->
-									<!--end::Modals-->
 								</div>
 								<!--end::Content container-->
 							</div>
@@ -352,23 +373,21 @@
 					</div>
 					<!--end:::Main-->
 
-					
-				</div>
-				<!--end::Wrapper-->
-			</div>
-			<!--end::Page-->
-		</div>
-		<!--end::App-->
-		<!--begin::Scrolltop-->
-		<div id="kt_scrolltop" class="scrolltop" data-kt-scrolltop="true">
-			<i class="ki-duotone ki-arrow-up">
-				<span class="path1"></span>
-				<span class="path2"></span>
-			</i>
-		</div>
-		<!--end::Scrolltop-->
 
-		<!--begin::Modal - Users Search-->
+            </div>
+            <!--end::Wrapper-->
+        </div>
+        <!--end::Page-->
+    </div>
+    <!--begin::Scrolltop-->
+    <div id="kt_scrolltop" class="scrolltop" data-kt-scrolltop="true">
+        <i class="ki-duotone ki-arrow-up">
+            <span class="path1"></span>
+            <span class="path2"></span>
+        </i>
+    </div>
+    <!--end::Scrolltop-->
+	<!--begin::Modal - Users Search-->
 	    <div class="modal fade" id="kt_modal_users_search" tabindex="-1" aria-hidden="true">
 			<!--begin::Modal dialog-->
 			<div class="modal-dialog modal-dialog-centered mw-650px">
@@ -390,7 +409,7 @@
 					<div class="modal-body scroll-y mx-5 mx-xl-18 pt-0 pb-15">
 						<!--begin::Content-->
 						<div class="text-center mb-13">
-							<h1 class="mb-3">Search Users</h1>
+							<h1 class="mb-3">Search Members</h1>
 							<div class="text-muted fw-semibold fs-5">Invite Collaborators To Your Project</div>
 						</div>
 						<!--end::Content-->
@@ -432,93 +451,8 @@
 									<!--begin::Heading-->
 									<h3 class="fw-semibold mb-5">Recently searched:</h3>
 									<!--end::Heading-->
-									<!--begin::Users-->
-									<div class="mh-375px scroll-y me-n7 pe-7">
-										<!--begin::User-->
-										<a href="#" class="d-flex align-items-center p-3 rounded bg-state-light bg-state-opacity-50 mb-1">
-											<!--begin::Avatar-->
-											<div class="symbol symbol-35px symbol-circle me-5">
-												<img alt="Pic" src="assets/media/avatars/300-6.jpg" />
-											</div>
-											<!--end::Avatar-->
-											<!--begin::Info-->
-											<div class="fw-semibold">
-												<span class="fs-6 text-gray-800 me-2">Emma Smith</span>
-												<span class="badge badge-light">Art Director</span>
-											</div>
-											<!--end::Info-->
-										</a>
-										<!--end::User-->
-									</div>
-									<!--end::Users-->
 								</div>
 								<!--end::Suggestions-->
-								<!--begin::Results(add d-none to below element to hide the users list by default)-->
-								<div data-kt-search-element="results" class="d-none">
-									<!--begin::Users-->
-									<div class="mh-375px scroll-y me-n7 pe-7">
-										<!--begin::User-->
-										<div class="rounded d-flex flex-stack bg-active-lighten p-4" data-user-id="0">
-											<!--begin::Details-->
-											<div class="d-flex align-items-center">
-												<!--begin::Checkbox-->
-												<label class="form-check form-check-custom form-check-solid me-5">
-													<input class="form-check-input" type="checkbox" name="users" data-kt-check="true" data-kt-check-target="[data-user-id='0']" value="0" />
-												</label>
-												<!--end::Checkbox-->
-												<!--begin::Avatar-->
-												<div class="symbol symbol-35px symbol-circle">
-													<img alt="Pic" src="assets/media/avatars/300-6.jpg" />
-												</div>
-												<!--end::Avatar-->
-												<!--begin::Details-->
-												<div class="ms-5">
-													<a href="#" class="fs-5 fw-bold text-gray-900 text-hover-primary mb-2">Emma Smith</a>
-													<div class="fw-semibold text-muted">smith@kpmg.com</div>
-												</div>
-												<!--end::Details-->
-											</div>
-											<!--end::Details-->
-											<!--begin::Access menu-->
-											<div class="ms-2 w-100px">
-												<select class="form-select form-select-solid form-select-sm" data-control="select2" data-hide-search="true">
-													<option value="1">Guest</option>
-													<option value="2" selected="selected">Owner</option>
-													<option value="3">Can Edit</option>
-												</select>
-											</div>
-											<!--end::Access menu-->
-										</div>
-										<!--end::User-->
-										<!--begin::Separator-->
-										<div class="border-bottom border-gray-300 border-bottom-dashed"></div>
-										<!--end::Separator-->
-										<!--begin::User-->
-									</div>
-									<!--end::Users-->
-									<!--begin::Actions-->
-									<div class="d-flex flex-center mt-15">
-										<button type="reset" id="kt_modal_users_search_reset" data-bs-dismiss="modal" class="btn btn-active-light me-3">Cancel</button>
-										<button type="submit" id="kt_modal_users_search_submit" class="btn btn-primary">Add Selected Users</button>
-									</div>
-									<!--end::Actions-->
-								</div>
-								<!--end::Results-->
-								<!--begin::Empty-->
-								<div data-kt-search-element="empty" class="text-center d-none">
-									<!--begin::Message-->
-									<div class="fw-semibold py-10">
-										<div class="text-gray-600 fs-3 mb-2">No users found</div>
-										<div class="text-muted fs-6">Try to search by username, full name or email...</div>
-									</div>
-									<!--end::Message-->
-									<!--begin::Illustration-->
-									<div class="text-center px-5">
-										<img src="assets/media/illustrations/sketchy-1/1.png" alt="" class="w-100 h-200px h-sm-325px" />
-									</div>
-									<!--end::Illustration-->
-								</div>
-								<!--end::Empty-->
 							</div>
 							<!--end::Wrapper-->
 						</div>
@@ -530,10 +464,27 @@
 			</div>
 			<!--end::Modal dialog-->
 		</div>
-		<!--end::Modal - Users Search-->
+	<!--end::Modal - Users Search-->
+	
 
-        @include('backend.scripts.js_scripts') 
+        <!--begin::Javascript-->
+		<script>var hostUrl = "backend/";</script>
+		<!--begin::Global Javascript Bundle(mandatory for all pages)-->
+		<script src="{{asset('backend/plugins/global/plugins.bundle.js')}}"></script>
+		<script src="{{asset('backend/js/scripts.bundle.js')}}"></script>
+		<!--end::Global Javascript Bundle-->
+		<!--begin::Vendors Javascript(used for this page only)-->
+		<script src="{{asset('backend/plugins/custom/datatables/datatables.bundle.js')}}"></script>
+		<!--end::Vendors Javascript-->
+		<!--begin::Custom Javascript(used for this page only)-->
+		<script src="{{asset('backend/js/custom/apps/team/teams/list/table.js')}}"></script>
+		<script src="{{asset('backend/js/custom/apps/team/teams/list/add.js')}}"></script>
+		<script src="{{asset('backend/js/widgets.bundle.js')}}"></script>
+		<script src="{{asset('backend/js/custom/widgets.js')}}"></script>
+		<script src="{{asset('backend/js/custom/utilities/modals/users-search.js')}}"></script>
+		<!--end::Custom Javascript-->
+		<!--end::Javascript-->
 
-	</body>
-	<!--end::Body-->
+</body>
+<!--end::Body-->
 </html>

@@ -120,7 +120,7 @@ class TestimonialController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function delete(Request $request, $id)
+    public function delete( $id)
     {
         $testimonial = Testimonial::find($id);
         // Delete the testimonial

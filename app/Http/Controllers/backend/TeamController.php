@@ -59,7 +59,7 @@ class TeamController extends Controller
         }
 
         $Data->save();
-        return response()->json(['message' => 'Selected members deleted successfully.'],200);
+        return response()->json(['message' => 'Member added successfully.'],200);
     }
 
     /**
@@ -124,22 +124,21 @@ class TeamController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function delete(Request $request, $id)
+    public function delete($id)
 {
-    $team = Team::find($id);
-    if($team) {
-        $team->delete();
-    }
-    return redirect()->route('team.index');
+        $member = Team::findOrFail($id);
+        $member->delete();
+        
+        return redirect()->route('team.index');
+   
 }
 
+    public function deleteSelected(Request $request)
+{
+        $ids = $request->ids;
+        Team::whereIn('id', $ids)->delete();
 
-    // Method to delete multiple testimonials
-    public function deleteMultiple(Request $request)
-    {
-        $teamsIds = $request->input('teamsIds');
-        Team::whereIn('id', $teamsIds)->delete();
+        return response()->json(['message' => 'Selected members deleted successfully.']);
+}
 
-        return response()->json(['message' => 'Selected members deleted successfully.'],200);
-    }
 }

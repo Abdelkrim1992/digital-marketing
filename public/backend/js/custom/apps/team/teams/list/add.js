@@ -1,38 +1,26 @@
 "use strict";
 
-var KTModalMembersAdd = function() {
-    var submitButton, cancelButton, closeButton, validator, form, modal;
+var KTUsersAddUser = function() {
+    const modalElement = document.getElementById("kt_modal_add_user");
+    const formElement = modalElement.querySelector("#kt_modal_add_user_form");
+    const modalInstance = new bootstrap.Modal(modalElement);
 
     return {
         init: function() {
-            modal = new bootstrap.Modal(document.querySelector("#kt_modal_add_customer"));
-            form = document.querySelector("#kt_modal_add_customer_form");
-            submitButton = form.querySelector("#kt_modal_add_customer_submit");
-            cancelButton = form.querySelector("#kt_modal_add_customer_cancel");
-            closeButton = form.querySelector("#kt_modal_add_customer_close");
-
-            // Initialize form validation rules
-            validator = FormValidation.formValidation(
-                form, {
+            (() => {
+                var validator = FormValidation.formValidation(formElement, {
                     fields: {
-                        member_image: {
-                            validators: {
-                                notEmpty: {
-                                    message: "Member image is required"
-                                }
-                            }
-                        },
                         member_name: {
                             validators: {
                                 notEmpty: {
-                                    message: "Member name is required"
+                                    message: "Full name is required"
                                 }
                             }
                         },
                         email: {
                             validators: {
                                 notEmpty: {
-                                    message: "Member email is required"
+                                    message: "Valid email address is required"
                                 },
                                 emailAddress: {
                                     message: "The value is not a valid email address"
@@ -52,6 +40,20 @@ var KTModalMembersAdd = function() {
                                     message: "Speciality is required"
                                 }
                             }
+                        },
+                        facebook: {
+                            validators: {
+                                notEmpty: {
+                                    message: "Facebook is required"
+                                }
+                            }
+                        },
+                        instagram: {
+                            validators: {
+                                notEmpty: {
+                                    message: "Instagram is required"
+                                }
+                            }
                         }
                     },
                     plugins: {
@@ -62,26 +64,24 @@ var KTModalMembersAdd = function() {
                             eleValidClass: ""
                         })
                     }
-                }
-            );
+                });
 
-            // Handle form submission
-            submitButton.addEventListener("click", function(e) {
-                e.preventDefault();
+                const submitButton = modalElement.querySelector('[data-kt-users-modal-action="submit"]');
 
-                if (validator) {
+                submitButton.addEventListener("click", (event) => {
+                    event.preventDefault();
+
                     validator.validate().then(function(status) {
-                        console.log("validated!");
-                        if (status == "Valid") {
+                        if (status === "Valid") {
                             submitButton.setAttribute("data-kt-indicator", "on");
                             submitButton.disabled = true;
 
-                            // Submit the form using AJAX
-                            var formData = new FormData(form);
-                            fetch(form.action, {
+                            let formData = new FormData(formElement);
+
+                            fetch(formElement.action, {
                                 method: 'POST',
                                 headers: {
-                                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
                                 },
                                 body: formData
                             })
@@ -90,38 +90,27 @@ var KTModalMembersAdd = function() {
                                 submitButton.removeAttribute("data-kt-indicator");
                                 submitButton.disabled = false;
 
-                                if (data.success) {
-                                    Swal.fire({
-                                        text: "Form has been successfully submitted!",
-                                        icon: "success",
-                                        buttonsStyling: true,
-                                        confirmButtonText: "Ok, got it!",
-                                        customClass: {
-                                            confirmButton: "btn btn-primary"
-                                        }
-                                    }).then(function(result) {
-                                        if (result.isConfirmed) {
-                                            modal.hide();
-                                            window.location = form.getAttribute("data-kt-redirect");
-                                        }
-                                    });
-                                } else {
-                                    Swal.fire({
-                                        text: data.message || "There was an error submitting the form. Please try again.",
-                                        icon: "error",
-                                        buttonsStyling: false,
-                                        confirmButtonText: "Ok, got it!",
-                                        customClass: {
-                                            confirmButton: "btn btn-primary"
-                                        }
-                                    });
-                                }
+                                Swal.fire({
+                                    text: data.message,
+                                    icon: "success",
+                                    buttonsStyling: false,
+                                    confirmButtonText: "Ok, got it!",
+                                    customClass: {
+                                        confirmButton: "btn btn-primary"
+                                    }
+                                }).then(function(result) {
+                                    if (result.isConfirmed) {
+                                        formElement.reset();
+                                        modalInstance.hide();
+                                    }
+                                });
                             })
                             .catch(error => {
                                 submitButton.removeAttribute("data-kt-indicator");
                                 submitButton.disabled = false;
+
                                 Swal.fire({
-                                    text: "There was an error submitting the form. Please try again.",
+                                    text: "An error occurred while submitting the form. Please try again.",
                                     icon: "error",
                                     buttonsStyling: false,
                                     confirmButtonText: "Ok, got it!",
@@ -142,79 +131,76 @@ var KTModalMembersAdd = function() {
                             });
                         }
                     });
-                }
-            });
-
-            // Handle cancel button
-            cancelButton.addEventListener("click", function(e) {
-                e.preventDefault();
-
-                Swal.fire({
-                    text: "Are you sure you would like to cancel?",
-                    icon: "warning",
-                    showCancelButton: true,
-                    buttonsStyling: false,
-                    confirmButtonText: "Yes, cancel it!",
-                    cancelButtonText: "No, return",
-                    customClass: {
-                        confirmButton: "btn btn-primary",
-                        cancelButton: "btn btn-active-light"
-                    }
-                }).then(function(result) {
-                    if (result.value) {
-                        form.reset();
-                        modal.hide();
-                    } else if (result.dismiss === "cancel") {
-                        Swal.fire({
-                            text: "Your form has not been cancelled!",
-                            icon: "error",
-                            buttonsStyling: false,
-                            confirmButtonText: "Ok, got it!",
-                            customClass: {
-                                confirmButton: "btn btn-primary"
-                            }
-                        });
-                    }
                 });
-            });
 
-            // Handle close button
-            closeButton.addEventListener("click", function(e) {
-                e.preventDefault();
+                modalElement.querySelector('[data-kt-users-modal-action="cancel"]').addEventListener("click", (event) => {
+                    event.preventDefault();
 
-                Swal.fire({
-                    text: "Are you sure you would to cancel?",
-                    icon: "warning",
-                    showCancelButton: true,
-                    buttonsStyling: false,
-                    confirmButtonText: "Yes, cancel it!",
-                    cancelButtonText: "No, return",
-                    customClass: {
-                        confirmButton: "btn btn-primary",
-                        cancelButton: "btn btn-active-light"
-                    }
-                }).then(function(result) {
-                    if (result.value) {
-                        form.reset();
-                        modal.hide();
-                    } else if (result.dismiss === "cancel") {
-                        Swal.fire({
-                            text: "Your form has not been cancelled!",
-                            icon: "error",
-                            buttonsStyling: false,
-                            confirmButtonText: "Ok, got it!",
-                            customClass: {
-                                confirmButton: "btn btn-primary"
-                            }
-                        });
-                    }
+                    Swal.fire({
+                        text: "Are you sure you would like to cancel?",
+                        icon: "warning",
+                        showCancelButton: true,
+                        buttonsStyling: false,
+                        confirmButtonText: "Yes, cancel it!",
+                        cancelButtonText: "No, return",
+                        customClass: {
+                            confirmButton: "btn btn-primary",
+                            cancelButton: "btn btn-active-light"
+                        }
+                    }).then(function(result) {
+                        if (result.value) {
+                            formElement.reset();
+                            modalInstance.hide();
+                        } else if (result.dismiss === "cancel") {
+                            Swal.fire({
+                                text: "Your form has not been cancelled!.",
+                                icon: "error",
+                                buttonsStyling: false,
+                                confirmButtonText: "Ok, got it!",
+                                customClass: {
+                                    confirmButton: "btn btn-primary"
+                                }
+                            });
+                        }
+                    });
                 });
-            });
+
+                modalElement.querySelector('[data-kt-users-modal-action="close"]').addEventListener("click", (event) => {
+                    event.preventDefault();
+
+                    Swal.fire({
+                        text: "Are you sure you would like to cancel?",
+                        icon: "warning",
+                        showCancelButton: true,
+                        buttonsStyling: false,
+                        confirmButtonText: "Yes, cancel it!",
+                        cancelButtonText: "No, return",
+                        customClass: {
+                            confirmButton: "btn btn-primary",
+                            cancelButton: "btn btn-active-light"
+                        }
+                    }).then(function(result) {
+                        if (result.value) {
+                            formElement.reset();
+                            modalInstance.hide();
+                        } else if (result.dismiss === "cancel") {
+                            Swal.fire({
+                                text: "Your form has not been cancelled!.",
+                                icon: "error",
+                                buttonsStyling: false,
+                                confirmButtonText: "Ok, got it!",
+                                customClass: {
+                                    confirmButton: "btn btn-primary"
+                                }
+                            });
+                        }
+                    });
+                });
+            })();
         }
     };
 }();
 
-// Initialize the modal add member functionality on DOMContentLoaded
 KTUtil.onDOMContentLoaded(function() {
-    KTModalMembersAdd.init();
+    KTUsersAddUser.init();
 });

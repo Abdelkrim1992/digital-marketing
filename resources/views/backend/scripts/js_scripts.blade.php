@@ -27,8 +27,7 @@
 		<script src="{{asset('backend/js/custom/apps/user/users/list/add.js')}}"></script>
 		<script src="{{asset('backend/js/custom/apps/testimonial/testimonials/list/table.js')}}"></script>
 		<script src="{{asset('backend/js/custom/apps/testimonial/testimonials/list/add.js')}}"></script>
-		<script src="{{asset('backend/js/custom/apps/team/teams/list/table.js')}}"></script>
-		<script src="{{asset('backend/js/custom/apps/team/teams/list/add.js')}}"></script>
+		
 		<script src="{{asset('backend/js/custom/apps/projects/list/list.js')}}"></script>
 		<!--end::Custom Javascript-->
 		<!--end::Javascript-->
