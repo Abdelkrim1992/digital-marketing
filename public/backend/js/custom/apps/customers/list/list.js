@@ -188,16 +188,16 @@ var KTCustomersList = function() {
 
     return {
         init: function() {
-            const rowSelector = document.querySelector("#kt_table_users");
+            rowSelector = document.querySelector("#kt_customers_table");
             if (!rowSelector) return;
-    
+
             rowSelector.querySelectorAll("tbody tr").forEach(row => {
                 const cells = row.querySelectorAll("td");
                 const formattedDate = moment(cells[5].innerHTML, "DD MMM YYYY, LT").format();
                 cells[5].setAttribute("data-order", formattedDate);
             });
-    
-            const datatable = $(rowSelector).DataTable({
+
+            datatable = $(rowSelector).DataTable({
                 info: false,
                 order: [],
                 columnDefs: [
@@ -205,48 +205,47 @@ var KTCustomersList = function() {
                     { orderable: false, targets: 5 }
                 ]
             });
-    
+
             datatable.on("draw", function() {
                 initDeleteSelected();
                 initDeleteRow();
                 updateDeleteButton();
                 KTMenu.init();
             });
-    
+
             initDeleteSelected();
-    
-            document.querySelector('[data-kt-user-table-filter="search"]').addEventListener("keyup", function(event) {
+
+            document.querySelector('[data-kt-customer-table-filter="search"]').addEventListener("keyup", function(event) {
                 datatable.search(event.target.value).draw();
             });
-    
-            const monthFilter = $('[data-kt-user-table-filter="month"]');
-            const specialtyFilters = document.querySelectorAll('[data-kt-user-table-filter="specialty"] [name="member_speciality"]');
-            
-            document.querySelector('[data-kt-user-table-filter="filter"]').addEventListener("click", function() {
+
+            const monthFilter = $('[data-kt-customer-table-filter="month"]');
+            const paymentTypeFilters = document.querySelectorAll('[data-kt-customer-table-filter="payment_type"] [name="payment_type"]');
+
+            document.querySelector('[data-kt-customer-table-filter="filter"]').addEventListener("click", function() {
                 const monthValue = monthFilter.val();
-                let specialtyValue = "";
-    
-                specialtyFilters.forEach(filter => {
+                let paymentTypeValue = "";
+
+                paymentTypeFilters.forEach(filter => {
                     if (filter.checked) {
-                        specialtyValue = filter.value;
+                        paymentTypeValue = filter.value;
                     }
-                    if (specialtyValue === "all") {
-                        specialtyValue = "";
+                    if (paymentTypeValue === "all") {
+                        paymentTypeValue = "";
                     }
                 });
-    
-                const filterValue = monthValue + " " + specialtyValue;
+
+                const filterValue = monthValue + " " + paymentTypeValue;
                 datatable.search(filterValue).draw();
             });
-    
-            document.querySelector('[data-kt-user-table-filter="reset"]').addEventListener("click", function() {
+
+            document.querySelector('[data-kt-customer-table-filter="reset"]').addEventListener("click", function() {
                 monthFilter.val(null).trigger("change");
-                specialtyFilters[0].checked = true;
+                paymentTypeFilters[0].checked = true;
                 datatable.search("").draw();
             });
         }
     };
-    
 }();
 
 KTUtil.onDOMContentLoaded(function() {
