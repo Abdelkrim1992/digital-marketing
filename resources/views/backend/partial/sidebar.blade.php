@@ -172,7 +172,7 @@
 														<span class="menu-bullet">
 															<span class="bullet bullet-dot"></span>
 														</span>
-														<span class="menu-title">Orders List</span>
+														<span class="menu-title">Recieved Orders List</span>
 													</a>
 													<!--end:Menu link-->
 												</div>
@@ -192,7 +192,7 @@
 														<span class="path2"></span>
 													</i>
 												</span>
-												<span class="menu-title">Clients</span>
+												<span class="menu-title">Customers</span>
 												<span class="menu-arrow"></span>
 											</span>
 											<!--end:Menu link-->
@@ -205,19 +205,7 @@
 														<span class="menu-bullet">
 															<span class="bullet bullet-dot"></span>
 														</span>
-														<span class="menu-title">Client List</span>
-													</a>
-													<!--end:Menu link-->
-												</div>
-												<!--end:Menu item-->
-												<!--begin:Menu item-->
-												<div class="menu-item">
-													<!--begin:Menu link-->
-													<a class="menu-link" href="{{route('confirmed-clients.create')}}">
-														<span class="menu-bullet">
-															<span class="bullet bullet-dot"></span>
-														</span>
-														<span class="menu-title">Add Client</span>
+														<span class="menu-title">Customer List</span>
 													</a>
 													<!--end:Menu link-->
 												</div>

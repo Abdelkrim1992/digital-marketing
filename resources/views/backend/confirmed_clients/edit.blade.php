@@ -39,7 +39,7 @@
 									<!--begin::Page title-->
 									<div class="page-title d-flex flex-column justify-content-center flex-wrap me-3">
 										<!--begin::Title-->
-										<h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">Client informations</h1>
+										<h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">Customer Informations</h1>
 										<!--end::Title-->
 									</div>
 									<!--end::Page title-->
@@ -83,7 +83,7 @@
 																<!--begin::Input group-->
 																<div class="mb-10 fv-row">
 																	<!--begin::Label-->
-																	<label class="required form-label">Client Name</label>
+																	<label class="required form-label">Customer Name</label>
 																	<!--end::Label-->
 																	<!--begin::Input-->
 																	<input type="text" name="client_name" class="form-control mb-2" placeholder="Client name" value="{{$editData->client_name}}" />
@@ -116,8 +116,7 @@
 																	<label class="required form-label">Service</label>
 																	<!--end::Label-->
 																	<!--begin::Input-->
-																	<select type="text" name="choosed_service" class="form-control mb-2" required value="{{$editData->choosed_service}}" >
-																	    <option>Select Service</option>
+																	<select type="text" name="choosed_service" class="form-control mb-2 required"  value="{{$editData->choosed_service}}" >
 																		@foreach($service as $row)
 																		    <option value="{{ $row->service_title }}" required>{{ $row->service_title }}</option>
 																		@endforeach
@@ -125,16 +124,7 @@
 																	<!--end::Input-->
 																</div>
 																<!--end::Input group-->
-                                                                <!--begin::Input group-->
-																<div class="mb-10 fv-row">
-																	<!--begin::Label-->
-																	<label class="required form-label">Project Description</label>
-																	<!--end::Label-->
-																	<!--begin::Input-->
-																	<textarea type="text" name="project_description" class="form-control mb-2" >{{$editData->project_description}}</textarea>
-																	<!--end::Input-->
-																</div>
-																<!--end::Input group-->
+                                                               
 															</div>
 															<!--end::Card header-->
 														</div>

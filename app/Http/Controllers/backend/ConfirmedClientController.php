@@ -50,7 +50,7 @@ class ConfirmedClientController extends Controller
 
         $confirmed_client->save();
 
-        return redirect()->route('confirmed-clients.index');
+        return response()->json(['message' => 'Form has been successfully submitted!']);
     
     }
 
@@ -87,16 +87,13 @@ class ConfirmedClientController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'client_name' => 'required|string|max:255',
-            'client_email' => 'required|string|max:255',
-            'client_phone' => 'required|string|max:16',
-            'choosed_service' => 'required|string|max:255',
-            'project_description' => 'required|string|max:1000',
-        ]);
-
         $confirmed_client = ConfirmedClient::findOrFail($id);
-        $confirmed_client ->update($request->all());
+        $confirmed_client->client_name = $request->client_name;
+        $confirmed_client->client_email = $request->client_email;
+        $confirmed_client->client_phone = $request->client_phone;
+        $confirmed_client->choosed_service = $request->choosed_service;
+        $confirmed_client->project_description = $request->project_description;
+        $confirmed_client->save();
 
         return redirect()->route('confirmed-clients.index');
     
@@ -109,9 +106,19 @@ class ConfirmedClientController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        $client = ConfirmedClient::findOrFail($id);
-        $client->delete();
-        return redirect()->route('confirmed-clients.index');
-    }
+{
+    $client = ConfirmedClient::findOrFail($id);
+    $client->delete();
+
+    return redirect()->route('confirmed-clients.index');
+}
+
+public function deleteMultiple(Request $request)
+{
+    $clientIds = $request->input('client_ids');
+    ConfirmedClient::whereIn('id', $clientIds)->delete();
+
+    return response()->json(['message' => 'Selected clients deleted successfully.']);
+}
+
 }

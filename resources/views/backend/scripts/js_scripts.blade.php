@@ -19,8 +19,6 @@
 		<script src="{{asset('backend/js/custom/widgets.js')}}"></script>
 		<script src="{{asset('backend/js/custom/apps/services/add-service/save-product.js')}}"></script>
 		<script src="{{asset('backend/js/custom/apps/projects/settings/settings.js')}}"></script>
-		<script src="{{asset('backend/js/custom/utilities/modals/create-app.js')}}"></script>
-		<script src="{{asset('backend/js/custom/utilities/modals/new-address.js')}}"></script>
 		<script src="{{asset('backend/js/custom/utilities/modals/users-search.js')}}"></script>
 		<script src="{{asset('backend/plugins/custom/formrepeater/formrepeater.bundle.js')}}"></script>
 		<script src="{{asset('backend/js/custom/account/settings/profile-details.js')}}"></script>
