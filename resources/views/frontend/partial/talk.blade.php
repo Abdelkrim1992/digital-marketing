@@ -44,7 +44,7 @@
                                 </div>
                             </div>
                             <div class="row g-3 ">
-                                <div class="col-lg-3 col-sm-6 col-12 mb-20">
+                                <div class="col-sm-6 mb-20">
                                     <select name="choosed_service" id="choosed_service" class="form-control mb-10" required>
                                             <option >Select Service</option>
                                             @foreach ($all_services as $row)

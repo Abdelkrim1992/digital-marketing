@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('confirmed_clients', function (Blueprint $table) {
             $table->id();
-            $table->longText('project_description')->nullable();
+            $table->longText('message')->nullable();
             $table->string('client_name')->nullable();
             $table->string('client_email')->nullable();
             $table->string('client_phone')->nullable();

@@ -18,6 +18,7 @@
 		<script src="{{asset('backend/js/widgets.bundle.js')}}"></script>
 		<script src="{{asset('backend/js/custom/widgets.js')}}"></script>
 		<script src="{{asset('backend/js/custom/apps/services/add-service/save-product.js')}}"></script>
+		<script src="{{asset('backend/js/custom/apps/services/add-service/table.js')}}"></script>
 		<script src="{{asset('backend/js/custom/apps/projects/settings/settings.js')}}"></script>
 		<script src="{{asset('backend/js/custom/utilities/modals/users-search.js')}}"></script>
 		<script src="{{asset('backend/plugins/custom/formrepeater/formrepeater.bundle.js')}}"></script>
@@ -27,8 +28,8 @@
 		<script src="{{asset('backend/js/custom/apps/user/users/list/add.js')}}"></script>
 		<script src="{{asset('backend/js/custom/apps/testimonial/testimonials/list/table.js')}}"></script>
 		<script src="{{asset('backend/js/custom/apps/testimonial/testimonials/list/add.js')}}"></script>
-		
 		<script src="{{asset('backend/js/custom/apps/projects/list/list.js')}}"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote.min.js"></script>
 		<!--end::Custom Javascript-->
 		<!--end::Javascript-->
 	

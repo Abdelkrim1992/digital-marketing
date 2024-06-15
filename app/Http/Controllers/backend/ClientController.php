@@ -123,7 +123,7 @@ class ClientController extends Controller
         $confirmed_client->client_email = $client->client_email;
         $confirmed_client->client_phone = $client->client_phone;
         $confirmed_client->choosed_service = $client->choosed_service;
-        $confirmed_client->project_description = $client->message;
+        $confirmed_client->message = $client->message;
         // Other client details...
 
         // Save the confirmed client

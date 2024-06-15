@@ -1,6 +1,4 @@
-"use strict";
-
-var KTAppEcommerceSaveProduct = function () {
+const KTAppEcommerceSaveProduct = function () {
 
     const initializeRepeater = () => {
         $("#kt_ecommerce_add_product_options").repeater({
@@ -22,18 +20,6 @@ var KTAppEcommerceSaveProduct = function () {
                 $(element).select2({
                     minimumResultsForSearch: -1
                 });
-            }
-        });
-    };
-
-    const initializeCKEditor = () => {
-        CKEDITOR.replace('service_description_editor');
-    
-        const form = document.getElementById('kt_ecommerce_add_product_form');
-        form.addEventListener('submit', () => {
-            // Update the textarea with the CKEditor content
-            for (let instance in CKEDITOR.instances) {
-                CKEDITOR.instances[instance].updateElement();
             }
         });
     };
@@ -219,14 +205,14 @@ var KTAppEcommerceSaveProduct = function () {
 
         submitButton.addEventListener("click", (event) => {
             event.preventDefault();
-            validator && validator.validate().then((status) => {
+
+            validator.validate().then((status) => {
                 if (status === "Valid") {
                     submitButton.setAttribute("data-kt-indicator", "on");
                     submitButton.disabled = true;
 
                     setTimeout(() => {
                         submitButton.removeAttribute("data-kt-indicator");
-
                         Swal.fire({
                             text: "Form has been successfully submitted!",
                             icon: "success",
@@ -235,11 +221,9 @@ var KTAppEcommerceSaveProduct = function () {
                             customClass: { confirmButton: "btn btn-primary" }
                         }).then((result) => {
                             if (result.isConfirmed) {
-                                submitButton.disabled = false;
                                 form.submit();
                             }
                         });
-
                     }, 2000);
                 } else {
                     Swal.fire({
@@ -254,11 +238,32 @@ var KTAppEcommerceSaveProduct = function () {
         });
     };
 
+    const initializeSummernote = () => {
+        $('#service_description_editor').summernote({
+            height: 300, // set the height of the editor
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'underline', 'clear']],
+                ['fontname', ['fontname']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link', 'picture', 'video']],
+                ['view', ['fullscreen', 'codeview', 'help']]
+            ]
+        });
+    
+        const form = document.getElementById('kt_ecommerce_add_product_form');
+        form.addEventListener('submit', () => {
+            // Update the textarea with the Summernote content
+            $('#service_description_editor').val($('#service_description_editor').summernote('code'));
+        });
+    };    
+
     return {
         init: function () {
             initializeRepeater();
             initializeSelect2();
-            initializeCKEditor();
             initializeTagify();
             initializeDiscountSlider();
             initializeDropzone();
@@ -267,10 +272,11 @@ var KTAppEcommerceSaveProduct = function () {
             initializeDiscountOptionHandler();
             initializeShippingHandler();
             initializeFormValidation();
+            initializeSummernote();  // Call the Summernote initialization function here
         }
     };
 }();
 
-KTUtil.onDOMContentLoaded(function () {
+document.addEventListener("DOMContentLoaded", function () {
     KTAppEcommerceSaveProduct.init();
 });

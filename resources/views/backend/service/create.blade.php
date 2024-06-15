@@ -6,6 +6,9 @@
 
         @include('backend.scripts.css_scripts') 
 
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote.min.css" rel="stylesheet">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     </head>
 	<!--end::Head-->
 	<!--begin::Body-->
@@ -173,9 +176,9 @@
 																</div>
 																<!--end::Input group-->
 																<!--begin::Input group-->
-																<div class="mb-10 fv-row">
-																    <label class="form-label">Full Description</label>
-																    <textarea id="service_description_editor" name="service_description" class="form-control mb-2" required></textarea>
+																<div class=" mb-10 fv-row">
+																    <label class="required form-label">Full Description</label>
+																    <textarea id="service_description_editor" name="service_description" class="form-control mb-2" ></textarea>
 																</div>
 															</div>
 															<!--end::Card header-->
@@ -226,8 +229,33 @@
 		
 
 		<!--end::Scrolltop-->
-        @include('backend.scripts.js_scripts') 
-		<script src="https://cdn.ckeditor.com/4.17.0/standard/ckeditor.js"></script>
+		
+<script>
+    $(document).ready(function() {
+        $('#service_description_editor').summernote({
+            height: 300, // Set the height of the editor
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'underline', 'clear']],
+                ['fontname', ['fontname']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link', 'picture', 'video']],
+                ['view', ['fullscreen', 'codeview', 'help']]
+            ]
+        });
+
+        // Ensure the form submit event updates the textarea value
+        $('#kt_ecommerce_add_product_form').on('submit', function() {
+            $('#service_description_editor').val($('#service_description_editor').summernote('code'));
+        });
+    });
+</script>
+ 
+
+@include('backend.scripts.js_scripts')
+
 	</body>
 	<!--end::Body-->
 </html>

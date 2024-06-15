@@ -65,7 +65,7 @@ Route::POST('/services/store/index',[ServiceManagementController::class,'store']
 Route::get('/services/edit/{id}',[ServiceManagementController::class,'edit'])->name('service.edit');
 Route::POST('/services/update/{id}',[ServiceManagementController::class,'update'])->name('service.update');
 Route::get('/services/delete/{id}',[ServiceManagementController::class,'delete'])->name('service.delete');
-
+Route::post('/services/delete-multiple', [ServiceManagementController::class, 'deleteMultiple'])->name('service.deleteMultiple');
 });
 
    /****** contact form clients *****/
@@ -83,7 +83,7 @@ Route::middleware('auth')->group(function () {
    Route::POST('/confirmed-clients',[ConfirmedClientController::class,'store'])->name('confirmed-clients.store');
    Route::get('/confirmed-clients/edit/{id}',[ConfirmedClientController::class,'edit'])->name('confirmed-clients.edit');
    Route::put('/confirmed-clients/update/{id}',[ConfirmedClientController::class,'update'])->name('confirmed-clients.update');
-   Route::get('confirmed-clients/{id}', [ConfirmedClientController::class,'destroy'])->name('confirmed-clients.destroy');
+   Route::get('/confirmed-clients/{id}', [ConfirmedClientController::class,'destroy'])->name('confirmed-clients.destroy');
    Route::post('/confirmed-clients/delete-multiple', [ConfirmedClientController::class, 'deleteMultiple'])->name('confirmed-clients.deleteMultiple');
 
 });

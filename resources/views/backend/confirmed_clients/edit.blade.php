@@ -124,6 +124,16 @@
 																	<!--end::Input-->
 																</div>
 																<!--end::Input group-->
+																<!--begin::Input group-->
+																<div class="mb-10 fv-row">
+																	<!--begin::Label-->
+																	<label class="required form-label">Customer message</label>
+																	<!--end::Label-->
+																	<!--begin::Input-->
+																	<textarea type="text" name="message" class="form-control mb-2" >{{$editData->message}}</textarea>
+																	<!--end::Input-->
+																</div>
+																<!--end::Input group-->
                                                                
 															</div>
 															<!--end::Card header-->

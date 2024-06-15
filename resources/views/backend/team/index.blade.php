@@ -103,7 +103,7 @@
 														<span class="path1"></span>
 														<span class="path2"></span>
 													</i>
-													<input type="text" data-kt-user-table-filter="search" class="form-control form-control-solid w-250px ps-13" placeholder="Search user" />
+													<input type="text" data-kt-user-table-filter="search" class="form-control form-control-solid w-250px ps-13" placeholder="Search member" />
 												</div>
 												<!--end::Search-->
 											</div>
@@ -217,7 +217,7 @@
 																			<label class="required fw-semibold fs-6 mb-2">Email</label>
 																			<!--end::Label-->
 																			<!--begin::Input-->
-																			<input type="email" name="email" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="example@domain.com" value="smith@kpmg.com" />
+																			<input type="email" name="email" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="example@domain.com" />
 																			<!--end::Input-->
 																		</div>
 																		<!--end::Input group-->
@@ -237,7 +237,7 @@
 																			<label class="required fw-semibold fs-6 mb-2">Speciality</label>
 																			<!--end::Label-->
 																			<!--begin::Input-->
-																			<input type="text" name="member_speciality" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Member name" />
+																			<input type="text" name="member_speciality" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Member speciality" />
 																			<!--end::Input-->
 																		</div>
 																		<!--end::Input group-->

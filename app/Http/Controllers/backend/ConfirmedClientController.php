@@ -46,7 +46,6 @@ class ConfirmedClientController extends Controller
         $confirmed_client->client_email = $request->client_email;
         $confirmed_client->client_phone = $request->client_phone;
         $confirmed_client->choosed_service = $request->choosed_service;
-        $confirmed_client->project_description = $request->project_description;
 
         $confirmed_client->save();
 
@@ -92,7 +91,7 @@ class ConfirmedClientController extends Controller
         $confirmed_client->client_email = $request->client_email;
         $confirmed_client->client_phone = $request->client_phone;
         $confirmed_client->choosed_service = $request->choosed_service;
-        $confirmed_client->project_description = $request->project_description;
+        $confirmed_client->message = $request->message;
         $confirmed_client->save();
 
         return redirect()->route('confirmed-clients.index');

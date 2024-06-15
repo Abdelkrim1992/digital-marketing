@@ -147,9 +147,18 @@ class ServiceManagementController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function delete($id)
-    {
-        $deleteData = Service::findOrFail($id);
-        $deleteData->delete();
-        return redirect()->route('service.index');
-    }
+{
+    $service = Service::findOrFail($id);
+    $service->delete();
+
+    return redirect()->route('service.index');
+}
+
+public function deleteMultiple(Request $request)
+{
+    $serviceIds = $request->input('service_ids');
+    Service::whereIn('id', $serviceIds)->delete();
+
+    return response()->json(['message' => 'Selected services deleted successfully.']);
+}
 }
