@@ -1,15 +1,16 @@
-    <!-- Top header area start here -->
+
+  <!-- Top header area start here -->
     <div class="header-top d-none d-lg-block">
       <div class="container">
         <div class="header-top-wrp">
           <ul class="info">
             <li>
               <i class="fa-solid fa-paper-plane"></i>
-              <a href="#0">{{$setting->email}}</a>
+              <a >{{$setting->email}}</a>
             </li>
             <li class="bor-left ms-4 ps-4">
               <i class="fa-solid fa-location-dot"></i>
-              <a href="#0">{{$setting->address}}</a>
+              <a >{{$setting->address}}</a>
             </li>
           </ul>
           <ul class="link-info">
@@ -43,7 +44,7 @@
             </nav>
           </div>
           
-          <a href="https://wa.me/message/GFIZ4I7R7NJ3G1" class="btn-menu d-none d-lg-inline-block">Free Consultation<i class="fa-regular fa-circle-arrow-right ml-10"></i></a>
+          <a href="https://wa.me/message/FBO52GTDTUCCE1" class="btn-menu d-none d-lg-inline-block">Free Consultation<i class="fa-regular fa-circle-arrow-right ml-10"></i></a>
           
           <div class="bars d-block d-lg-none">
             <i id="openButton" class="fa-solid fa-bars"></i>

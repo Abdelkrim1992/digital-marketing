@@ -1,5 +1,9 @@
-<?php $setting= App\Models\Setting::findOrFail(1)?>
+<?php 
 
+$setting= App\Models\Setting::findOrFail(1);
+$users= Illuminate\Support\Facades\Auth::user(); 
+
+?>
 
                 <div id="kt_app_header" class="app-header" data-kt-sticky="true" data-kt-sticky-activate="{default: true, lg: true}" data-kt-sticky-name="app-header-minimize" data-kt-sticky-offset="{default: '200px', lg: '0'}" data-kt-sticky-animation="false">
 					<!--begin::Header container-->
@@ -34,7 +38,7 @@
 								<div class="app-navbar-item ms-1 ms-md-4" id="kt_header_user_menu_toggle">
 									<!--begin::Menu wrapper-->
 									<div class="cursor-pointer symbol symbol-35px" data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
-										<img src="{{asset('backend/media/avatars/300-3.jpg')}}" class="rounded-3" alt="user" />
+										<img src="{{asset('backend/img/user/'.$users->image)}}" class="rounded-3" alt="user" />
 									</div>
 									<!--begin::User account menu-->
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-color fw-semibold py-4 fs-6 w-275px" data-kt-menu="true">
@@ -43,14 +47,13 @@
 											<div class="menu-content d-flex align-items-center px-3">
 												<!--begin::Avatar-->
 												<div class="symbol symbol-50px me-5">
-													<img alt="Logo" src="{{asset('backend/media/avatars/300-3.jpg')}}" />
+													<img alt="Logo" src="{{asset('backend/img/user/'.$users->image)}}" />
 												</div>
 												<!--end::Avatar-->
 												<!--begin::Username-->
 												<div class="d-flex flex-column">
-													<div class="fw-bold d-flex align-items-center fs-5">Robert Fox
-												    </div>
-													<a  class="fw-semibold text-muted text-hover-primary fs-7">robert@kt.com</a>
+													<div class="fw-bold d-flex align-items-center fs-5">{{$users->name}}</div>
+													<a  class="fw-semibold text-muted text-hover-primary fs-7">{{$users->email}}</a>
 												</div>
 												<!--end::Username-->
 											</div>
@@ -61,7 +64,7 @@
 										<!--end::Menu separator-->
 										<!--begin::Menu item-->
 										<div class="menu-item px-5 my-1">
-											<a href="" class="menu-link px-5">Account Settings</a>
+											<a href="{{ route('profiles.edit', ['profile' => $users->id]) }}" class="menu-link px-5">Account Settings</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->

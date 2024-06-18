@@ -32,7 +32,7 @@
                     innovation, and strategic brilliance converge to elevate
                     your <br />
                     business to new heights.
-                    <a href="about.html"  class="secondary-color fw-700 primary-hover" >Read More</a>
+                    <a href="{{route('frontend.about_us')}}"  class="secondary-color fw-700 primary-hover" >Read More</a>
                   </p>
                 </div>
                 <div class="about__counter mt-40">

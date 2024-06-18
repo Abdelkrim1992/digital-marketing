@@ -19,14 +19,15 @@
             <ul>
                 @foreach($all_services as $row)
                 <li class="wow fadeInDown" data-wow-delay="00ms" data-wow-duration="1000ms">
-                    <a class="offer-title" href="service-details.html">{{$row->service_title}}</a>
+                    <a class="offer-title" href="{{route ('frontend.service_details',$row->id)}}">{{$row->service_title}}</a>
                     <i class="fa-light offer-icon fa-arrow-right"></i>
                     <div class="offer__image-wrp">
                         <a class="side_edge image" href="{{route ('frontend.service_details',$row->id)}}" >
                             <img src="{{asset('frontend/img/service/'.$row->service_hover)}}" alt="image" />
                         </a>
                     </div>
-                    <p>{{$row->short_description}}</p>
+                    <p class="text_center mb-5"></p>
+                    <p class="para-light-color wow fadeInUp" data-wow-delay="400ms" data-wow-duration="1000ms">{{$row->short_description}}</p>
                 </li>
                 @endforeach
             </ul>

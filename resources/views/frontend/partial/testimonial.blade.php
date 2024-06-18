@@ -17,26 +17,26 @@
               data-wow-delay="200ms"
               data-wow-duration="1000ms"
             >
-              Client’s <span>speeches</span> <br />
-              about Marketi
+              Client’s speeches<br />
+              about <span>Auva</span>
             </h2>
             <p
               class="wow fadeInUp"
               data-wow-delay="400ms"
               data-wow-duration="1000ms"
             >
-              Our clients share their experiences with Marketi, expressing
+              Our clients share their experiences with Auva, expressing
               how our digital marketing expertise has not only met but
               exceeded their expectations, fostering success and growth
               for their businesses.
             </p>
           </div>
           <a
-            href="pricing.html"
+            href="{{route('frontend.contact_us')}}"
             class="btn-one mt-30 wow fadeInUp"
             data-wow-delay="600ms"
             data-wow-duration="1000ms"
-          >Try it Now<i
+          >Get In Toch<i
               class="fa-regular fa-circle-arrow-right ml-10"
             ></i
           ></a>

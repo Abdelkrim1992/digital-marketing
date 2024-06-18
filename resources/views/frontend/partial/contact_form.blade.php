@@ -28,8 +28,8 @@
                                 </div>
                             </div>
                             <div class="row g-3 ">
-                                <div class="col-lg-3 col-sm-6 col-12 mb-20">
-                                    <select name="choosed_service" id="choosed_service" class="form-control mb-10" required>
+                                <div class="form-control mb-20">
+                                    <select name="choosed_service" id="choosed_service" required>
                                             <option >Select Service</option>
                                             @foreach ($service as $service)
                                             <option value="{{ $service->service_title }}">{{ $service->service_title }}</option>

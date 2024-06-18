@@ -19,8 +19,8 @@ class AboutUsController extends Controller
     {
         $setting= Setting::findOrFail(1);
         $team= Team::all();
-        $service= Service::all();
-        return view('frontend.about.about_us',compact('setting','team','service'));
+        $all_service= Service::all();
+        return view('frontend.about.about_us',compact('setting','team','all_service'));
     }
 
     /**

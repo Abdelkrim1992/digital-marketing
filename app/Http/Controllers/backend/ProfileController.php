@@ -4,15 +4,10 @@ namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use App\Models\Setting;
-use App\Models\Client;
-use App\Models\ConfirmedClient;
 use App\Models\User;
-use App\Models\Project;
-use App\Models\ProjectStatus;
+use Illuminate\Support\Str;
 
-class BackendController extends Controller
+class ProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,16 +15,9 @@ class BackendController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-{
-    $setting = Setting::findOrFail(1);
-    $client = Client::all();
-    $users = Auth::user();
-    $confirmed_client = ConfirmedClient::all()->count();
-    $projects = Project::all();
-    $status= ProjectStatus::all();
-    
-    return view('backend.layouts.master', compact('setting', 'client', 'confirmed_client', 'users', 'projects','status'));
-}
+    {
+        
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -71,7 +59,8 @@ class BackendController extends Controller
      */
     public function edit($id)
     {
-        //
+        $users = User::findOrFail($id);
+        return view('backend.profile.index',compact('users'));
     }
 
     /**

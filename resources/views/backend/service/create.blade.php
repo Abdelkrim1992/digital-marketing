@@ -64,7 +64,7 @@
 												<div class="card-header">
 													<!--begin::Card title-->
 													<div class="card-title">
-														<h2>Service Image</h2>
+														<h2>Service Icon</h2>
 													</div>
 													<!--end::Card title-->
 												</div>
@@ -111,6 +111,64 @@
 													<!--end::Image input-->
 													<!--begin::Description-->
 													<div class="text-muted fs-7">Set the service image. </div>
+													<!--end::Description-->
+												</div>
+												<!--end::Card body-->
+											</div>
+											<!--end::Thumbnail settings-->
+											<!--begin::Thumbnail settings-->
+											<div class="card card-flush py-4">
+												<!--begin::Card header-->
+												<div class="card-header">
+													<!--begin::Card title-->
+													<div class="card-title">
+														<h2>Service Hover</h2>
+													</div>
+													<!--end::Card title-->
+												</div>
+												<!--end::Card header-->
+												<!--begin::Card body-->
+												<div class="card-body text-center pt-0">
+													<!--begin::Image input-->
+													<!--begin::Image input placeholder-->
+													<style>.image-input-placeholder { background-image: url('assets/media/svg/files/blank-image.svg'); } [data-bs-theme="dark"] .image-input-placeholder { background-image: url('assets/media/svg/files/blank-image-dark.svg'); }</style>
+													<!--end::Image input placeholder-->
+													<div class="image-input image-input-empty image-input-outline image-input-placeholder mb-3" data-kt-image-input="true">
+														<!--begin::Preview existing avatar-->
+														<div class="image-input-wrapper w-150px h-150px" name="service_hover" ></div>
+														<!--end::Preview existing avatar-->
+														<!--begin::Label-->
+														<label name="service_hover" class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Change photo">
+															<i class="ki-duotone ki-pencil fs-7">
+																<span class="path1"></span>
+																<span class="path2"></span>
+															</i>
+															<!--begin::Inputs-->
+															<input type="file" name="service_hover" accept=".png, .jpg, .jpeg" />
+															<input type="hidden" name="service_icon" />
+															<!--end::Inputs-->
+														</label>
+														<!--end::Label-->
+														<!--begin::Cancel-->
+														<span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="cancel" data-bs-toggle="tooltip" title="Cancel avatar">
+															<i class="ki-duotone ki-cross fs-2">
+																<span class="path1"></span>
+																<span class="path2"></span>
+															</i>
+														</span>
+														<!--end::Cancel-->
+														<!--begin::Remove-->
+														<span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="remove" data-bs-toggle="tooltip" title="Remove avatar">
+															<i class="ki-duotone ki-cross fs-2">
+																<span class="path1"></span>
+																<span class="path2"></span>
+															</i>
+														</span>
+														<!--end::Remove-->
+													</div>
+													<!--end::Image input-->
+													<!--begin::Description-->
+													<div class="text-muted fs-7">Set the service hover. </div>
 													<!--end::Description-->
 												</div>
 												<!--end::Card body-->

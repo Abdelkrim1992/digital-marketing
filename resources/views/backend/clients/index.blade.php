@@ -124,7 +124,7 @@
 																<!--end::Menu item-->
 																<!--begin::Menu item-->
 																<div class="menu-item px-3">
-																	<a href="{{route('confirmed-clients.destroy',$row->id)}}" class="menu-link px-3" data-kt-ecommerce-product-filter="delete_row">Delete</a>
+																	<a href="{{route('client.delete',$row->id)}}" class="menu-link px-3" data-kt-ecommerce-product-filter="delete_row">Delete</a>
 																</div>
 																<!--end::Menu item-->
 															</div>

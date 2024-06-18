@@ -13,7 +13,7 @@ use App\Http\Controllers\backend\TeamController;
 use App\Http\Controllers\backend\TestimonialController;
 use App\Http\Controllers\backend\UserController;
 use App\Http\Controllers\backend\ProjectController;
-
+use App\Http\Controllers\backend\ProfileController;
 
 /****** frontend *****/
 
@@ -73,7 +73,7 @@ Route::middleware(['auth'])->group(function () {
 
 Route::get('/request/clients', [ClientController::class, 'index'])->name('client.index');
 Route::get('request/client/{id}/accept', [ClientController::class, 'acceptClient'])->name('client.accept');
-   
+Route::get('request/client/{id}/delete', [ClientController::class, 'deleteClient'])->name('client.delete');
 });
 
    /****** confirmed clients *****/
@@ -142,9 +142,15 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 Route::get('/admin/dashboard',[HomeController::class,'index'])->name('dashboard');
 Route::get('/home',[HomeController::class,'index'])->name('admin.dashboard');
-
 Route::get('/logout',[LogoutController::class,'logout'])->name('admin.logout');
+
+Route::resource('profiles', ProfileController::class );
+
+
 });
+
+
+
 
 
 

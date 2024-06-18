@@ -39,7 +39,7 @@
 														
 													</i>
 												</span>
-												<a href="{{url('dashboard')}}" class="menu-title">My Dashboard</a>
+												<a href="{{url('dashboard')}}" class="menu-title">Admin Dashboard</a>
 											</span>
 											<!--end:Menu link-->
 											<!--begin:Menu sub-->
@@ -51,7 +51,7 @@
 														<span class="menu-bullet">
 															<span class="bullet bullet-dot"></span>
 														</span>
-														<span class="menu-title">Dashboard</span>
+														<span class="menu-title">Projects</span>
 													</a>
 													<!--end:Menu link-->
 												</div>
@@ -96,7 +96,7 @@
 														<span class="menu-bullet">
 															<span class="bullet bullet-dot"></span>
 														</span>
-														<span class="menu-title">Add Service</span>
+														<span class="menu-title">Add New Service</span>
 													</a>
 													<!--end:Menu link-->
 												</div>
@@ -140,7 +140,7 @@
 														<span class="menu-bullet">
 															<span class="bullet bullet-dot"></span>
 														</span>
-														<span class="menu-title">Add Project</span>
+														<span class="menu-title">Add New Project</span>
 													</a>
 													<!--end:Menu link-->
 												</div>
@@ -172,7 +172,7 @@
 														<span class="menu-bullet">
 															<span class="bullet bullet-dot"></span>
 														</span>
-														<span class="menu-title">Recieved Orders List</span>
+														<span class="menu-title">Requested Orders</span>
 													</a>
 													<!--end:Menu link-->
 												</div>
