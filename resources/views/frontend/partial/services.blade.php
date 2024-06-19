@@ -1,3 +1,5 @@
+<?php   $all_services= App\Models\Service::all();   ?>
+
 <!-- Service area start here -->
 <section class="service-area pb-140">
   <div class="container">

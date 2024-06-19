@@ -22,7 +22,7 @@
         data-wow-delay="400ms"
         data-wow-duration="1000ms"
       >
-        Discover the driving force behind Marketi. Working collaboratively
+        Discover the driving force behind Auva. Working collaboratively
         to deliver
         <br />
         innovative digital marketing solutions that elevate your brand.

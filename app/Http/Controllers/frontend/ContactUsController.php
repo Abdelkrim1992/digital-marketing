@@ -18,9 +18,9 @@ class ContactUsController extends Controller
     public function index()
     {
         $setting= Setting::findOrFail(1);
-        $service= Service::all();
+        $all_services= Service::all();
         $team= team::all();
-        return view('frontend.contact.contact_us',compact('setting','service','team'));
+        return view('frontend.contact.contact_us',compact('setting','all_services','team'));
     }
 
     /**

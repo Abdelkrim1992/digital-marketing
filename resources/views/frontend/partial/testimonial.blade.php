@@ -17,7 +17,7 @@
               data-wow-delay="200ms"
               data-wow-duration="1000ms"
             >
-              Client’s speeches<br />
+              Customer’s speeches<br />
               about <span>Auva</span>
             </h2>
             <p

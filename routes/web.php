@@ -73,7 +73,7 @@ Route::middleware(['auth'])->group(function () {
 
 Route::get('/request/clients', [ClientController::class, 'index'])->name('client.index');
 Route::get('request/client/{id}/accept', [ClientController::class, 'acceptClient'])->name('client.accept');
-Route::get('request/client/{id}/delete', [ClientController::class, 'deleteClient'])->name('client.delete');
+Route::get('request/client/{id}/delete', [ClientController::class, 'delete'])->name('client.delete');
 });
 
    /****** confirmed clients *****/

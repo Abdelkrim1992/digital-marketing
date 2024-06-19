@@ -235,6 +235,7 @@
             </tr>
         </thead>
         <tbody class="text-gray-600 fw-semibold">
+            @if(!empty ($allData))
             @foreach ($allData as $testimonial)
                 <tr data-testimonial-id="{{ $testimonial->id }}">
                     <td>
@@ -274,6 +275,11 @@
                     </td>
                 </tr>
             @endforeach
+            @else
+									<tr>
+										<td>No projects founds</td>
+									</tr>  
+	        @endif
         </tbody>
     </table>
     <!--end::Table-->

@@ -81,6 +81,7 @@ class SettingController extends Controller
         $setting->address= $request->address;
         $setting->facebook= $request->facebook;
         $setting->instagram= $request->instagram;
+        $setting->whatsapp= $request->whatsapp;
         $setting->logo= $request->logo;
 
         if($request->hasFile('logo')){

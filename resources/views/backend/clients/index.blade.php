@@ -86,6 +86,7 @@
 													</tr>
 												</thead>
 												<tbody class="fw-semibold text-gray-600">
+												@if(!empty($allData))
                                                 @foreach($allData as $key=>$row)
                                                     <tr>
 													    <td class="text-center pe-0">
@@ -132,6 +133,11 @@
 														</td>
 													</tr>
                                                 @endforeach    
+												@else
+												<tr>
+												    <td>No projects founds</td>
+												</tr>  
+												@endif
                                                 </tbody>
 											</table>
 											<!--end::Table-->

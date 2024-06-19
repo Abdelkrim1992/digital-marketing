@@ -1,3 +1,5 @@
+<?php   $all_services= App\Models\Service::all();   ?>
+
     <!-- Contact area start here -->
         <section class="contact-area pb-140">
             <div class="container">
@@ -31,7 +33,7 @@
                                 <div class="form-control mb-20">
                                     <select name="choosed_service" id="choosed_service" required>
                                             <option >Select Service</option>
-                                            @foreach ($service as $service)
+                                            @foreach ($all_services as $service)
                                             <option value="{{ $service->service_title }}">{{ $service->service_title }}</option>
                                             @endforeach
                                    </select>

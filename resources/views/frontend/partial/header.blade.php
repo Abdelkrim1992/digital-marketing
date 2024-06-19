@@ -20,6 +20,9 @@
             <li class="bor-right">
               <a href="{{$setting->instagram}}"><i class="fa-brands fa-instagram"></i></a>
             </li>
+            <li class="bor-right">
+              <a href="{{$setting->whatsapp}}"><i class="fa-brands fa-whatsapp"></i></a>
+            </li>
           </ul>
         </div>
       </div>
@@ -38,13 +41,22 @@
               <ul>
                 <li><a href="{{url('/')}}">Home </a></li>
                 <li><a href="{{route('frontend.about_us')}}">About Us</a></li>
-                <li><a href="{{route('frontend.services')}}">Services </a></li>
+                <li>
+                  <a href="{{route('frontend.services')}}">Services </a>
+                  <ul class="sub-menu">
+                    @foreach($all_services as $row)
+                    <li>
+                      <a href="{{route('frontend.service_details',$row->id)}}">{{$row->service_title}}</a>
+                    </li>
+                    @endforeach
+                  </ul>
+                </li>
                 <li><a href="{{route('frontend.contact_us')}}">Contact Us</a></li>
               </ul>
             </nav>
           </div>
           
-          <a href="https://wa.me/message/FBO52GTDTUCCE1" class="btn-menu d-none d-lg-inline-block">Free Consultation<i class="fa-regular fa-circle-arrow-right ml-10"></i></a>
+          <a href="{{$setting->whatsapp}}" class="btn-menu d-none d-lg-inline-block">Free Consultation<i class="fa-regular fa-circle-arrow-right ml-10"></i></a>
           
           <div class="bars d-block d-lg-none">
             <i id="openButton" class="fa-solid fa-bars"></i>

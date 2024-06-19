@@ -51,8 +51,6 @@
 
       @include('frontend.partial.testimonial')
 
-      @include('frontend.partial.faq')
-
       @include('frontend.partial.talk')
 
 
@@ -61,8 +59,9 @@
     @include('frontend.partial.footer')
 
     <!-- Back to top btn area start here -->
-    <button class="btn-backToTop">
-      <i class="fa-solid fa-chevron-up"></i>
+    <button class="btn-backToTop" href="{{$setting->whatsapp_link}}">
+      <i class="fa-brands fa-whatsapp">
+      </i>
     </button>
     <!-- Back to top btn area end here -->
 

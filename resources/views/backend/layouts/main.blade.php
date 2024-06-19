@@ -104,27 +104,21 @@
 												<div class="card-body p-9">
 													<!--begin::Heading-->
 													<div class="fs-2hx fw-bold">{{$confirmed_client}}</div>
-													<div class="fs-4 fw-semibold text-gray-400 mb-7">Our Clients</div>
+													<div class="fs-4 fw-semibold text-gray-400 mb-7">Our Customers</div>
 													<!--end::Heading-->
 													<!--begin::Users group-->
 													<div class="symbol-group symbol-hover mb-9">
 														<div class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip" data-kt-initialized="1">
-															<img alt="Pic" src="{{asset('backend/media/avatars/300-2.jpg')}}">
-														</div>
-														<div class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip" data-kt-initialized="1">
 															<span class="symbol-label bg-info text-inverse-info fw-bold">P</span>
 														</div>
-														<div class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip" data-kt-initialized="1">
-															<img alt="Pic" src="{{asset('backend/media/avatars/300-12.jpg')}}">
-														</div>
 														<a href="#" class="symbol symbol-35px symbol-circle" data-bs-toggle="modal" data-bs-target="#kt_modal_view_users">
-															<span class="symbol-label bg-dark text-gray-300 fs-8 fw-bold">+42</span>
+															<span class="symbol-label bg-dark text-gray-300 fs-8 fw-bold">+1</span>
 														</a>
 													</div>
 													<!--end::Users group-->
 													<!--begin::Actions-->
 													<div class="d-flex">
-														<a href="{{ route('confirmed-clients.index') }}" class="btn btn-primary btn-sm me-3" >All Clients</a>
+														<a href="{{ route('confirmed-clients.index') }}" class="btn btn-primary btn-sm me-3" >All Customers</a>
 													</div>
 													<!--end::Actions-->
 												</div>
@@ -159,7 +153,7 @@
 															<thead>
 																<tr class="fs-7 fw-bold text-gray-400 border-bottom-0">
 																	<th class="p-0 pb-3 min-w-175px text-start">ITEM</th>
-																	<th class="p-0 pb-3 min-w-100px text-center">CLIENT</th>
+																	<th class="p-0 pb-3 min-w-100px text-center">CUSTOMER</th>
 																	<th class="p-0 pb-3 min-w-100px text-center">BUDGET</th>
 																	<th class="p-0 pb-3 min-w-175px text-center pe-12">STATUS</th>
 																	<th class="p-0 pb-3 w-50px text-end">VIEW</th>

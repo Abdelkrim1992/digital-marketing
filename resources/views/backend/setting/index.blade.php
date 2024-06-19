@@ -207,6 +207,18 @@
 														<!--end::Col-->
 													</div>
 													<!--end::Input group-->
+													<!--begin::Input group-->
+													<div class="row mb-6">
+														<!--begin::Label-->
+														<label class="col-lg-4 col-form-label required fw-semibold fs-6">Facebook</label>
+														<!--end::Label-->
+														<!--begin::Col-->
+														<div class="col-lg-8 fv-row">
+															<input type="text" name="whatsapp" class="form-control form-control-lg form-control-solid" placeholder="Whatsapp link" value="{{$setting->whatsapp}}" />
+														</div>
+														<!--end::Col-->
+													</div>
+													<!--end::Input group-->
                                                     
 												</div>
 												<!--end::Card body-->

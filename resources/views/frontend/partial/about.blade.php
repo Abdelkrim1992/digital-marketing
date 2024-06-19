@@ -27,7 +27,7 @@
                   Should Be  Your Top Choice Your Top Choice
                   </h2>
                   <p class="wow fadeInUp" data-wow-delay="400ms" data-wow-duration="1000ms"  >
-                    Choose Marketi for unparalleled digital success – where
+                    Choose Auva for unparalleled digital success – where
                     expertise, <br />
                     innovation, and strategic brilliance converge to elevate
                     your <br />
