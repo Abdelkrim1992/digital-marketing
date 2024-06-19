@@ -72,21 +72,21 @@
 															<div class="d-flex fs-6 fw-semibold align-items-center mb-3">
 																<div class="bullet bg-primary me-3"></div>
 																<div class="text-gray-400">In Progress</div>
-																<div class="ms-auto fw-bold text-gray-700">30</div>
+																<div class="ms-auto fw-bold text-gray-700">1</div>
 															</div>
 															<!--end::Label-->
 															<!--begin::Label-->
 															<div class="d-flex fs-6 fw-semibold align-items-center mb-3">
 																<div class="bullet bg-success me-3"></div>
 																<div class="text-gray-400">Completed</div>
-																<div class="ms-auto fw-bold text-gray-700">45</div>
+																<div class="ms-auto fw-bold text-gray-700">1</div>
 															</div>
 															<!--end::Label-->
 															<!--begin::Label-->
 															<div class="d-flex fs-6 fw-semibold align-items-center">
 																<div class="bullet bg-gray-300 me-3"></div>
 																<div class="text-gray-400">Pending</div>
-																<div class="ms-auto fw-bold text-gray-700">25</div>
+																<div class="ms-auto fw-bold text-gray-700">1</div>
 															</div>
 															<!--end::Label-->
 														</div>

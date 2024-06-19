@@ -1,5 +1,5 @@
     <!-- Favicon img -->
-    <link rel="shortcut icon" href="{{asset('frontend/images/favicon.png')}}" />
+    <link rel="shortcut icon" href="{{asset('frontend/img/logo/favon.png')}}" />
     <!-- Bootstarp min css -->
     <link rel="stylesheet" href="{{asset('frontend/css/bootstrap.min.css')}}" />
     <!-- Mean menu css -->
