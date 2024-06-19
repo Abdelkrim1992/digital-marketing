@@ -1,7 +1,10 @@
-<?php $confirmed_client= App\Models\ConfirmedClient::all()->count(); ?>
-<?php $projects_number= App\Models\Project::all()->count(); ?>
-<?php $projects= App\Models\Project::all(); ?>
-<?php $status= App\Models\ProjectStatus::all(); ?>
+<?php $confirmed_client= App\Models\ConfirmedClient::all()->count(); 
+      $projects_number= App\Models\Project::all()->count(); 
+      $projects= App\Models\Project::all(); 
+      $status= App\Models\ProjectStatus::all();
+	  $inProgressCount = App\Models\Project::where('status_id', 1)->count(); // assuming 1 is the id for 'in progress'
+      $pendingCount = App\Models\Project::where('status_id', 2)->count(); // assuming 2 is the id for 'pending'
+      $completedCount = App\Models\Project::where('status_id', 3)->count();  ?>
 
 					<!--begin::Main-->
 					<div class="app-main flex-column flex-row-fluid" id="kt_app_main">
@@ -72,21 +75,21 @@
 															<div class="d-flex fs-6 fw-semibold align-items-center mb-3">
 																<div class="bullet bg-primary me-3"></div>
 																<div class="text-gray-400">In Progress</div>
-																<div class="ms-auto fw-bold text-gray-700">1</div>
+																<div class="ms-auto fw-bold text-gray-700">{{$inProgressCount}}</div>
 															</div>
 															<!--end::Label-->
 															<!--begin::Label-->
 															<div class="d-flex fs-6 fw-semibold align-items-center mb-3">
 																<div class="bullet bg-success me-3"></div>
-																<div class="text-gray-400">Completed</div>
-																<div class="ms-auto fw-bold text-gray-700">1</div>
+																<div class="text-gray-400">Pending</div>
+																<div class="ms-auto fw-bold text-gray-700">{{$pendingCount}}</div>
 															</div>
 															<!--end::Label-->
 															<!--begin::Label-->
 															<div class="d-flex fs-6 fw-semibold align-items-center">
 																<div class="bullet bg-gray-300 me-3"></div>
-																<div class="text-gray-400">Pending</div>
-																<div class="ms-auto fw-bold text-gray-700">1</div>
+																<div class="text-gray-400">Completed</div>
+																<div class="ms-auto fw-bold text-gray-700">{{$completedCount}}</div>
 															</div>
 															<!--end::Label-->
 														</div>
