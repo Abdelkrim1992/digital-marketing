@@ -394,7 +394,7 @@
                         <a href="{{ route('user.edit', $row->id) }}" class="menu-link px-3">Edit</a>
                     </div>
                     <div class="menu-item px-3">
-                        <a href="{{ route('user.delete', $row->id) }}" class="menu-link px-3" data-kt-users-table-filter="delete_row">Delete</a>
+                        <a href="{{ route('user.delete', ['id' => $row->id]) }}" class="menu-link px-3" data-kt-users-table-filter="delete_row">Delete</a>
                     </div>
                 </div>
             </td>

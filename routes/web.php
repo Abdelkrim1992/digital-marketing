@@ -119,7 +119,7 @@ Route::get('/users',[UserController::class,'index'])->name('user.index');
 Route::POST('/users', [UserController::class, 'store'])->name('user.store');
 Route::get('/users/edit/{id}',[UserController::class,'edit'])->name('user.edit');
 Route::POST('/users/update/{id}',[UserController::class,'update'])->name('user.update');
-Route::get('/users/delete',[UserController::class,'delete'])->name('user.delete');
+Route::get('/users/delete/{id}',[UserController::class,'delete'])->name('user.delete');
 Route::POST('/delete-users', [UserController::class, 'deleteUsers'])->name('user.deleteUsers');
 
 });
